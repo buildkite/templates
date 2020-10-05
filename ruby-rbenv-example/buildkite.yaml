@@ -1,0 +1,8 @@
+# This is an example on how to test a Ruby project using Buildkite and rbenv.
+# It uses a local agent environment hook in .buildkite/hooks/pre-command to setup rbenv; you will need to specify this in your repository.
+
+# For more information, see: https://github.com/buildkite/ruby-rbenv-example
+
+steps:
+  - name: ":rspec:"
+    command: "bundle install && bundle exec rspec --color specs"

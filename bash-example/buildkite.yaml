@@ -1,0 +1,10 @@
+# This is an example Buildkite pipeline for running a simple bash script. You will need to define a script in your repository and put the path within the command step below.
+# To print the artifacts from `artifact_path` you will also need to define this within your repository.
+# For more information, see: https://github.com/buildkite/bash-example
+
+steps:
+  - label: ":hammer: Example Script"
+    command: "Suggested path: script.sh"
+    artifact_paths: "artifacts/*"
+    agents:
+      queue: "${BUILDKITE_AGENT_META_DATA_QUEUE:-default}"

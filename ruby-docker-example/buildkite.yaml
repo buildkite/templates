@@ -1,0 +1,11 @@
+# This repository is an example on how to test a Ruby project using Buildkite and Docker. It uses the standard Ruby Docker image and Buildkite’s Docker-based Builds.
+# You will need to define `app` within `docker-compose.yaml` in your repository.
+
+# For more information, see: https://github.com/buildkite/ruby-docker-example
+
+steps:
+  - name: ":rspec:"
+    command: "rspec --color specs"
+    plugins:
+      docker-compose#v3.7.0:
+        run: app # define within your repository
