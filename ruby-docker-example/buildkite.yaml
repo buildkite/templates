@@ -8,4 +8,4 @@ steps:
     command: "rspec --color specs"
     plugins:
       docker-compose#v3.7.0:
-        run: app # define within your repository
+        run: app # Suggested command, define `app` within your repository

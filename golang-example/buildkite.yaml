@@ -1,0 +1,9 @@
+# This repository is an example on how to test a Golang project using Buildkite.
+
+# For more information, see: https://github.com/buildkite/golang-example
+
+steps:
+  - name: ":golang:"
+    command: "./scripts/test.sh" # Suggested command, you will need to specify this in your repository
+    env:
+      BUILDKITE_GOLANG_IMPORT_PATH: "github.com/buildkite/golang-example"

@@ -1,0 +1,12 @@
+# This is an example on how to test a Golang project through Docker using Buildkite.
+# You will need docker-compose installed on your build system: https://docs.docker.com/compose/install/
+
+# For more information, see: https://github.com/buildkite/golang-docker-example
+
+steps:
+  - name: ":golang:"
+    command: "./scripts/test.sh" # Suggested command, you will need to define this in your repository
+    plugins:
+      - docker-compose#v3.0.3:
+          run: app # Suggested command, you will need to define `app` in docker-compose.yaml in your repository
+
