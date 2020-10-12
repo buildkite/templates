@@ -1,0 +1,30 @@
+steps:
+  # This pipeline upload job will run on a matching agent, and upload the step configuration from the pipeline’s source repository.
+
+  # Read more about uploading and generating pipelines in the Uploading Pipeline Guide [https://buildkite.com/docs/pipelines/defining-steps].
+
+  # This tells Buildkite where it will be able to find your steps. This is the buildkite.yaml/pipeline.yml file in your repository
+  - command: "buildkite-agent pipeline upload"
+    command: echo "Hello"
+
+    # Label to show in the build pipeline. e.g. “:llama: Tests”
+    label: "First Build! :rocket:"
+
+    # Agent Targeting Rules
+    # A list of query rules for selecting an agent, each on a new line. e.g. ruby=true
+    agents:
+    - "queue=default"
+
+    # Environment variables to be set, each on a new line. e.g. FOO=bar. Pipeline secrets [link] should not be stored as environment variables.
+    env:
+      foo: "bar"
+
+    # List of branch conditions, each separated with a space. e.g. master. This step will be skipped if the build’s branch does not match.
+    branches: "master"
+
+    # File paths for the artifacts to be automatically uploaded after the step has run (e.g. tmp/**/*.png). Separate each path with a semi-colon.
+    artifact_paths: "tmp/hello"
+
+    # Number of minutes the step can run for before being automatically canceled.
+    timeout: 2
+    parallelism: 2
