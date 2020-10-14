@@ -1,0 +1,7 @@
+steps:
+  # This pipeline upload job will run on a matching agent, and upload the step configuration from the pipeline’s source repository.
+
+  # Read more about uploading and generating pipelines in the Uploading Pipeline Guide [https://buildkite.com/docs/pipelines/defining-steps].
+
+  # This tells Buildkite where it will be able to find your steps. This is the buildkite.yaml/pipeline.yml file in your repository
+  - command: "buildkite-agent pipeline upload"
