@@ -1,3 +1,8 @@
+---
+name: Parallel Rails
+description: Run 20 parallel testing agents for a Rails application using Buildkite, rbenv and Knapsack
+language: Ruby
+---
 # This is an example on how to run 20 parallel testing agents for a Rails application using Buildkite, rbenv and Knapsack.
 # For this example, you will need to define a script in your repository, and includes its' path in the `command` step.
 

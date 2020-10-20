@@ -1,3 +1,8 @@
+---
+name: Golang (Docker)
+description: Test a Golang project through Docker using Buildkite
+language: Go
+---
 # This is an example on how to test a Golang project through Docker using Buildkite.
 # You will need docker-compose installed on your build system: https://docs.docker.com/compose/install/
 

@@ -1,3 +1,8 @@
+---
+name: Kitchen Sink
+description: https://github.com/buildkite/agent/blob/master/.buildkite/pipeline.yml
+language: Bash
+---
 # https://github.com/buildkite/agent/blob/master/.buildkite/pipeline.yml
 
 steps:

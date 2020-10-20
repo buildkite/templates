@@ -1,3 +1,8 @@
+---
+name: Annotations
+description: Example of using annotations for fun and profit
+language: Bash
+---
 steps:
   - commands:
     - buildkite-agent annotate 'Wow so boring `default` style' --context 'ctx-default'

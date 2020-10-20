@@ -1,3 +1,8 @@
+---
+name: Node.js
+description: Test a Node.js project using Buildkite
+language: JavaScript
+---
 # This is an example of how to test a Node.js project using Buildkite.
 # Note: this example assumes your Buildkite Agent machine has Node.js already installed.
 

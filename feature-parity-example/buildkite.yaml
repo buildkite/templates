@@ -1,3 +1,8 @@
+---
+name: Feature Parity Example
+description: An example of the use of all Buildkite features, including those originally available through the UI
+language: Bash
+---
 steps:
   # This pipeline upload job will run on a matching agent, and upload the step configuration from the pipeline’s source repository.
 

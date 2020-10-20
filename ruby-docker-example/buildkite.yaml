@@ -1,3 +1,8 @@
+---
+name: Ruby (Docker)
+description: Test a Ruby project using Buildkite and Docker
+language: Ruby
+---
 # This repository is an example on how to test a Ruby project using Buildkite and Docker. It uses the standard Ruby Docker image and Buildkite’s Docker-based Builds.
 # You will need to define `app` within `docker-compose.yaml` in your repository.
 

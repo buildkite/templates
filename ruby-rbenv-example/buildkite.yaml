@@ -1,3 +1,8 @@
+---
+name: Ruby (rbenv)
+description: Test a Ruby project using Buildkite and rbenv
+language: Ruby
+---
 # This is an example on how to test a Ruby project using Buildkite and rbenv.
 # It uses a local agent environment hook in .buildkite/hooks/pre-command to setup rbenv; you will need to specify this in your repository.
 

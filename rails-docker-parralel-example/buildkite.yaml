@@ -1,3 +1,8 @@
+---
+name: Parallel Rails (Docker)
+description: Run a large number of parallel testing agents for a Rails application using Buildkite, Docker and Knapsack
+language: Ruby
+---
 # This is an example of how to run a large number of parallel testing agents for a Rails application using Buildkite, Docker and Knapsack. This approach works well with Docker available autoscaling environments like the Buildkite AWS Stack.
 
 # You will need to define CI scripts (e.c. scripts/ci/parallel_specs.sh), artifact_paths, Dockerfile and docker-compose.yml within your repository.

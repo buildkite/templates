@@ -1,3 +1,8 @@
+---
+name: Golang
+description: Test a Golang project using Buildkite
+language: Go
+---
 # This repository is an example on how to test a Golang project using Buildkite.
 
 # For more information, see: https://github.com/buildkite/golang-example

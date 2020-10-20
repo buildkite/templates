@@ -1,3 +1,8 @@
+---
+name: Python (Docker)
+description: Test a python project using Buildkite, Docker, and pipenv
+language: Python
+---
 # This is an example for how to test a python project using Buildkite, Docker, and pipenv.
 # Your repository will need to contain a Dockerfile to setup the pipenv environment and install dependencies. Additionally, you will also need to separately define `app` within a `docker-compose.yaml` file in your repository. For more information see: https://github.com/buildkite/python-docker-example
 
