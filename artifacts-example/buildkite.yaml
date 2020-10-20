@@ -1,9 +1,0 @@
----
-name: Artifacts
-description: Example of uploading artifacts
-language: Shell
----
-steps:
-  - commands:
-    - touch 🦒.txt 🐢.txt 🦚.txt 🦕.txt 🦔.txt 🦘.txt
-    - buildkite-agent artifact upload "*.txt"
