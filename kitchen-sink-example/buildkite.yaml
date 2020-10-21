@@ -1,7 +1,7 @@
 ---
 name: Kitchen Sink
-description: https://github.com/buildkite/agent/blob/master/.buildkite/pipeline.yml
 language: Bash
+global: true
 ---
 # https://github.com/buildkite/agent/blob/master/.buildkite/pipeline.yml
 

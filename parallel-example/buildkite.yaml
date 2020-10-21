@@ -2,6 +2,7 @@
 name: Parallel
 description: Run a script in parallel
 language: Bash
+global: true
 ---
 steps:
   - name: ":rspec:"

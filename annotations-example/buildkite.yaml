@@ -2,6 +2,7 @@
 name: Annotations
 description: Example of using annotations for fun and profit
 language: Bash
+global: true
 ---
 steps:
   - commands:

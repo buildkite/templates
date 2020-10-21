@@ -2,6 +2,7 @@
 name: Pipeline Upload
 description: Upload step configuration from the pipeline’s source repository
 language: Bash
+global: true
 ---
 steps:
   # This pipeline upload job will run on a matching agent, and upload the step configuration from the pipeline’s source repository.
