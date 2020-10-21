@@ -1,7 +1,7 @@
 ---
 name: Annotations
 description: Example of using annotations for fun and profit
-language: Bash
+language: Shell
 global: true
 ---
 steps:

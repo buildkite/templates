@@ -1,7 +1,7 @@
 ---
 name: Bash Parallelism
 description: Runs a simple bash script in parallel across multiple agents
-language: Bash
+language: Shell
 ---
 # This is an example for running a simple bash script in parallel across multiple agents. You will need to define script.sh within your repository.
 

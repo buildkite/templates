@@ -1,7 +1,7 @@
 ---
 name: Artifacts
 description: Example of uploading artifacts
-language: Bash
+language: Shell
 ---
 steps:
   - commands:

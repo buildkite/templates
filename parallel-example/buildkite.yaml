@@ -1,7 +1,7 @@
 ---
 name: Parallel
 description: Run a script in parallel
-language: Bash
+language: Shell
 global: true
 ---
 steps:

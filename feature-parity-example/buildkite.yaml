@@ -1,7 +1,7 @@
 ---
 name: Feature Parity Example
 description: An example of the use of all Buildkite features, including those originally available through the UI
-language: Bash
+language: Shell
 global: true
 ---
 steps:

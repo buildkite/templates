@@ -1,7 +1,7 @@
 ---
 name: Pipeline Upload
 description: Upload step configuration from the pipeline’s source repository
-language: Bash
+language: Shell
 global: true
 ---
 steps:
