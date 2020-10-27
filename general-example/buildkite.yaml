@@ -1,5 +1,5 @@
 ---
-name: Feature Parity Example
+name: General Example
 description: An example of the use of all Buildkite features, including those originally available through the UI
 language: Shell
 global: true
