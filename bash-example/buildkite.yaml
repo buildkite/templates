@@ -9,12 +9,18 @@ global: true
 # For more information, see: https://github.com/buildkite/bash-example
 
 steps:
+  # Label to show in the build pipeline.
   - label: ":hammer: Example Script"
-    # `script.sh` is the suggested path to run a script of the same name defined within your repository
+
+    # `script.sh` is a suggested path to run a script of the same name defined within your repository
     # For an example, see: https://github.com/buildkite/bash-example/blob/master/script.sh
     command: "script.sh"
-    # the path where artifacts are located within your repository
-    # For an example, see: https://github.com/buildkite/bash-example/tree/master/artifacts
+
+    # File paths for the artifacts to be automatically uploaded after the step has run (e.g. tmp/**/*.png). Separate each path with a semi-colon.
+    # For an example using the bash-example, see: https://github.com/buildkite/bash-example/tree/master/artifacts
     artifact_paths: "artifacts/*"
+
+    # Agent Targeting Rules
+    # A list of query rules for selecting an agent, each on a new line. e.g. ruby=true
     agents:
-      queue: "queue=default"
+    - "queue=default"
