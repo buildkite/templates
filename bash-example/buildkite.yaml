@@ -10,7 +10,11 @@ global: true
 
 steps:
   - label: ":hammer: Example Script"
-    command: "Suggested path: script.sh"
+    # `script.sh` is the suggested path to run a script of the same name defined within your repository
+    # For an example, see: https://github.com/buildkite/bash-example/blob/master/script.sh
+    command: "script.sh"
+    # the path where artifacts are located within your repository
+    # For an example, see: https://github.com/buildkite/bash-example/tree/master/artifacts
     artifact_paths: "artifacts/*"
     agents:
-      queue: "${BUILDKITE_AGENT_META_DATA_QUEUE:-default}"
+      queue: "queue=default"
