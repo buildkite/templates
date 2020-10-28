@@ -1,5 +1,5 @@
 ---
-name: Feature Parity Example
+name: General Example
 description: An example of the use of all Buildkite features, including those originally available through the UI
 language: Shell
 global: true
@@ -19,7 +19,7 @@ steps:
     # Agent Targeting Rules
     # A list of query rules for selecting an agent, each on a new line. e.g. ruby=true
     agents:
-    - "queue=default"
+      queue: "default"
 
     # Environment variables to be set, each on a new line. e.g. FOO=bar. Pipeline secrets [link] should not be stored as environment variables.
     env:
