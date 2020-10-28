@@ -3,4 +3,5 @@ name: Blank Example
 description: A blank YAML editor, to start from scratch!
 global: true
 ---
+# This is a blank YAML editor!
 steps: []
