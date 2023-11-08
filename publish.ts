@@ -9,10 +9,36 @@ import { hastToStructuredText } from "npm:datocms-html-to-structured-text";
 import { matter } from "npm:vfile-matter";
 import { read } from "npm:to-vfile";
 
+const TEMPLATE_ID = "FkouTmYeQOuVuHxz71czmw";
+const TEMPLATE_CATEGORY_ID = "7Or1cKL9T2KJxhMx75fh2Q";
+
 await load({ export: true });
 const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
 
-async function parseTemplate(path: string) {
+interface Template {
+  slug: string;
+  name: string;
+  categories: string[];
+  content: any;
+}
+
+// Fetch all categories and return a map of name -> ID
+async function fetchCategories() {
+  const records = await client.items.list({
+    filter: {
+      type: TEMPLATE_CATEGORY_ID,
+    },
+  });
+
+  return records.reduce((acc, category) => {
+    acc.set(category.name, category.id);
+    return acc;
+  }, new Map());
+}
+
+const categoryIds = await fetchCategories();
+
+async function parseTemplate(path: string): Template {
   const slug = basename(dirname(path));
 
   // Read template frontmatter (YAML)
@@ -20,8 +46,16 @@ async function parseTemplate(path: string) {
   matter(file, { strip: true });
 
   // Validate template frontmatter
-  const { name } = file.data.matter;
+  const { name, categories } = file.data.matter;
   if (!name) throw new Error(`Template ${path} is missing a name`);
+  if (!categories) throw new Error(`Template ${path} is missing categories`);
+
+  // Validate categories
+  categories.forEach((category: string) => {
+    if (!categoryIds.has(category)) {
+      throw new Error(`Template ${path} has unknown category "${category}"`);
+    }
+  });
 
   // Markdown -> MDAST -> HAST -> DAST (DatoCMS Structured Text)
   const mdast = fromMarkdown(String(file));
@@ -31,6 +65,7 @@ async function parseTemplate(path: string) {
   return {
     slug,
     name,
+    categories: categories.map((category: string) => categoryIds.get(category)),
     content: dast,
   };
 }
@@ -41,10 +76,10 @@ async function parseTemplate(path: string) {
 // Not the most performant since it's doing a list and then
 // an update or create. Could be improved if we kept a local
 // cache of slugs to IDs.
-async function upsertTemplate(template: any) {
+async function upsertTemplate(template: Template) {
   const records = await client.items.list({
     filter: {
-      type: Deno.env.get("DATO_TEMPLATE_ITEM_TYPE_ID"),
+      type: TEMPLATE_ID,
       fields: {
         slug: { eq: template.slug },
       },
@@ -65,7 +100,7 @@ async function upsertTemplate(template: any) {
     return client.items.create({
       item_type: {
         type: "item_type",
-        id: Deno.env.get("DATO_TEMPLATE_ITEM_TYPE_ID"),
+        id: TEMPLATE_ID,
       },
       ...template,
     });
@@ -75,6 +110,11 @@ async function upsertTemplate(template: any) {
 // Iterate over files and push to DatoCMS
 const templates = globSync("pipelines/*/template.md");
 templates.forEach(async (path) => {
-  const template = await parseTemplate(path);
-  await upsertTemplate(template);
+  try {
+    const template = await parseTemplate(path);
+    await upsertTemplate(template);
+  } catch (error) {
+    console.error(error.message);
+    Deno.exit(1);
+  }
 });
