@@ -1,6 +1,0 @@
-steps:
-  - label: "validate pipelines"
-    command: deno run -A validate.ts
-    plugins:
-      - docker#v5.9.0:
-          image: "denoland/deno:1.38.0"

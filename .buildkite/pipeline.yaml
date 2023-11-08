@@ -1,0 +1,15 @@
+steps:
+  - label: "validate templates"
+    key: "validate"
+    command: deno run -A validate.ts
+    plugins:
+      - docker#v5.9.0:
+          image: "denoland/deno:1.38.0"
+
+  - label: "publish templates"
+    depends_on: "validate"
+    command: deno run -A publish.ts
+    if: build.branch == "main"
+    plugins:
+      - docker#v5.9.0:
+          image: "denoland/deno:1.38.0"
