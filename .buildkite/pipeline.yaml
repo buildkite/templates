@@ -13,3 +13,5 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "denoland/deno:1.38.0"
+          environment:
+            - DATO_API_TOKEN
