@@ -1,6 +1,6 @@
 # Templates
 
-A collection of starter templates for Buildkite Pipelines showcased in the buildkite.com template gallery.
+A collection of Buildkite Pipelines starter templates that are showcased on the [template gallery](https://buildkite.com/templates).
 
 ## Creating a new template
 
