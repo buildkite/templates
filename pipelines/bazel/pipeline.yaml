@@ -1,0 +1,6 @@
+steps:
+  - label: Build
+    command: bazel build //src:bazel
+
+  - label: Test
+    command: bazel test --build_tests_only //...
