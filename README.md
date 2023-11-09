@@ -27,7 +27,7 @@ A template `README.md` MUST include the following metadata defined as YAML front
 
 A Buildkite Pipeline definition [file](https://buildkite.com/docs/pipelines/defining-steps).
 
-## Templates -> DatoCMS
+## DatoCMS
 
 The templates defined in this repository are ingesting into DatoCMS.
 
