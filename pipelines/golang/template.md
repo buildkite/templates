@@ -1,6 +1,6 @@
 ---
 name: "Golang"
-categories: ["Golang", "CI"]
+categories: ["Languages", "CI"]
 ---
 
 # Golang
