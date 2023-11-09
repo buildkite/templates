@@ -108,7 +108,7 @@ async function upsertTemplate(template: Template) {
 }
 
 // Iterate over files and push to DatoCMS
-const templates = globSync("pipelines/*/template.md");
+const templates = globSync("pipelines/*/README.md");
 templates.forEach(async (path) => {
   try {
     const template = await parseTemplate(path);

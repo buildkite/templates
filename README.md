@@ -11,14 +11,14 @@ A pipeline template is defined using the following structure:
 └── pipelines/
     └── snowflake-data-ingestion-pipeline/
         ├── pipeline.yaml
-        └── template.md
+        └── README.md
 ```
 
-### `template.md`
+### `README.md`
 
 This file contains a detailed description of what a specific template definition is and how it works.
 
-A template MUST include the following metadata defined as YAML frontmatter:
+A template `README.md` MUST include the following metadata defined as YAML frontmatter:
 
 - `name` – The name of the pipeline template.
 - `categories` – The categories this pipeline template will be grouped under.
