@@ -1,0 +1,47 @@
+steps:
+  - label: ":npm: Install dependencies"
+    key: "deps"
+    command: npm install
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
+          save: file
+      - docker#v5.9.0:
+          image: "node:latest"
+
+  - label: ":eslint: Run ESLint"
+    command: npx eslint
+    depends_on: "deps"
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
+      - docker#v5.9.0:
+          image: "node:latest"
+
+  - label: ":jest: Run unit tests"
+    depends_on: "deps"
+    command: npm test
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
+      - docker#v5.9.0:
+          image: "node:latest"
+
+  - label: ":cypress: Run cypress tests"
+    depends_on: "deps"
+    commands:
+      - npm install
+      - npm start & npx --yes wait-on http://localhost:8000
+      - npx cypress run
+    plugins:
+      - docker#v5.9.0:
+          image: cypress/browsers:node18.12.0-chrome106-ff106
+          options: --user 1001
+          volumes:
+            - /workdir/node_modules
