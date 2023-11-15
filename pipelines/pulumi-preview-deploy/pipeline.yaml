@@ -1,0 +1,36 @@
+env:
+  AWS_ROLE_ARN: arn:aws:iam::AWS-ACCOUNT-ID:role/SOME-ROLE
+  PULUMI_STACK: xxx
+
+steps:
+  - label: ":pulumi: Preview"
+    commands:
+      - npm install
+      - pulumi preview -s $PULUMI_STACK | tee preview
+      - printf '```\n%b\n```\n' "$(cat preview)" | buildkite-agent annotate --style "info"
+    plugins:
+      - aws-assume-role-with-web-identity#v1.0.0:
+          role-arn: $AWS_ROLE_ARN
+      - docker#v5.9.0:
+          image: "pulumi/pulumi-nodejs"
+          propagate-aws-auth-tokens: true
+          mount-buildkite-agent: true
+          environment:
+            - PULUMI_ACCESS_TOKEN
+
+  - block: "Deploy?"
+
+  - label: ":pulumi: Deploy"
+    commands:
+      - npm install
+      - pulumi stack select $PULUMI_STACK
+      - pulumi up -s $PULUMI_STACK --yes
+    plugins:
+      - aws-assume-role-with-web-identity#v1.0.0:
+          role-arn: $AWS_ROLE_ARN
+      - docker#v5.9.0:
+          image: "pulumi/pulumi-nodejs"
+          propagate-aws-auth-tokens: true
+          mount-buildkite-agent: true
+          environment:
+            - PULUMI_ACCESS_TOKEN
