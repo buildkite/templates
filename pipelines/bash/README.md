@@ -1,6 +1,7 @@
 ---
-name: "Bash"
-categories: ["Languages", "CI"]
+title: "Bash"
+description: "Execute a custom bash script"
+tags: []
 ---
 
 # Run a bash script

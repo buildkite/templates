@@ -1,6 +1,7 @@
 ---
-name: "Golang"
-categories: ["Languages", "CI"]
+title: "Golang"
+description: "Cross-compile a golang binary for multiple targets."
+tags: []
 ---
 
 # Cross compiling a Golang binary
