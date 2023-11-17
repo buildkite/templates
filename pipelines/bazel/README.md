@@ -1,6 +1,7 @@
 ---
-name: Bazel
-categories: ["Monorepo", "CI", "Build tools"]
+title: Bazel
+description: Starter CI pipeline for a Bazel project.
+tags: []
 ---
 
 # Building with Bazel

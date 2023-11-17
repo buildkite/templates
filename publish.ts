@@ -9,24 +9,25 @@ import { hastToStructuredText } from "npm:datocms-html-to-structured-text";
 import { matter } from "npm:vfile-matter";
 import { read } from "npm:to-vfile";
 
-const TEMPLATE_ID = "FkouTmYeQOuVuHxz71czmw";
-const TEMPLATE_CATEGORY_ID = "7Or1cKL9T2KJxhMx75fh2Q";
+const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
+const TEMPLATE_TAG_ID = "KLoCCjQuRGSzwFYptLJSUg";
 
 await load({ export: true });
 const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
 
 interface Template {
   slug: string;
-  name: string;
-  categories: string[];
+  title: string;
+  description: string;
+  tags: string[];
   content: any;
 }
 
-// Fetch all categories and return a map of name -> ID
-async function fetchCategories() {
+// Fetch all tags and return a map of name -> ID
+async function fetchTags() {
   const records = await client.items.list({
     filter: {
-      type: TEMPLATE_CATEGORY_ID,
+      type: TEMPLATE_TAG_ID,
     },
   });
 
@@ -36,7 +37,7 @@ async function fetchCategories() {
   }, new Map());
 }
 
-const categoryIds = await fetchCategories();
+const tagIds = await fetchTags();
 
 async function parseTemplate(path: string): Template {
   const slug = basename(dirname(path));
@@ -46,14 +47,16 @@ async function parseTemplate(path: string): Template {
   matter(file, { strip: true });
 
   // Validate template frontmatter
-  const { name, categories } = file.data.matter;
-  if (!name) throw new Error(`Template ${path} is missing a name`);
-  if (!categories) throw new Error(`Template ${path} is missing categories`);
+  const { title, description, tags } = file.data.matter;
+  if (!title) throw new Error(`Template ${path} is missing a title`);
+  if (!description)
+    throw new Error(`Template ${path} is missing a description`);
+  if (!tags) throw new Error(`Template ${path} is missing tags`);
 
-  // Validate categories
-  categories.forEach((category: string) => {
-    if (!categoryIds.has(category)) {
-      throw new Error(`Template ${path} has unknown category "${category}"`);
+  // Validate tags
+  tags.forEach((tag: string) => {
+    if (!tagIds.has(tag)) {
+      throw new Error(`Template ${path} has unknown tag "${tag}"`);
     }
   });
 
@@ -64,8 +67,9 @@ async function parseTemplate(path: string): Template {
 
   return {
     slug,
-    name,
-    categories: categories.map((category: string) => categoryIds.get(category)),
+    title,
+    description,
+    tags: tags.map((tag: string) => tagIds.get(tag)),
     content: dast,
   };
 }
@@ -88,15 +92,15 @@ async function upsertTemplate(template: Template) {
 
   if (records.length > 1) {
     throw new Error(
-      `Found ${records.length} templates with name ${template.name}`
+      `Found ${records.length} templates with name ${template.title}`
     );
   }
 
   if (records.length) {
-    console.log(`Updating: [${records[0].id}] ${template.name}`);
+    console.log(`Updating [${template.slug}]: ${template.title}`);
     return client.items.update(records[0].id, template);
   } else {
-    console.log(`Inserting: [${template.slug}]: ${template.name}`);
+    console.log(`Inserting [${template.slug}]: ${template.title}`);
     return client.items.create({
       item_type: {
         type: "item_type",
