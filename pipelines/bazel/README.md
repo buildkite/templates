@@ -2,6 +2,7 @@
 title: Bazel
 description: Starter CI pipeline for a Bazel project.
 tags: []
+author: Buildkite
 ---
 
 # Building with Bazel

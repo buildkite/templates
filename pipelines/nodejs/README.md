@@ -2,6 +2,7 @@
 title: Node.js
 description: Starter pipeline for Node.js project
 tags: []
+author: Buildkite
 ---
 
 # Build and test a Node.js application
