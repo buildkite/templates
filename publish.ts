@@ -15,6 +15,12 @@ const TEMPLATE_TAG_ID = "KLoCCjQuRGSzwFYptLJSUg";
 await load({ export: true });
 const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
 
+interface Frontmatter {
+  title: string;
+  description: string;
+  tags: string[];
+}
+
 interface Template {
   slug: string;
   title: string;
@@ -39,7 +45,7 @@ async function fetchTags() {
 
 const tagIds = await fetchTags();
 
-async function parseTemplate(path: string): Template {
+async function parseTemplate(path: string): Promise<Template> {
   const slug = basename(dirname(path));
 
   // Read template frontmatter (YAML)
@@ -47,11 +53,11 @@ async function parseTemplate(path: string): Template {
   matter(file, { strip: true });
 
   // Validate template frontmatter
-  const { title, description, tags } = file.data.matter;
-  if (!title) throw new Error(`Template ${path} is missing a title`);
-  if (!description)
-    throw new Error(`Template ${path} is missing a description`);
-  if (!tags) throw new Error(`Template ${path} is missing tags`);
+  const { title, description, tags, errors } = validateFrontmatter(file.data);
+
+  if (errors.length > 0) {
+    throw new Error(`Template ${path} has errors:\n${errors.join("\n")}`);
+  }
 
   // Validate tags
   tags.forEach((tag: string) => {
@@ -122,3 +128,21 @@ templates.forEach(async (path) => {
     Deno.exit(1);
   }
 });
+
+const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
+  const errors = [];
+
+  if (!meta.title) {
+    errors.push("missing title");
+  }
+
+  if (!meta.description) {
+    errors.push("description required");
+  }
+
+  if (!meta.tags) {
+    errors.push("tags required");
+  }
+
+  return { ...meta, errors };
+};
