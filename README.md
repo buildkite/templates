@@ -21,6 +21,7 @@ This file contains a detailed description of what a specific template definition
 A template `README.md` MUST include the following metadata defined as YAML frontmatter:
 
 - `name` – The name of the pipeline template.
+- `description` – The meta description for the template.
 - `tags` – The attributes the pipeline template will be grouped by. Such as NextJS, Rails, Ruby, AWS or Deploy.
 - `author` - The author of the pipeline template
 
