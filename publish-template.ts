@@ -1,33 +1,13 @@
 import { load } from "https://deno.land/std@0.205.0/dotenv/mod.ts";
-import { dirname } from "https://deno.land/std@0.205.0/path/mod.ts";
-import { basename } from "https://deno.land/std@0.205.0/path/basename.ts";
 import { buildClient } from "npm:@datocms/cma-client-node";
 import { globSync } from "npm:glob";
-import { fromMarkdown } from "https://esm.sh/mdast-util-from-markdown@2";
-import { toHast } from "https://esm.sh/mdast-util-to-hast@13";
-import { hastToStructuredText } from "npm:datocms-html-to-structured-text";
-import { matter } from "npm:vfile-matter";
-import { read } from "npm:to-vfile";
+import { parseTemplate, Template } from "./lib/parseTemplate.ts";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
 const TEMPLATE_TAG_ID = "KLoCCjQuRGSzwFYptLJSUg";
 
 await load({ export: true });
 const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
-
-interface Frontmatter {
-  title: string;
-  description: string;
-  tags: string[];
-}
-
-interface Template {
-  slug: string;
-  title: string;
-  description: string;
-  tags: string[];
-  content: any;
-}
 
 // Fetch all tags and return a map of name -> ID
 async function fetchTags() {
@@ -44,41 +24,6 @@ async function fetchTags() {
 }
 
 const tagIds = await fetchTags();
-
-async function parseTemplate(path: string): Promise<Template> {
-  const slug = basename(dirname(path));
-
-  // Read template frontmatter (YAML)
-  const file = await read(path);
-  matter(file, { strip: true });
-
-  // Validate template frontmatter
-  const { title, description, tags, errors } = validateFrontmatter(file.data);
-
-  if (errors.length > 0) {
-    throw new Error(`Template ${path} has errors:\n${errors.join("\n")}`);
-  }
-
-  // Validate tags
-  tags.forEach((tag: string) => {
-    if (!tagIds.has(tag)) {
-      throw new Error(`Template ${path} has unknown tag "${tag}"`);
-    }
-  });
-
-  // Markdown -> MDAST -> HAST -> DAST (DatoCMS Structured Text)
-  const mdast = fromMarkdown(String(file));
-  const hast = toHast(mdast);
-  const dast = await hastToStructuredText(hast);
-
-  return {
-    slug,
-    title,
-    description,
-    tags: tags.map((tag: string) => tagIds.get(tag)),
-    content: dast,
-  };
-}
 
 // Update of insert a template based on whether it already
 // exists in DatoCMS.
@@ -101,6 +46,14 @@ async function upsertTemplate(template: Template) {
       `Found ${records.length} templates with name ${template.title}`
     );
   }
+
+  // Map tags -> Dato tags
+  template.tags = template.tags.map((tag: string) => {
+    if (!tagIds.has(tag)) {
+      throw new Error(`Template ${template.slug} has unknown tag "${tag}"`);
+    }
+    return tagIds.get(tag);
+  });
 
   if (records.length) {
     console.log(`Updating [${template.slug}]: ${template.title}`);
@@ -128,21 +81,3 @@ templates.forEach(async (path) => {
     Deno.exit(1);
   }
 });
-
-const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
-  const errors = [];
-
-  if (!meta.title) {
-    errors.push("missing title");
-  }
-
-  if (!meta.description) {
-    errors.push("description required");
-  }
-
-  if (!meta.tags) {
-    errors.push("tags required");
-  }
-
-  return { ...meta, errors };
-};
