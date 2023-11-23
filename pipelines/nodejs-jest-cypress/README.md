@@ -1,5 +1,5 @@
 ---
-name: Node.js + npm + Jest + Cypress
+title: Node.js + npm + Jest + Cypress
 description: Set up Jest and Cypress testing on a Node web app
 tags: ["Cypress", "e2e", "Node.js", "jest"]
 author: Buildkite
