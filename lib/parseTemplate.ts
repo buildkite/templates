@@ -10,6 +10,7 @@ interface Frontmatter {
   title: string;
   description: string;
   tags: string[];
+  author: string;
 }
 
 export type Template = Frontmatter & {
@@ -56,6 +57,10 @@ const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
 
   if (!meta.tags) {
     errors.push("missing tags");
+  }
+
+  if (!meta.author) {
+    errors.push("missing author");
   }
 
   return { ...meta, errors };
