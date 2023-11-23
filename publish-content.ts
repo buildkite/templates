@@ -2,6 +2,7 @@ import { load } from "https://deno.land/std@0.205.0/dotenv/mod.ts";
 import { buildClient } from "npm:@datocms/cma-client-node";
 import { globSync } from "npm:glob";
 import { parseTemplate, Template } from "./lib/parseTemplate.ts";
+import chalk from "npm:chalk";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
 const TEMPLATE_TAG_ID = "KLoCCjQuRGSzwFYptLJSUg";
@@ -56,10 +57,20 @@ async function upsertTemplate(template: Template) {
   });
 
   if (records.length) {
-    console.log(`Updating [${template.slug}]: ${template.title}`);
+    console.log(
+      `${chalk.cyanBright(
+        `https://buildkite.com/templates/${template.slug}`
+      )} ${chalk.whiteBright("→")} ${chalk.cyan(template.title)}`
+    );
+
     return client.items.update(records[0].id, template);
   } else {
-    console.log(`Inserting [${template.slug}]: ${template.title}`);
+    console.log(
+      `${chalk.greenBright(
+        `https://buildkite.com/templates/${template.slug}`
+      )} ${chalk.whiteBright("→")} ${chalk.green(template.title)}`
+    );
+
     return client.items.create({
       item_type: {
         type: "item_type",
