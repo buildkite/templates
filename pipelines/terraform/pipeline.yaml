@@ -21,8 +21,3 @@ steps:
     command: terraform apply -auto-approve
     key: apply
     depends_on: plan
-
-  - label: ":terraform: Destroy"
-    command: terraform destroy -auto-approve
-    key: destroy
-    depends_on: apply

@@ -16,7 +16,6 @@ This template:
 2. Validates the Terraform configuration with `terraform validate`
 3. Creates an execution plan with `terraform plan`
 4. Applies the changes with `terraform apply`
-5. Destroys the infrastructure with `terraform destroy`
 
 ## Next steps
 
