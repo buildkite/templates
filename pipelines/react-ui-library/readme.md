@@ -1,12 +1,17 @@
-# CI/CD for React Component Library with Docker Compose Plugin
+---
+title: React Component Library CI/CD
+description: Set up a CI/CD pipeline for a React Component Library with linting, testing, and building using TypeScript, Jest, and npm.
+tags: ["CI", "CD", "React", "TypeScript", "Jest", "NPM"]
+author: Buildkite
+---
+
+# CI/CD for React Component Library
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that builds, tests, deploys and releases a react component library framework.
 
 At a glance:
 
 - For React Component Library
-- Uses Docker Compose Plugin
-- Requires Docker and Buildkite
 - Builds and tests in parallel
 - Deploys to npm
 
@@ -14,16 +19,14 @@ At a glance:
 
 This template:
 
-1. Builds the base image using Docker Compose Plugin.
-2. Builds the test image using Docker Compose Plugin.
-3. Compiles the code.
-4. Runs unit tests.
-5. Performs dependency analysis.
-6. Deploys the package to npm if the build is on the master branch and the commit message indicates a release.
-7. Creates a GitHub release if the build is on the master branch and the commit message indicates a release.
-8. Runs end-to-end tests.
+1. Compiles the code using TypeScript.
+2. Runs unit tests using Jest.
+3. Performs dependency analysis using FOSSA.
+4. Deploys the package to npm if the build is on the main branch and the commit message indicates a release.
+5. Creates a GitHub release if the build is on the main branch and the commit message indicates a release.
+6. Runs end-to-end tests.
 
-The Docker Compose Plugin is used to build and run Docker images. It provides a way to define and manage multi-container Docker applications.
+The script for publishing to npm utilizes the `npm publish` command. The script for publishing to Github requires the use of the `Octokit` package.
 
 ## Next steps
 

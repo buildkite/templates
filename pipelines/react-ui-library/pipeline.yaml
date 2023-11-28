@@ -9,7 +9,7 @@ steps:
     command: "curl https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash && fossa"
 
   - name: "Deploy to package manager"
-    command: "node scripts/publish-release.js"
+    command: "node scripts/publish-npm.js"
     if: build.branch == "main" && build.message =~ /^Release v[0-9]+\.[0-9]+\.[0-9]+/
 
   - name: "Create release"
@@ -20,4 +20,3 @@ steps:
     command: yarn e2e:test
     artifact_paths:
       - "test-results/**/*"
-
