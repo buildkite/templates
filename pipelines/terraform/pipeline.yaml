@@ -1,0 +1,28 @@
+steps:
+  - label: ":terraform: Init"
+    command: terraform init
+    key: init
+
+  - label: ":terraform: Validate"
+    command: terraform validate
+    key: validate
+    depends_on: init
+
+  - label: ":terraform: Plan"
+    command: terraform plan
+    key: plan
+    depends_on: validate
+
+  - block: ":terraform: Apply"
+    prompt: "Apply terraform changes?"
+    depends_on: plan
+
+  - label: ":terraform: Apply"
+    command: terraform apply -auto-approve
+    key: apply
+    depends_on: plan
+
+  - label: ":terraform: Destroy"
+    command: terraform destroy -auto-approve
+    key: destroy
+    depends_on: apply
