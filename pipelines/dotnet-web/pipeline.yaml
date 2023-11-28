@@ -1,0 +1,14 @@
+steps:
+  - label: ":construction_worker: Build"
+    command: "dotnet build"
+    key: build
+
+  - label: ":white_check_mark: Test"
+    command: "dotnet test"
+    key: test
+    depends_on: build
+
+  - label: ":rocket: Deploy"
+    command: "dotnet publish"
+    key: deploy
+    depends_on: test
