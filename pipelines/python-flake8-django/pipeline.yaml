@@ -1,0 +1,7 @@
+steps:
+  - label: ":python: Lint"
+    command: "flake8 ."
+  - label: ":python: Test"
+    command: "python manage.py test"
+  - label: ":python: Build"
+    command: "python setup.py sdist bdist_wheel"
