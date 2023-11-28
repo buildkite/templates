@@ -1,0 +1,7 @@
+steps:
+  - label: ':php: Lint'
+    command: 'php -l .'
+  - label: ':php: Test'
+    command: 'phpunit'
+  - label: ':php: Build'
+    command: 'composer install'
