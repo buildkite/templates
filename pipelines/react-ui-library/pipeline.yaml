@@ -1,0 +1,56 @@
+steps:
+  - name: ":docker: :package: Build base image"
+    plugins:
+      "docker-compose#v4.16.0":
+        build:
+          - base-image
+        image-repository: <image-repository-url>
+
+  - name: ":docker: :package: Build test image"
+    plugins:
+      "docker-compose#v4.16.0":
+        build:
+          - test-image
+        image-repository: <image-repository-url>
+
+  - wait
+
+  - name: ":typescript:"
+    command: yarn tsc
+    plugins:
+      "docker-compose#v4.16.0":
+        run: base-image
+
+  - name: ":jest:"
+    command: yarn unit-test
+    plugins:
+    "docker-compose#v4.16.0":
+      run: base-image
+
+  - name: fossa
+    command: "curl https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash && fossa"
+    plugins:
+      "docker-compose#v4.16.0":
+        run: base-image
+
+  - name: "Deploy to package manager"
+    command: "node scripts/publish-release.js"
+    if: build.branch == "main" && build.message =~ /^Release v[0-9]+\.[0-9]+\.[0-9]+/
+    plugins:
+      "docker-compose#v4.16.0":
+        run: base-image
+
+  - name: "Create release"
+    command: "./scripts/github-release.js"
+    if: build.branch == "main" && build.message =~ /^Release v[0-9]+\.[0-9]+\.[0-9]+/
+    plugins:
+      "docker-compose#v4.16.0":
+        run: base-image
+
+  - name: "End-to-end tests"
+    command: yarn e2e:test
+    artifact_paths:
+      - "test-results/**/*"
+    plugins:
+      "docker-compose#v4.16.0":
+        run: test-image
