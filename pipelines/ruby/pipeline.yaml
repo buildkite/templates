@@ -1,0 +1,7 @@
+steps:
+  - label: ':ruby: Lint'
+    command: 'rubocop'
+  - label: ':ruby: Test'
+    command: 'rspec'
+  - label: ':ruby: Build'
+    command: 'bundle install'
