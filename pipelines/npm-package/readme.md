@@ -1,7 +1,7 @@
 ---
-title: React Component Library CI/CD
+title: NPM Package + JS
 description: Set up a CI/CD pipeline for a React Component Library with linting, testing, and building using TypeScript, Jest, and npm.
-tags: ["CI", "CD", "React", "TypeScript", "Jest", "NPM"]
+tags: ["CI", "CD", "React", "TypeScript", "Jest", "npm", "package"]
 author: Buildkite
 ---
 
