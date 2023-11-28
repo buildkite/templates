@@ -1,8 +1,16 @@
+---
+title: Java + Checkstyle + Gradle
+description: Set up a CI/CD pipeline for a Java application with linting, testing, and building using Checkstyle for linting, and Gradle for testing and building.
+tags: ["CI", "CD", "Java", "Checkstyle", "Gradle"]
+author: Buildkite
+---
+
 # CI/CD for Java with Linting, Testing, and Building
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that lints, tests, and builds a Java application.
 
 At a glance:
+
 - For Java applications
 - Uses Checkstyle for linting
 - Uses Gradle for testing and building
@@ -11,6 +19,7 @@ At a glance:
 ## How it works
 
 This template:
+
 1. Lints the Java code with Checkstyle.
 2. Runs tests with Gradle.
 3. Builds the application with Gradle.
@@ -18,6 +27,7 @@ This template:
 ## Next steps
 
 After you select Use template, you’ll:
+
 1. Connect the Git repository with your Java application.
 2. Modify the commands if necessary.
 3. Configure the compute—run locally, on-premises, or in the cloud.
