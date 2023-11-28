@@ -1,0 +1,7 @@
+steps:
+  - label: ':rust: Lint'
+    command: 'cargo clippy'
+  - label: ':rust: Test'
+    command: 'cargo test'
+  - label: ':rust: Build'
+    command: 'cargo build --release'
