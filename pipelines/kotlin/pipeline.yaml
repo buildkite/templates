@@ -1,0 +1,7 @@
+steps:
+  - label: ":kotlin: Lint"
+    command: "./gradlew ktlintCheck"
+  - label: ":kotlin: Test"
+    command: "./gradlew test"
+  - label: ":kotlin: Build"
+    command: "./gradlew build"
