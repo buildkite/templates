@@ -1,8 +1,16 @@
+---
+title: PHP + PHPUnit + Composer
+description: Set up a CI/CD pipeline for a PHP application with linting, testing, and building using PHP's built-in linter, PHPUnit, and Composer.
+tags: ["CI", "CD", "PHP", "PHPUnit", "Composer"]
+author: Buildkite
+---
+
 # CI/CD for PHP with Linting, Testing, and Building
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that lints, tests, and builds a PHP application.
 
 At a glance:
+
 - For PHP applications
 - Uses PHP's built-in linter
 - Uses PHPUnit for testing
@@ -12,6 +20,7 @@ At a glance:
 ## How it works
 
 This template:
+
 1. Lints the PHP code with PHP's built-in linter.
 2. Runs tests with PHPUnit.
 3. Builds the application with Composer.
@@ -19,6 +28,7 @@ This template:
 ## Next steps
 
 After you select Use template, you’ll:
+
 1. Connect the Git repository with your PHP application.
 2. Modify the commands if necessary.
 3. Configure the compute—run locally, on-premises, or in the cloud.
