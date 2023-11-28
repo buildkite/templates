@@ -1,3 +1,10 @@
+---
+title: CI/CD for Terraform with Buildkite
+description: This template provides a CI/CD pipeline that manages a company's infrastructure using Terraform and Buildkite.
+tags: ["CI", "CD", "Terraform", "Buildkite"]
+author: Buildkite
+---
+
 # CI/CD for Terraform with Buildkite
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that manages a company's infrastructure using Terraform and Buildkite.
