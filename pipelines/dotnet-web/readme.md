@@ -1,3 +1,10 @@
+---
+title: .NET
+description: Set up a CI/CD pipeline for a .NET application with building, testing, and deploying using dotnet build, dotnet test, and dotnet publish commands.
+tags: ["CI", "CD", ".NET"]
+author: Buildkite
+---
+
 # CI/CD for .NET with Buildkite
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that automates the build, test, and deployment process for .NET projects.
