@@ -1,3 +1,10 @@
+---
+title: CI/CD for Kotlin with Linting, Testing, and Building
+description: Set up a CI/CD pipeline for a Kotlin application with linting, testing, and building using ktlint, Gradle, and Maven Central.
+tags: ["CI", "CD", "Kotlin", "ktlint", "Gradle", "Maven Central"]
+author: Buildkite
+---
+
 # CI/CD for Kotlin with Linting, Testing, and Building
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that lints, tests, and builds a Kotlin application.
