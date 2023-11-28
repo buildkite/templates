@@ -1,17 +1,17 @@
 ---
 title: NPM Package + JS
-description: Set up a CI/CD pipeline for a React Component Library with linting, testing, and building using TypeScript, Jest, and npm.
+description: Set up a CI/CD pipeline for a npm packager with linting, testing, and building using TypeScript, Jest, and npm.
 tags: ["CI", "CD", "React", "TypeScript", "Jest", "npm", "package"]
 author: Buildkite
 ---
 
-# CI/CD for React Component Library
+# CI/CD for npm package
 
-This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that builds, tests, deploys and releases a react component library framework.
+This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that builds, tests, deploys and releases an npm package.
 
 At a glance:
 
-- For React Component Library
+- For an npm package
 - Builds and tests in parallel
 - Deploys to npm
 
@@ -32,7 +32,7 @@ The script for publishing to npm utilizes the `npm publish` command. The script 
 
 After you select Use template, you’ll:
 
-1. Connect the Git repository with your React Component Library.
+1. Connect the Git repository with your npm package.
 2. Modify the commands, environment variables, secrets as per your project requirements.
 3. Configure the compute—run locally, on-premises, or in the cloud.
 4. Run the pipeline.
