@@ -1,0 +1,7 @@
+steps:
+  - label: ":java: Lint"
+    command: "./gradlew checkstyleMain"
+  - label: ":java: Test"
+    command: "./gradlew test"
+  - label: ":java: Build"
+    command: "./gradlew build"
