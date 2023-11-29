@@ -1,0 +1,10 @@
+steps:
+  - name: "Snyk testing"
+    plugins:
+      - seek-oss/snyk#v1.0.0:
+          block: true
+          language: node
+          path: package.json
+          severity: low
+          npmToken: NPM_TOKEN
+          org: test-team
