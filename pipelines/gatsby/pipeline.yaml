@@ -1,0 +1,10 @@
+steps:
+  - label: ":npm: Install"
+    command: "npm install"
+  - wait
+  - label: ":gatsby: Build"
+    command: "gatsby build"
+  - label: ":jest: Test"
+    command: "npm run test"
+  - label: ":eslint: Lint"
+    command: "eslint ."
