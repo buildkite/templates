@@ -1,7 +1,28 @@
 steps:
-  - label: ':ruby: Lint'
-    command: 'rubocop'
-  - label: ':ruby: Test'
-    command: 'rspec'
-  - label: ':ruby: Build'
-    command: 'bundle install'
+  - label: ":ruby: Install gems"
+    command: "bundle install"
+    key: "gems"
+    plugins:
+      - cache#v0.6.0:
+          manifest: Gemfile.lock
+          path: vendor/bundle
+          restore: file
+          save: file
+
+  - label: ":rubocop: Run rubocop"
+    command: "bundle exec rubocop"
+    depends_on: "gems"
+    plugins:
+      - cache#v0.6.0:
+          manifest: Gemfile.lock
+          path: vendor/bundle
+          restore: file
+
+  - label: ":rspec: Run rspec"
+    command: "bundle exec rspec"
+    depends_on: "gems"
+    plugins:
+      - cache#v0.6.0:
+          manifest: Gemfile.lock
+          path: vendor/bundle
+          restore: file
