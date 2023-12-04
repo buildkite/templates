@@ -3,7 +3,6 @@ import { Validator } from "npm:jsonschema";
 import { globSync } from "npm:glob";
 import chalk from "npm:chalk";
 import fs from "node:fs";
-import process from "node:process";
 
 // Fetch the current pipeline configuration schema
 const response = await fetch(
@@ -35,6 +34,7 @@ if (errors.length > 0) {
       `${chalk.bgRed(error.pipeline)}: ${chalk.red(error.message)}`
     );
   });
+  Deno.exit(1);
+} else {
+  console.log(`Found ${pipelines.length} valid pipelines.`);
 }
-
-process.exit(errors.length > 0 ? 1 : 0);
