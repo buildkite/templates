@@ -1,8 +1,10 @@
 import { load } from "https://deno.land/std@0.205.0/dotenv/mod.ts";
 import { buildClient } from "npm:@datocms/cma-client-node";
 import { globSync } from "npm:glob";
-import { parseTemplate, Template } from "./lib/parseTemplate.ts";
+import { parseTemplate, Template } from "./parseTemplate.ts";
 import chalk from "npm:chalk";
+import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
+import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
 const TEMPLATE_TAG_ID = "KLoCCjQuRGSzwFYptLJSUg";
@@ -82,10 +84,12 @@ async function upsertTemplate(template: Template) {
 }
 
 // Iterate over files and push to DatoCMS
-const templates = globSync("pipelines/*/README.md");
-templates.forEach(async (path) => {
+const pipelines = globSync("*/pipeline.yaml");
+pipelines.forEach(async (path) => {
+  const folder = dirname(path);
+
   try {
-    const template = await parseTemplate(path);
+    const template = await parseTemplate(join(folder, "README.md"));
     await upsertTemplate(template);
   } catch (error) {
     console.error(error.message);
