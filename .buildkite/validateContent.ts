@@ -1,10 +1,11 @@
 import chalk from "npm:chalk";
 import { globSync } from "npm:glob";
-import { parseTemplate } from "./lib/parseTemplate.ts";
+import { parseTemplate } from "./parseTemplate.ts";
+
+const templates = globSync("pipelines/*/README.md");
 
 // Iterate over files and validate
 async function validateTemplates() {
-  const templates = globSync("pipelines/*/README.md");
   const errors: Error[] = [];
 
   await Promise.all(
@@ -28,4 +29,6 @@ if (errors.length > 0) {
     console.error(`${chalk.red(error.message)}`);
   });
   Deno.exit(1);
+} else {
+  console.log(`Found ${templates.length} valid READMEs.`);
 }
