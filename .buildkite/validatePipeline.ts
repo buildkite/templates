@@ -13,7 +13,7 @@ const schema = await response.json();
 const v = new Validator();
 const errors: { pipeline: string; message: string }[] = [];
 
-const pipelines = globSync("pipelines/*/pipeline.yaml");
+const pipelines = globSync("*/pipeline.yaml");
 pipelines.forEach((pipeline) => {
   const raw = fs.readFileSync(pipeline, "utf8");
   const parsed = parse(raw);
