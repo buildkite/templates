@@ -4,4 +4,4 @@ A collection of Buildkite pipeline templates showcased on the [Buildkite templat
 
 ## Contributing
 
-Contributions, fixes, issues and PRs are always welcome! Please see [CONTRIBUTING](./CONTRIBUTING.md). for more details.
+Contributions, fixes, issues and PRs are always welcome! Please see [CONTRIBUTING](./CONTRIBUTING.md) for more details.
