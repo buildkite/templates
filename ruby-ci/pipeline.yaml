@@ -1,8 +1,13 @@
+env:
+  RUBY_VERSION: latest
+
 steps:
   - label: ":ruby: Install gems"
     command: "bundle install"
     key: "gems"
     plugins:
+      - docker#v5.9.0:
+          image: "ruby-slim:$RUBY_VERSION"
       - cache#v0.6.0:
           manifest: Gemfile.lock
           path: vendor/bundle
@@ -13,6 +18,8 @@ steps:
     command: "bundle exec rubocop"
     depends_on: "gems"
     plugins:
+      - docker#v5.9.0:
+          image: "ruby-slim:$RUBY_VERSION"
       - cache#v0.6.0:
           manifest: Gemfile.lock
           path: vendor/bundle
@@ -22,6 +29,8 @@ steps:
     command: "bundle exec rspec"
     depends_on: "gems"
     plugins:
+      - docker#v5.9.0:
+          image: "ruby-slim:$RUBY_VERSION"
       - cache#v0.6.0:
           manifest: Gemfile.lock
           path: vendor/bundle
