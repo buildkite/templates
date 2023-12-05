@@ -1,0 +1,33 @@
+steps:
+  - label: ":composer: Install packages"
+    command: "composer install"
+    plugins:
+      - docker#v5.9.0:
+          image: "composer:latest"
+      - cache#v0.6.0:
+          manifest: composer.lock
+          path: vendor
+          restore: file
+          save: file
+
+  - label: ":php: Lint"
+    depends_on: "composer"
+    command: 'find -name "*.php" -not -path "./vendor/*" | xargs php -l'
+    plugins:
+      - docker#v5.9.0:
+          image: "php:latest"
+      - cache#v0.6.0:
+          manifest: composer.lock
+          path: vendor
+          restore: file
+
+  - label: ":phpunit: Run phpunit"
+    depends_on: "composer"
+    command: "vendor/bin/phpunit --configuration phpunit.xml"
+    plugins:
+      - docker#v5.9.0:
+          image: "php:latest"
+      - cache#v0.6.0:
+          manifest: composer.lock
+          path: vendor
+          restore: file
