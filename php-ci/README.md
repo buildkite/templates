@@ -11,17 +11,17 @@ This template gives you a continuous integration pipeline that lints and tests a
 
 At a glance:
 
-- For PHP applications
-- Uses Composer for installing packages
+- For [PHP](https://www.php.net/) applications
+- Uses [Composer](https://getcomposer.org/) for installing packages
 - Uses PHP's built-in linter
-- Uses PHPUnit for testing
+- Uses [PHPUnit](https://phpunit.de/) for testing
 
 ## How it works
 
 This template:
 
-1. Installs packages with Composer
-1. Lints the PHP code with PHP's built-in linter.
+1. Installs PHP dependencies with Composer
+1. Lints application PHP code with PHP's built-in linter.
 2. Runs tests with PHPUnit.
 
 ## Next steps
