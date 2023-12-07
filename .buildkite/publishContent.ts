@@ -27,11 +27,6 @@ async function upsertTemplate(template: Template) {
     },
   });
 
-  const payload = {
-    ...template,
-    tags: JSON.stringify(template.tags),
-  };
-
   if (records.length > 1) {
     throw new Error(
       `Found ${records.length} templates with name ${template.title}`
@@ -45,7 +40,7 @@ async function upsertTemplate(template: Template) {
       )} ${chalk.whiteBright("→")} ${chalk.cyan(template.title)}`
     );
 
-    return client.items.update(records[0].id, payload);
+    return client.items.update(records[0].id, template);
   } else {
     console.log(
       `${chalk.greenBright(
@@ -53,14 +48,12 @@ async function upsertTemplate(template: Template) {
       )} ${chalk.whiteBright("→")} ${chalk.green(template.title)}`
     );
 
-    // console.log(template);
-
     return client.items.create({
       item_type: {
         type: "item_type",
         id: TEMPLATE_ID,
       },
-      payload,
+      template,
     });
   }
 }
