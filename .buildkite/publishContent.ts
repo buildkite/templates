@@ -7,26 +7,9 @@ import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
 import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
-const TEMPLATE_TAG_ID = "KLoCCjQuRGSzwFYptLJSUg";
 
 await load({ export: true });
 const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
-
-// Fetch all tags and return a map of name -> ID
-async function fetchTags() {
-  const records = await client.items.list({
-    filter: {
-      type: TEMPLATE_TAG_ID,
-    },
-  });
-
-  return records.reduce((acc, category) => {
-    acc.set(category.name, category.id);
-    return acc;
-  }, new Map());
-}
-
-const tagIds = await fetchTags();
 
 // Update of insert a template based on whether it already
 // exists in DatoCMS.
@@ -44,19 +27,16 @@ async function upsertTemplate(template: Template) {
     },
   });
 
+  const payload = {
+    ...template,
+    tags: JSON.stringify(template.tags),
+  };
+
   if (records.length > 1) {
     throw new Error(
       `Found ${records.length} templates with name ${template.title}`
     );
   }
-
-  // Map tags -> Dato tags
-  template.tags = template.tags.map((tag: string) => {
-    if (!tagIds.has(tag)) {
-      throw new Error(`Template ${template.slug} has unknown tag "${tag}"`);
-    }
-    return tagIds.get(tag);
-  });
 
   if (records.length) {
     console.log(
@@ -65,7 +45,7 @@ async function upsertTemplate(template: Template) {
       )} ${chalk.whiteBright("→")} ${chalk.cyan(template.title)}`
     );
 
-    return client.items.update(records[0].id, template);
+    return client.items.update(records[0].id, payload);
   } else {
     console.log(
       `${chalk.greenBright(
@@ -73,12 +53,14 @@ async function upsertTemplate(template: Template) {
       )} ${chalk.whiteBright("→")} ${chalk.green(template.title)}`
     );
 
+    // console.log(template);
+
     return client.items.create({
       item_type: {
         type: "item_type",
         id: TEMPLATE_ID,
       },
-      ...template,
+      payload,
     });
   }
 }
