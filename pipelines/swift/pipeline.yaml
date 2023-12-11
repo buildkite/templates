@@ -1,7 +1,11 @@
 steps:
   - label: ":swift: Lint"
     command: "swiftlint"
+
   - label: ":swift: Test"
     command: "xcodebuild test -scheme MyApp -destination 'platform=iOS Simulator,name=iPhone 11'"
+
+  - wait
+
   - label: ":swift: Build"
     command: "xcodebuild -scheme MyApp -destination 'platform=iOS Simulator,name=iPhone 11'"
