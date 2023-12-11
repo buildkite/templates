@@ -9,7 +9,7 @@ steps:
           save: file
   - wait
   - label: ":jest: Run unit tests"
-    command: "npm run test"
+    command: "npm test"
     plugins:
       - cache#v0.6.0:
           manifest: package-lock.json
@@ -18,7 +18,7 @@ steps:
       - docker#v5.9.0:
           image: "node:latest"
   - label: ":eslint: Run ESLint"
-    command: "eslint ."
+    command: "npx eslint"
     plugins:
       - cache#v0.6.0:
           manifest: package-lock.json
