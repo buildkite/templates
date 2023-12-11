@@ -1,30 +1,15 @@
 import { load } from "https://deno.land/std@0.205.0/dotenv/mod.ts";
 import { buildClient } from "npm:@datocms/cma-client-node";
 import { globSync } from "npm:glob";
-import { parseTemplate, Template } from "./lib/parseTemplate.ts";
+import { parseTemplate, Template } from "./parseTemplate.ts";
 import chalk from "npm:chalk";
+import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
+import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
-const TEMPLATE_TAG_ID = "KLoCCjQuRGSzwFYptLJSUg";
 
 await load({ export: true });
 const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
-
-// Fetch all tags and return a map of name -> ID
-async function fetchTags() {
-  const records = await client.items.list({
-    filter: {
-      type: TEMPLATE_TAG_ID,
-    },
-  });
-
-  return records.reduce((acc, category) => {
-    acc.set(category.name, category.id);
-    return acc;
-  }, new Map());
-}
-
-const tagIds = await fetchTags();
 
 // Update of insert a template based on whether it already
 // exists in DatoCMS.
@@ -48,14 +33,6 @@ async function upsertTemplate(template: Template) {
     );
   }
 
-  // Map tags -> Dato tags
-  template.tags = template.tags.map((tag: string) => {
-    if (!tagIds.has(tag)) {
-      throw new Error(`Template ${template.slug} has unknown tag "${tag}"`);
-    }
-    return tagIds.get(tag);
-  });
-
   if (records.length) {
     console.log(
       `${chalk.cyanBright(
@@ -76,16 +53,18 @@ async function upsertTemplate(template: Template) {
         type: "item_type",
         id: TEMPLATE_ID,
       },
-      ...template,
+      template,
     });
   }
 }
 
 // Iterate over files and push to DatoCMS
-const templates = globSync("pipelines/*/README.md");
-templates.forEach(async (path) => {
+const pipelines = globSync("*/pipeline.yaml");
+pipelines.forEach(async (path) => {
+  const folder = dirname(path);
+
   try {
-    const template = await parseTemplate(path);
+    const template = await parseTemplate(join(folder, "README.md"));
     await upsertTemplate(template);
   } catch (error) {
     console.error(error.message);

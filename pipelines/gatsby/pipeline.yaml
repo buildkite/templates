@@ -1,10 +1,26 @@
 steps:
-  - label: ":npm: Install"
+  - label: ":npm: Install dependencies"
     command: "npm install"
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
+          save: file
   - wait
-  - label: ":gatsby: Build"
-    command: "gatsby build"
-  - label: ":jest: Test"
-    command: "npm run test"
-  - label: ":eslint: Lint"
-    command: "eslint ."
+  - label: ":jest: Run unit tests"
+    command: "npm test"
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
+      - docker#v5.9.0:
+          image: "node:latest"
+  - label: ":eslint: Run ESLint"
+    command: "npx eslint"
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
