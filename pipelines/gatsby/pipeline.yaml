@@ -1,5 +1,5 @@
 steps:
-  - label: ":npm: Install"
+  - label: ":npm: Install dependencies"
     command: "npm install"
     plugins:
       - cache#v0.6.0:
@@ -8,7 +8,7 @@ steps:
           restore: file
           save: file
   - wait
-  - label: ":jest: Test"
+  - label: ":jest: Run unit tests"
     command: "npm run test"
     plugins:
       - cache#v0.6.0:
@@ -17,7 +17,7 @@ steps:
           restore: file
       - docker#v5.9.0:
           image: "node:latest"
-  - label: ":eslint: Lint"
+  - label: ":eslint: Run ESLint"
     command: "eslint ."
     plugins:
       - cache#v0.6.0:
