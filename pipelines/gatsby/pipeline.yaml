@@ -1,8 +1,26 @@
 steps:
   - label: ":npm: Install"
     command: "npm install"
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
+          save: file
   - wait
   - label: ":jest: Test"
     command: "npm run test"
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
+      - docker#v5.9.0:
+          image: "node:latest"
   - label: ":eslint: Lint"
     command: "eslint ."
+    plugins:
+      - cache#v0.6.0:
+          manifest: package-lock.json
+          path: node_modules
+          restore: file
