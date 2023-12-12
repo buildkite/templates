@@ -3,17 +3,19 @@ steps:
     key: "validate"
     steps:
       - label: ":buildkite: Validate pipelines"
-        command: deno run -A --quiet validate-pipeline.ts
+        command: deno run -A --quiet .buildkite/validatePipeline.ts
         plugins: &deno
           - docker#v5.9.0:
               image: "denoland/deno:1.38.0"
+              environment:
+                - DATO_API_TOKEN
 
       - label: ":markdown: Validate content"
-        command: deno run -A --quiet validate-content.ts
+        command: deno run -A --quiet .buildkite/validateContent.ts
         plugins: *deno
 
   - label: ":datocms: Publish content"
     depends_on: "validate"
-    command: deno run -A --quiet publish-content.ts
+    command: deno run -A --quiet .buildkite/publishContent.ts
     if: build.branch == "main"
     plugins: *deno

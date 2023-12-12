@@ -5,21 +5,28 @@ import { toHast } from "https://esm.sh/mdast-util-to-hast@13";
 import { hastToStructuredText } from "npm:datocms-html-to-structured-text";
 import { matter } from "npm:vfile-matter";
 import { read } from "npm:to-vfile";
+import fs from "node:fs";
+import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 
 interface Frontmatter {
   title: string;
   description: string;
-  tags: string[];
+  tags: string;
   author: string;
 }
 
 export type Template = Frontmatter & {
   slug: string;
   content: any;
+  pipeline: string;
 };
 
 export async function parseTemplate(path: string): Promise<Template> {
   const slug = basename(dirname(path));
+  const pipeline = fs.readFileSync(
+    join(dirname(path), "pipeline.yaml"),
+    "utf8"
+  );
 
   // Read template frontmatter (YAML)
   const file = await read(path);
@@ -27,7 +34,6 @@ export async function parseTemplate(path: string): Promise<Template> {
 
   // Validate template frontmatter
   const { errors, ...meta } = validateFrontmatter(file.data.matter);
-
   if (errors.length > 0) {
     throw new Error(`Template ${path} has errors: ${errors.join(", ")}`);
   }
@@ -40,7 +46,9 @@ export async function parseTemplate(path: string): Promise<Template> {
   return {
     ...meta,
     slug,
+    tags: JSON.stringify(meta.tags),
     content: dast,
+    pipeline,
   };
 }
 
