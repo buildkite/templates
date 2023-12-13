@@ -1,7 +1,10 @@
 # Templates
 
-A collection of Buildkite pipeline templates showcased on the [Buildkite template gallery](https://buildkite.com/pipelines/templates).
+A collection of [Buildkite](https://buildkite.com) pipeline templates.
+
+> [!NOTE] 
+> 🚧 Under construction.
 
 ## Contributing
 
-Contributions, fixes, issues and PRs are always welcome! Please see [CONTRIBUTING](./CONTRIBUTING.md) for more details.
+See [CONTRIBUTING](./CONTRIBUTING.md) for more details on contributing fixes, issues, and PRs.
