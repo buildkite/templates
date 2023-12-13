@@ -1,14 +1,12 @@
 steps:
+  - label: ":package: Restore dependencies"
+    command: "dotnet restore"
+    key: "deps"
+
   - label: ":construction_worker: Build"
-    command: "dotnet build"
-    key: build
+    command: "dotnet build --configuration Release --no-restore"
+    depends_on: "deps"
 
-  - label: ":white_check_mark: Test"
-    command: "dotnet test"
-    key: test
-    depends_on: build
-
-  - label: ":rocket: Deploy"
-    command: "dotnet publish"
-    key: deploy
-    depends_on: test
+  - label: ":white_check_mark: Run tests"
+    command: "dotnet test --no-restore --verbosity normal"
+    depends_on: "deps"
