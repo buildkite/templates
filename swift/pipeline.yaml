@@ -1,6 +1,9 @@
 steps:
   - label: ":swift: Lint"
     command: "swiftlint"
+    plugins:
+      - docker#v5.9.0:
+          image: "swift:latest"
 
   - label: ":swift: Test"
     command: "swift test"
