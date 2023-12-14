@@ -3,7 +3,10 @@ steps:
     command: "swiftlint"
 
   - label: ":swift: Test"
-    command: "xcodebuild test -scheme MyApp -destination 'platform=iOS Simulator,name=iPhone 11'"
+    command: "swift test"
+    plugins:
+      - docker#v5.9.0:
+          image: "swift:latest"
 
   - wait
 
