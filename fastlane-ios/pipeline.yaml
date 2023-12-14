@@ -1,0 +1,43 @@
+steps:
+  - label: ":bundler: Install dependencies"
+    command: "bundle install --path vendor/bundle"
+    key: "deps"
+    plugins:
+      - cache#v0.6.0:
+          manifest: Gemfile.lock
+          path: vendor
+          restore: file
+          save: file
+
+  - label: ":fastlane: Test"
+    command: "bundle exec fastlane ios test"
+    depends_on: "deps"
+    plugins:
+      - cache#v0.6.0:
+          manifest: Gemfile.lock
+          path: vendor
+          restore: file
+    env:
+      LC_ALL: "en_US.UTF-8"
+
+  - label: ":fastlane: Lint"
+    command: "bundle exec fastlane ios lint"
+    depends_on: "deps"
+    plugins:
+      - cache#v0.6.0:
+          manifest: Gemfile.lock
+          path: vendor
+          restore: file
+    env:
+      LC_ALL: "en_US.UTF-8"
+
+  - label: ":fastlane: Build"
+    command: "bundle exec fastlane ios build"
+    depends_on: "deps"
+    plugins:
+      - cache#v0.6.0:
+          manifest: Gemfile.lock
+          path: vendor
+          restore: file
+    env:
+      LC_ALL: "en_US.UTF-8"
