@@ -8,7 +8,8 @@ steps:
       - docker#v5.9.0:
           image: "swift:latest"
 
-  - wait
-
   - label: ":swift: Build"
-    command: "xcodebuild -scheme MyApp -destination 'platform=iOS Simulator,name=iPhone 11'"
+    command: "swift build"
+    plugins:
+      - docker#v5.9.0:
+          image: "swift:latest"
