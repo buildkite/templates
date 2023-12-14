@@ -1,19 +1,13 @@
 ---
-title: Swift + SwiftLint + Xcode
-description: Set up a CI/CD pipeline for a Swift application with linting, testing, and building using SwiftLint and Xcode.
-tags: ["CI", "Swift", "SwiftLint", "Xcode"]
+title: Swift
+description: Set up a CI pipeline for a Swift application with SwiftLint, test and build.
+tags: ["CI", "Swift", "SwiftLint"]
 author: Buildkite
 ---
 
-# CI/CD for Swift with Linting, Testing, and Building
+# CI for Swift with Linting, Testing, and Building
 
 This template gives you a continuous integration (CI) pipeline that lints, tests, and builds a Swift application.
-
-At a glance:
-
-- For Swift applications
-- Uses SwiftLint for linting
-- Uses Xcode for testing and building
 
 ## How it works
 
