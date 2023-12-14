@@ -5,7 +5,7 @@ tags: ["Fastlane", "CI", "iOS"]
 author: Buildkite
 ---
 
-# CI for Swift with Fastlane
+# CI for iOS with Fastlane
 
 This template gives you a continuous integration (CI) pipeline that runs an iOS project using [fastlane](https://fastlane.tools/).
 
@@ -13,28 +13,39 @@ At a glance:
 
 - For [iOS] projects
 - Automate CI with [fastlane](https://fastlane.tools/)
-  - Testing
+  - Unit testing
   - Linting
-- Prerequisites:
-  - 
+  - Building
+
+## Before you start
+
+To run this pipeline, you’ll need to install and set up the following on your CI server or local machine:
+
+- [Fastlane](https://docs.fastlane.tools/getting-started/ios/setup/)
+- [Fastfile](./Fastfile) with the following lanes:
+  - `test` - runs unit tests
+  - `lint` - runs Swiftlint
+  - `build` - builds the app
+- [Swiftlint](https://github.com/realm/SwiftLint)
 
 ## How it works
 
 This template:
 
-- Installs Node dependencies using npm, caching the result.
-- Performs static analysis on the codebase with ESLint.
-- Runs Jest unit tests.
-- Starts the web app using `npm start` on port `8000`, then runs any Cypress tests using their official [Docker image](https://github.com/cypress-io/cypress-docker-images). It uses [`wait-on`](https://www.npmjs.com/package/wait-on) to verify the app is ready for testing.
+- Installs dependencies using [bundler](https://bundler.io/), caching the result.
+- Runs Fastlane lanes:
+  - Unit testing with the [scan](http://docs.fastlane.tools/actions/scan/) action.
+  - Performs static analysis on the codebase with Swiftlint.
+  - Builds the app with the [gym](http://docs.fastlane.tools/actions/gym/) action
 
-All steps run in serial, with each depending on the previous step to complete before starting. The runtime environment uses a Docker image with the latest version of Node.
+The lint, test and build steps run parallel and all depends on the 'install dependencies' step to complete before starting.
 
 ## Next steps
 
 After you select **Use template**, you’ll:
 
-1. Connect the Git repository for your Node app.
-2. Check the commands match your scripts in `package.json`.
+1. Connect the Git repository for your iOS app.
+2. Check the commands match your lanes in `Fastfile`.
 3. Configure the compute—run locally, on-premises, or in the cloud.
 4. Run the pipeline.
 
