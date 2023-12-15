@@ -21,22 +21,21 @@ At a glance:
 
 To run this pipeline, you’ll need to install and set up the following on your CI server or local machine:
 
-- [Fastlane](https://docs.fastlane.tools/getting-started/ios/setup/)
-- [Fastfile](./Fastfile) with the following lanes:
-  - `test` - runs unit tests
-  - `lint` - runs Swiftlint
-  - `build` - builds the app
-- [Swiftlint](https://github.com/realm/SwiftLint)
+- [fastlane](https://docs.fastlane.tools/getting-started/ios/setup/)
+- [Fastfile](./example-project/fastlane/Fastfile) with the following actions:
+  - `test` - runs unit tests with the [`run_tests`](http://docs.fastlane.tools/actions/run_tests) action
+  - `lint` - runs swift code validation using [Swiftlint](http://docs.fastlane.tools/actions/swiftlint)
+  - `build` - builds the app via [gym](http://docs.fastlane.tools/actions/gym)
 
 ## How it works
 
 This template:
 
-- Installs dependencies using [bundler](https://bundler.io/), caching the result.
-- Runs Fastlane lanes:
-  - Unit testing with the [scan](http://docs.fastlane.tools/actions/scan/) action.
+- Installs dependencies using [bundler](https://bundler.io/).
+- Runs fastlane lanes:
+  - Run unit testing with [scan](http://docs.fastlane.tools/actions/run_tests/#whats-scan).
   - Performs static analysis on the codebase with Swiftlint.
-  - Builds the app with the [gym](http://docs.fastlane.tools/actions/gym/) action
+  - Builds the app with gym.
 
 The lint, test and build steps run parallel and all depends on the 'install dependencies' step to complete before starting.
 
@@ -44,8 +43,8 @@ The lint, test and build steps run parallel and all depends on the 'install depe
 
 After you select **Use template**, you’ll:
 
-1. Connect the Git repository for your iOS app.
-2. Check the commands match your lanes in `Fastfile`.
+1. Connect the Git repository for your iOS project.
+2. Check the commands match the lanes in your `Fastfile` (see our [example](./example-project/fastlane/Fastfile)).
 3. Configure the compute—run locally, on-premises, or in the cloud.
 4. Run the pipeline.
 
