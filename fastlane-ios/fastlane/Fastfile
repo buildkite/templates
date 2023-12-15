@@ -28,7 +28,7 @@ platform :ios do
 
   desc "Run SwiftLint"
   lane :lint do
-    sh "swiftlint"
+    swiftlint(mode: :lint)
   end
 
   desc "Run build"
