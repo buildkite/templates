@@ -33,8 +33,14 @@ platform :ios do
 
   desc "Run build"
   lane :build do
+    # Clearing derived data and cleaning build artifacts 
+    # to ensure consistent build outcomes
+    clear_derived_data
+    clean_build_artifacts
+
     gym(
       project: project_path,
+      clean: true
     )
   end
 end
