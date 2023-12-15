@@ -1,4 +1,4 @@
-import { parse } from "npm:yaml";
+import { parse, stringify } from "npm:yaml";
 import { Validator } from "npm:jsonschema";
 import { globSync } from "npm:glob";
 import chalk from "npm:chalk";
@@ -21,7 +21,8 @@ pipelines.forEach((pipeline) => {
 
   if (!res.valid) {
     const firstError = res.errors[0];
-    const message = `${firstError.property} ${firstError.message}`;
+    const instance = stringify(firstError.instance, null, 2);
+    const message = `${firstError.property} ${firstError.message}\n\n${instance}`;
 
     errors.push({ pipeline, message });
   }
