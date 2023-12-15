@@ -20,9 +20,9 @@ steps:
 
   - label: ":rust: Build"
     command: "cargo build --release"
-    depends_on:
-      - lint
-      - test
+    depends_on: ["lint", "test"]
     plugins:
       - docker#v5.9.0:
           image: "rust:${RUST_VERSION}"
+    artifict_paths:
+      - "target/release/*"
