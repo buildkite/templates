@@ -7,12 +7,12 @@ author: Buildkite
 
 # CI/CD for Rust with Linting, Testing, and Building
 
-This template gives you a continuous integration (CI) pipeline that lints, tests, and builds a Rust application.
+This template gives you a continuous integration (CI) pipeline that lints, tests, and builds a [Rust](https://www.rust-lang.org/) application.
 
 At a glance:
 
 - For Rust applications
-- Uses Clippy for linting
+- Uses [Clippy](https://github.com/rust-lang/rust-clippy) for linting
 - Uses Cargo for testing and building
 
 ## How it works
@@ -21,7 +21,7 @@ This template:
 
 1. Lints the Rust code with Clippy.
 2. Runs tests with Cargo.
-3. Builds the application with Cargo.
+3. Compiles and uploads a Rust binary as a [build artifact](https://buildkite.com/docs/pipelines/artifacts).
 
 ## Next steps
 
