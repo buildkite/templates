@@ -21,7 +21,7 @@ platform :ios do
 
   desc "Run iOS tests"
   lane :test do
-    scan(
+    run_tests(
       project: project_path
     )
   end
