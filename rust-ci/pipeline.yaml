@@ -1,0 +1,28 @@
+env:
+  RUST_VERSION: "1.74.1"
+
+steps:
+  - label: ":rust: Lint"
+    key: lint
+    commands:
+      - "rustup component add clippy"
+      - "cargo clippy"
+    plugins:
+      - docker#v5.9.0:
+          image: "rust:${RUST_VERSION}"
+
+  - label: ":rust: Test"
+    key: test
+    command: "cargo test"
+    plugins:
+      - docker#v5.9.0:
+          image: "rust:${RUST_VERSION}"
+
+  - label: ":rust: Build"
+    command: "cargo build --release"
+    depends_on: ["lint", "test"]
+    plugins:
+      - docker#v5.9.0:
+          image: "rust:${RUST_VERSION}"
+    artifact_paths:
+      - "target/release/*"
