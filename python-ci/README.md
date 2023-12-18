@@ -1,33 +1,34 @@
 ---
-title: Python + Django + flake8
-description: Set up a CI/CD pipeline for a Python application with linting, testing, and building using flake8, Django's manage.py, and setup.py.
-tags: ["CI", "Python", "Django", "flake8"]
+title: Python + pip + ruff + pytest
+description: Set up a CI pipeline for a Python application with linting and testing
+tags: ["CI", "Python", "pip", "pytest", "ruff", "junit"]
 author: Buildkite
 ---
 
-# CI/CD for Python + Django with Linting, Testing, and Building
+# CI for Python with pip, pytest and Ruff
 
 This template gives you a continuous integration (CI) pipeline that lints, tests, and builds a Python application.
 
 At a glance:
 
-- For Python applications
-- Uses flake8 for linting
-- Uses Django's manage.py for testing
-- Uses setup.py for building
-- Deploys to PyPI
+- For [Python](https://www.python.org/) 3 applications
+- Uses [pip](https://pypi.org/project/pip/)
+- Requires [Docker](https://docs.docker.com/get-docker/)
+- Lints code with [Ruff](https://docs.astral.sh/ruff/)
+- Tests code using [pytest](https://docs.pytest.org/)
 
 ## How it works
 
 This template:
 
-1. Lints the Python code with flake8.
-2. Runs tests with Django's manage.py.
-3. Builds a source distribution and a wheel distribution with setup.py.
+- Install Python dependencies with pip, caching the result.
+- Performs static analysis on the codebase with Ruff.
+- Runs pytest unit tests.
+- Automatically annotates the build based on junit test output
 
 ## Next steps
 
-After you select Use template, you’ll:
+After you select **Use template**, you’ll:
 
 1. Connect the Git repository with your Python application.
 2. Modify the commands if necessary.
