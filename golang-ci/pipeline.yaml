@@ -2,11 +2,14 @@ steps:
   - label: ":golang: Install"
     commands:
       - "go install"
+    key: "deps"
 
   - label: ":golang: Build"
     commands:
       - "go build -o app main.go"
+    depends_on: ["deps"]
 
   - label: ":golang: Test"
     commands:
       - "go test main_test.go"
+    depends_on: ["deps"]
