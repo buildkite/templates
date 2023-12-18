@@ -1,0 +1,39 @@
+steps:
+  - label: ":terraform: :mag: validate"
+    plugins:
+      - docker#v5.9.0:
+          image: hashicorp/terraform:1.5
+          command: ["validate"]
+          environment:
+            - AWS_ACCESS_KEY_ID
+            - AWS_SECRET_ACCESS_KEY
+            - AWS_SESSION_TOKEN
+            - BUILDKITE_BUILD_URL
+            - BUILDKITE_BUILD_NUMBER
+            - BUILDKITE_MESSAGE_SUBJECT
+            - BUILDKITE_MESSAGE
+  - label: ":terraform: :mag: plan"
+    plugins:
+      - aws-assume-role-with-web-identity:
+          role-arn: your-arn-role-here
+      - docker#v5.9.0:
+          image: hashicorp/terraform:1.5
+          command:
+            [
+              "-c",
+              "terraform init -input=false && terraform plan -out=tfplan -input=false",
+            ]
+          environment:
+            - AWS_ACCESS_KEY_ID
+            - AWS_SECRET_ACCESS_KEY
+            - AWS_SESSION_TOKEN
+            - BUILDKITE_BUILD_URL
+            - BUILDKITE_BUILD_NUMBER
+            - BUILDKITE_MESSAGE_SUBJECT
+            - BUILDKITE_MESSAGE
+          entrypoint: "/bin/sh"
+          volumes:
+            - "./:/app"
+          workdir: /app
+    artifact_paths:
+      - "tfplan"
