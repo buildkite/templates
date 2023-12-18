@@ -2,13 +2,15 @@
 
 ## Creating a new template
 
-A pipeline template MUST be defined using the following structure:
+A pipeline template should be defined using the following structure:
 
 ```
 .
 └── snowflake-data-ingestion-pipeline/
     ├── pipeline.yaml
     └── README.md
+    └── example-project
+        └── ...
 ```
 
 ### `README.md`
@@ -25,6 +27,17 @@ A template `README.md` MUST include the following metadata defined as YAML front
 ### `pipeline.yaml`
 
 A Buildkite Pipeline definition [file](https://buildkite.com/docs/pipelines/defining-steps).
+
+### `example-project` (optional)
+
+Having an example project with relevant boilerplate makes it possible to test pipeline yaml in isolation.
+
+It's paricularly useful when paired with the Buildkite CLI by running the following command:
+
+```sh
+cd my-template-ci/example;
+bk local run ../pipeline.yaml
+```
 
 ## DatoCMS
 

@@ -1,5 +1,6 @@
 env:
   RUBY_VERSION: latest
+  BUNDLE_PATH: vendor/bundle
 
 steps:
   - label: ":ruby: Install gems"
@@ -7,7 +8,9 @@ steps:
     key: "gems"
     plugins:
       - docker#v5.9.0:
-          image: "ruby-slim:$RUBY_VERSION"
+          image: "ruby:$RUBY_VERSION"
+          environment:
+            - BUNDLE_PATH
       - cache#v0.6.0:
           manifest: Gemfile.lock
           path: vendor/bundle
@@ -19,7 +22,9 @@ steps:
     depends_on: "gems"
     plugins:
       - docker#v5.9.0:
-          image: "ruby-slim:$RUBY_VERSION"
+          image: "ruby:$RUBY_VERSION"
+          environment:
+            - BUNDLE_PATH
       - cache#v0.6.0:
           manifest: Gemfile.lock
           path: vendor/bundle
@@ -30,7 +35,9 @@ steps:
     depends_on: "gems"
     plugins:
       - docker#v5.9.0:
-          image: "ruby-slim:$RUBY_VERSION"
+          image: "ruby:$RUBY_VERSION"
+          environment:
+            - BUNDLE_PATH
       - cache#v0.6.0:
           manifest: Gemfile.lock
           path: vendor/bundle

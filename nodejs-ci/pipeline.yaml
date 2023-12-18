@@ -1,3 +1,6 @@
+env:
+  NODE_VERSION: "latest"
+
 steps:
   - label: ":npm: Install dependencies"
     key: "deps"
@@ -9,10 +12,10 @@ steps:
           restore: file
           save: file
       - docker#v5.9.0:
-          image: "node:latest"
+          image: "node:${NODE_VERSION}"
 
   - label: ":eslint: Run ESLint"
-    command: npx eslint
+    command: "npx eslint"
     depends_on: "deps"
     plugins:
       - cache#v0.6.0:
@@ -20,11 +23,11 @@ steps:
           path: node_modules
           restore: file
       - docker#v5.9.0:
-          image: "node:latest"
+          image: "node:${NODE_VERSION}"
 
   - label: ":jest: Run unit tests"
     depends_on: "deps"
-    command: npm test
+    command: "npx jest"
     plugins:
       - cache#v0.6.0:
           manifest: package-lock.json
