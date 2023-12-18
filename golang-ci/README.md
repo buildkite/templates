@@ -1,23 +1,30 @@
 ---
-title: Golang CI/CD Pipeline
-description: A Golang pipeline to build and test a go module
+title: Golang CI pipeline
+description: A Golang pipeline to build and test a Go module
 tags: ["CI", "Golang"]
 author: Buildkite
 ---
 
-# Golang CI/CD Pipeline
+# CI for Golang
 
 This template provides a continuous integration (CI) pipeline for Golang applications. It builds and tests a Go module.
 
 At a glance:
-- For Golang applications
+- For [Golang](https://go.dev/) applications.
+- Requires [Docker](https://docs.docker.com/get-docker/)
+- Runs Go's [standard library commands](https://pkg.go.dev/cmd/go) to:
+  - Install dependencies using `go install`.
+  - Build the module using `go build`.
+  - Run tests using `go test`.
 
 ## How it works
 
 This template:
-1. Installs dependencies using the `go install` command.
-2. Builds the Go module using the `go build` command.
-3. Runs tests on the module using the `go test` command.
+
+- Installs Go dependencies using `go install`.
+- Builds the module and runs tests using the standard library commands.
+
+All steps run in serial, with each depending on the previous step to complete before starting. The runtime environment uses the official [Golang Docker image](https://hub.docker.com/_/golang) with the latest version.
 
 ## Next steps
 
