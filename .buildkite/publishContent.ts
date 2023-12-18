@@ -53,7 +53,7 @@ async function upsertTemplate(template: Template) {
         type: "item_type",
         id: TEMPLATE_ID,
       },
-      template,
+      ...template,
     });
   }
 }
