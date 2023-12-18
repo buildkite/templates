@@ -9,6 +9,15 @@ steps:
       - docker#v5.9.0:
           image: "python:${PYTHON_VERSION}"
 
+  - label: Lint with Ruff
+    depends_on: ["pip"]
+    command: |
+      pip install ruff
+      ruff check .
+    plugins:
+      - docker#v5.9.0:
+          image: "python:${PYTHON_VERSION}"
+
   - label: ":pytest: Run pytest"
     key: "pytest"
     depends_on: ["pip"]

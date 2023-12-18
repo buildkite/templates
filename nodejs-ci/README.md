@@ -14,7 +14,7 @@ At a glance:
 - For [Node.js](https://nodejs.org) apps
 - Uses [npm](https://www.npmjs.com/)
 - Requires [Docker](https://docs.docker.com/get-docker/)
-- Lints code with [ESLint](https://docs.docker.com/get-docker/)
+- Lints code with [ESLint](https://eslint.org/)
 - Runs [Jest](https://jestjs.io/) unit tests
 - Runs [Cypress](https://www.cypress.io/) tests
 
