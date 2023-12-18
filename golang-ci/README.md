@@ -16,13 +16,16 @@ At a glance:
   - Install dependencies using `go install`.
   - Build the module using `go build`.
   - Run tests using `go test`.
+  - Ensures generated code is up to date with `go generate` and `git diff`.
 
 ## How it works
 
 This template:
 
-- Installs Go dependencies using `go install`.
-- Builds the module and runs tests using the standard library commands.
+- Installs Go dependencies.
+- Builds the module.
+- Runs tests.
+- Ensures generated code is up to date and throws an error if it isn't.
 
 All steps run in serial, with each depending on the previous step to complete before starting. The runtime environment uses the official [Golang Docker image](https://hub.docker.com/_/golang) with the latest version.
 
