@@ -4,7 +4,7 @@ steps:
     key: "deps"
 
   - label: ":construction_worker: Build"
-    command: "dotnet build --configuration Release --no-restore"
+    command: "dotnet build --configuration Release --no-restore --property:EnforceCodeStyleInBuild=true"
     depends_on: "deps"
 
   - label: ":white_check_mark: Run tests"
