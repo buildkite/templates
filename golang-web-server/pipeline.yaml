@@ -1,0 +1,12 @@
+steps:
+  - label: ":golang: Install"
+    commands:
+      - "go install"
+
+  - label: ":golang: Build"
+    commands:
+      - "go build -o app main.go"
+
+  - label: ":golang: Test"
+    commands:
+      - "go test main_test.go"
