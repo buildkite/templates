@@ -1,15 +1,21 @@
 steps:
   - label: ":golang: Install"
-    commands:
-      - "go install"
     key: "deps"
+    commands: "go install"
+    plugins:
+      - docker#v5.9.0:
+          image: "golang:latest"
 
   - label: ":golang: Build"
-    commands:
-      - "go build main.go"
+    commands: "go build main.go"
     depends_on: ["deps"]
+    plugins:
+      - docker#v5.9.0:
+          image: "golang:latest"
 
   - label: ":golang: Test"
-    commands:
-      - "go test ."
+    commands: "go test ."
     depends_on: ["deps"]
+    plugins:
+      - docker#v5.9.0:
+          image: "golang:latest"
