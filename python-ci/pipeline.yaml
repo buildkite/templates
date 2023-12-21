@@ -1,5 +1,5 @@
 env:
-  PYTHON_VERSION: "3"
+  PYTHON_VERSION: "latest"
 
 steps:
   - label: ":pip: Install dependencies"
