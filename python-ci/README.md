@@ -3,6 +3,7 @@ title: Python + pip + ruff + pytest
 description: Set up a CI pipeline for a Python application with linting and testing
 tags: ["CI", "Python", "pip", "pytest", "ruff", "junit"]
 author: Buildkite
+categories: ["Python", "CI"]
 ---
 
 # CI for Python with pip, pytest and Ruff
