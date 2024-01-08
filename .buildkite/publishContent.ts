@@ -100,7 +100,7 @@ pipelines.forEach(async (path) => {
     const template = await parseTemplate(join(folder, "README.md"));
     await upsertTemplate(template);
   } catch (error) {
-    console.error(error.message);
+    console.error(`${path}: ${error.message}`);
     Deno.exit(1);
   }
 });
