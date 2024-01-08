@@ -7,9 +7,37 @@ import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
 import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
+const TEMPLATE_CATEGORY_ID = "AiaelmlCSOq7OCAgLOopUw";
 
 await load({ export: true });
 const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
+
+// Fetch all categories and return a map of name -> ID
+async function fetchCategories() {
+  const records = await client.items.list({
+    filter: {
+      type: TEMPLATE_CATEGORY_ID,
+    },
+  });
+
+  return records.reduce((acc, category) => {
+    acc.set(category.name, category.id);
+    return acc;
+  }, new Map());
+}
+
+// Fetch the categories once.
+const datoCategories = await fetchCategories();
+
+function transformCategories(categories: string[]) {
+  // Map categories -> Dato categories
+  return categories.map((tag: string) => {
+    if (!datoCategories.has(tag)) {
+      throw new Error(`invalid category: ${tag}`);
+    }
+    return datoCategories.get(tag);
+  });
+}
 
 // Update of insert a template based on whether it already
 // exists in DatoCMS.
@@ -27,6 +55,11 @@ async function upsertTemplate(template: Template) {
     },
   });
 
+  const payload = {
+    ...template,
+    categories: transformCategories(template.categories),
+  };
+
   if (records.length > 1) {
     throw new Error(
       `Found ${records.length} templates with name ${template.title}`
@@ -40,7 +73,7 @@ async function upsertTemplate(template: Template) {
       )} ${chalk.whiteBright("→")} ${chalk.cyan(template.title)}`
     );
 
-    return client.items.update(records[0].id, template);
+    return client.items.update(records[0].id, payload);
   } else {
     console.log(
       `${chalk.greenBright(
@@ -53,7 +86,7 @@ async function upsertTemplate(template: Template) {
         type: "item_type",
         id: TEMPLATE_ID,
       },
-      ...template,
+      ...payload,
     });
   }
 }
