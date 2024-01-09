@@ -6,17 +6,15 @@ import chalk from "npm:chalk";
 import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
 import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 
-const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
-const TEMPLATE_CATEGORY_ID = "AiaelmlCSOq7OCAgLOopUw";
-
-await load({ export: true });
-const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
+const { DATO_API_TOKEN, DATO_TEMPLATE_ID, DATO_TEMPLATE_CATEGORY_ID } =
+  await load();
+const client = buildClient({ apiToken: DATO_API_TOKEN ?? "" });
 
 // Fetch all categories and return a map of name -> ID
 async function fetchCategories() {
   const records = await client.items.list({
     filter: {
-      type: TEMPLATE_CATEGORY_ID,
+      type: DATO_TEMPLATE_CATEGORY_ID,
     },
   });
 
@@ -48,7 +46,7 @@ function transformCategories(categories: string[]) {
 async function upsertTemplate(template: Template) {
   const records = await client.items.list({
     filter: {
-      type: TEMPLATE_ID,
+      type: DATO_TEMPLATE_ID,
       fields: {
         slug: { eq: template.slug },
       },
@@ -84,7 +82,7 @@ async function upsertTemplate(template: Template) {
     return client.items.create({
       item_type: {
         type: "item_type",
-        id: TEMPLATE_ID,
+        id: DATO_TEMPLATE_ID,
       },
       ...payload,
     });
