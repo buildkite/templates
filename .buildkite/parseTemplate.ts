@@ -12,6 +12,7 @@ interface Frontmatter {
   title: string;
   description: string;
   tags: string;
+  categories: string[];
   author: string;
 }
 
@@ -65,6 +66,10 @@ const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
 
   if (!meta.tags) {
     errors.push("missing tags");
+  }
+
+  if (!meta.categories) {
+    errors.push("missing categories");
   }
 
   if (!meta.author) {

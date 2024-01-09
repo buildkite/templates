@@ -3,6 +3,7 @@ title: "Bash"
 description: "Execute a custom bash script"
 tags: []
 author: Buildkite
+categories: ["CI"]
 ---
 
 # Run a bash script
