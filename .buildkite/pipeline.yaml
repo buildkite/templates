@@ -14,8 +14,16 @@ steps:
         command: deno run -A --quiet .buildkite/validateContent.ts
         plugins: *deno
 
-  - label: ":datocms: Publish content"
+  - group: ":datocms: Publish"
     depends_on: "validate"
-    command: deno run -A --quiet .buildkite/publishContent.ts
     if: build.branch == "main"
-    plugins: *deno
+    steps:
+      - label: ":datocms: Publish categories"
+        command: deno run -A --quiet .buildkite/publishCategories.ts
+        key: "publish_categories"
+        plugins: *deno
+
+      - label: ":datocms: Publish templates"
+        depends_on: "publish_categories"
+        command: deno run -A --quiet .buildkite/publishContent.ts
+        plugins: *deno
