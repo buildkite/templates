@@ -1,10 +1,13 @@
 import { load } from "https://deno.land/std@0.205.0/dotenv/mod.ts";
 import { buildClient } from "npm:@datocms/cma-client-node";
 import { globSync } from "npm:glob";
-import { parseTemplate, Template } from "./parseTemplate.ts";
+import { parseTemplate, Template } from "./lib/parseTemplate.ts";
 import chalk from "npm:chalk";
 import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
 import { join } from "https://deno.land/std@0.205.0/path/join.ts";
+import { fromMarkdown } from "https://esm.sh/mdast-util-from-markdown@2";
+import { toHast } from "https://esm.sh/mdast-util-to-hast@13";
+import { hastToStructuredText } from "npm:datocms-html-to-structured-text";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
 const TEMPLATE_CATEGORY_ID = "AiaelmlCSOq7OCAgLOopUw";
@@ -29,8 +32,15 @@ async function fetchCategories() {
 // Fetch the categories once.
 const datoCategories = await fetchCategories();
 
-function transformCategories(categories: string[]) {
-  // Map categories -> Dato categories
+// Markdown -> MDAST -> HAST -> DAST (DatoCMS Structured Text)
+function toDatoStructuredText(content: string) {
+  const mdast = fromMarkdown(content);
+  const hast = toHast(mdast);
+  return hastToStructuredText(hast);
+}
+
+// Map categories -> Dato categories
+function toDatoCategories(categories: string[]) {
   return categories.map((tag: string) => {
     if (!datoCategories.has(tag)) {
       throw new Error(`invalid category: ${tag}`);
@@ -57,7 +67,9 @@ async function upsertTemplate(template: Template) {
 
   const payload = {
     ...template,
-    categories: transformCategories(template.categories),
+    tags: JSON.stringify(template.tags),
+    categories: toDatoCategories(template.categories),
+    content: await toDatoStructuredText(template.content),
   };
 
   if (records.length > 1) {
