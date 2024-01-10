@@ -19,3 +19,9 @@ steps:
     command: deno run -A --quiet .buildkite/publishContent.ts
     if: build.branch == "main"
     plugins: *deno
+
+  - label: ":algolia: Index templates"
+    depends_on: "validate"
+    command: deno run -A --quiet .buildkite/indexContent.ts
+    if: build.branch == "main"
+    plugins: *deno
