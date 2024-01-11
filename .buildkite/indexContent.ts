@@ -1,5 +1,5 @@
 /**
- * Publish template content into an Algolia search index
+ * Populate Algolia search index with data from DatoCMS.
  */
 
 import algoliasearch from "npm:algoliasearch";
