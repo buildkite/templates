@@ -14,14 +14,15 @@ steps:
         command: deno run -A --quiet .buildkite/validateContent.ts
         plugins: *deno
 
-  - label: ":datocms: Publish content"
+  - label: ":datocms: Publish templates"
     depends_on: "validate"
+    key: "publish"
     command: deno run -A --quiet .buildkite/publishContent.ts
     if: build.branch == "main"
     plugins: *deno
 
   - label: ":algolia: Index templates"
-    depends_on: "validate"
+    depends_on: "publish"
     command: deno run -A --quiet .buildkite/indexContent.ts
     if: build.branch == "main"
     plugins: *deno
