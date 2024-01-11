@@ -1,6 +1,6 @@
 import chalk from "npm:chalk";
 import { globSync } from "npm:glob";
-import { parseTemplate } from "./parseTemplate.ts";
+import { parseTemplate } from "./lib/parseTemplate.ts";
 import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
 import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 

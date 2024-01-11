@@ -1,8 +1,5 @@
 import { dirname } from "https://deno.land/std@0.205.0/path/mod.ts";
 import { basename } from "https://deno.land/std@0.205.0/path/basename.ts";
-import { fromMarkdown } from "https://esm.sh/mdast-util-from-markdown@2";
-import { toHast } from "https://esm.sh/mdast-util-to-hast@13";
-import { hastToStructuredText } from "npm:datocms-html-to-structured-text";
 import { matter } from "npm:vfile-matter";
 import { read } from "npm:to-vfile";
 import fs from "node:fs";
@@ -11,7 +8,7 @@ import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 interface Frontmatter {
   title: string;
   description: string;
-  tags: string;
+  tags: string[];
   categories: string[];
   author: string;
 }
@@ -39,16 +36,10 @@ export async function parseTemplate(path: string): Promise<Template> {
     throw new Error(`Template ${path} has errors: ${errors.join(", ")}`);
   }
 
-  // Markdown -> MDAST -> HAST -> DAST (DatoCMS Structured Text)
-  const mdast = fromMarkdown(String(file));
-  const hast = toHast(mdast);
-  const dast = await hastToStructuredText(hast);
-
   return {
     ...meta,
     slug,
-    tags: JSON.stringify(meta.tags),
-    content: dast,
+    content: String(file),
     pipeline,
   };
 }
