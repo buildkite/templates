@@ -25,4 +25,11 @@ steps:
     depends_on: "publish"
     command: deno run -A --quiet .buildkite/indexContent.ts
     if: build.branch == "main"
-    plugins: *deno
+    plugins:
+      - docker#v5.9.0:
+          image: "denoland/deno:1.38.0"
+          environment:
+            - DATO_API_TOKEN
+            - ALGOLIA_APP_ID
+            - ALGOLIA_API_KEY
+            - ALGOLIA_INDEX_NAME
