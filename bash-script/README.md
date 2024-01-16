@@ -1,9 +1,11 @@
 ---
 title: "Bash"
 description: "Execute a custom bash script"
-tags: []
 author: Buildkite
-categories: ["CI"]
+use_cases: ["CI"]
+languages: ["Bash"]
+platforms: []
+tools: []
 ---
 
 # Run a bash script

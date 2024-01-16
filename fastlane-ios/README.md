@@ -1,9 +1,11 @@
 ---
 title: Fastlane for iOS
 description: Set up CI of iOS projects with Fastlane
-tags: ["Fastlane", "CI", "iOS"]
 author: Buildkite
-categories: ["CI"]
+use_cases: ["CI", "iOS"]
+languages: ["Ruby"]
+platforms: ["Fastlane"]
+tools: []
 ---
 
 # CI for iOS with Fastlane
