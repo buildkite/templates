@@ -8,9 +8,11 @@ import { join } from "https://deno.land/std@0.205.0/path/join.ts";
 interface Frontmatter {
   title: string;
   description: string;
-  tags: string[];
-  categories: string[];
   author: string;
+  languages: string[];
+  use_cases: string[];
+  platforms: string[];
+  tools: string[];
 }
 
 export type Template = Frontmatter & {
@@ -44,6 +46,7 @@ export async function parseTemplate(path: string): Promise<Template> {
   };
 }
 
+// deno-lint-ignore no-explicit-any
 const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
   const errors = [];
 
@@ -55,16 +58,24 @@ const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
     errors.push("missing description");
   }
 
-  if (!meta.tags) {
-    errors.push("missing tags");
-  }
-
-  if (!meta.categories) {
-    errors.push("missing categories");
-  }
-
   if (!meta.author) {
     errors.push("missing author");
+  }
+
+  if (!meta.tools) {
+    errors.push("missing tools");
+  }
+
+  if (!meta.platforms) {
+    errors.push("missing platforms");
+  }
+
+  if (!meta.use_cases) {
+    errors.push("missing use_cases");
+  }
+
+  if (!meta.languages) {
+    errors.push("missing languages");
   }
 
   return { ...meta, errors };
