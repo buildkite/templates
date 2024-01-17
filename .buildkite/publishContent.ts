@@ -5,48 +5,23 @@ import { parseTemplate, Template } from "./lib/parseTemplate.ts";
 import chalk from "npm:chalk";
 import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
 import { join } from "https://deno.land/std@0.205.0/path/join.ts";
-import { fromMarkdown } from "https://esm.sh/mdast-util-from-markdown@2";
-import { toHast } from "https://esm.sh/mdast-util-to-hast@13";
-import { hastToStructuredText } from "npm:datocms-html-to-structured-text";
+import { fromMarkdown } from "https://esm.sh/mdast-util-from-markdown@2.0.0";
+import { toHast } from "https://esm.sh/mdast-util-to-hast@13.0.2";
+import {
+  HastRootNode,
+  hastToStructuredText,
+} from "npm:datocms-html-to-structured-text";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
-const TEMPLATE_CATEGORY_ID = "AiaelmlCSOq7OCAgLOopUw";
 
 await load({ export: true });
 const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
-
-// Fetch all categories and return a map of name -> ID
-async function fetchCategories() {
-  const records = await client.items.list({
-    filter: {
-      type: TEMPLATE_CATEGORY_ID,
-    },
-  });
-
-  return records.reduce((acc, category) => {
-    acc.set(category.name, category.id);
-    return acc;
-  }, new Map());
-}
-
-// Fetch the categories once.
-const datoCategories = await fetchCategories();
 
 // Markdown -> MDAST -> HAST -> DAST (DatoCMS Structured Text)
 function toDatoStructuredText(content: string) {
   const mdast = fromMarkdown(content);
   const hast = toHast(mdast);
-  return hastToStructuredText(hast);
-}
-
-// Map categories -> Dato categories
-function toDatoCategories(categories: string[]) {
-  return categories.map((tag: string) => {
-    if (!datoCategories.has(tag)) {
-      throw new Error(`invalid category: ${tag}`);
-    }
-    return datoCategories.get(tag);
-  });
+  return hastToStructuredText(hast as HastRootNode);
 }
 
 // Update of insert a template based on whether it already
@@ -67,9 +42,9 @@ async function upsertTemplate(template: Template) {
 
   const payload = {
     ...template,
-    language: JSON.stringify(template.language),
-    use_case: JSON.stringify(template.use_case),
-    platform: JSON.stringify(template.platform),
+    language: JSON.stringify(template.languages),
+    use_case: JSON.stringify(template.use_cases),
+    platform: JSON.stringify(template.platforms),
     tools: JSON.stringify(template.tools),
     content: await toDatoStructuredText(template.content),
   };
