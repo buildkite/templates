@@ -42,9 +42,9 @@ async function upsertTemplate(template: Template) {
 
   const payload = {
     ...template,
-    language: JSON.stringify(template.languages),
-    use_case: JSON.stringify(template.use_cases),
-    platform: JSON.stringify(template.platforms),
+    languages: JSON.stringify(template.languages),
+    use_cases: JSON.stringify(template.use_cases),
+    platforms: JSON.stringify(template.platforms),
     tools: JSON.stringify(template.tools),
     content: await toDatoStructuredText(template.content),
   };
