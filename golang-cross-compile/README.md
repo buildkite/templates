@@ -1,9 +1,11 @@
 ---
 title: "Golang"
 description: "Cross-compile a golang binary for multiple targets."
-tags: []
 author: Buildkite
-categories: ["Go", "CI"]
+use_cases: ["CI"]
+languages: ["Go"]
+platforms: []
+tools: []
 ---
 
 # Cross compiling a Golang binary

@@ -67,8 +67,10 @@ async function upsertTemplate(template: Template) {
 
   const payload = {
     ...template,
-    tags: JSON.stringify(template.tags),
-    categories: toDatoCategories(template.categories),
+    language: JSON.stringify(template.language),
+    use_case: JSON.stringify(template.use_case),
+    platform: JSON.stringify(template.platform),
+    tools: JSON.stringify(template.tools),
     content: await toDatoStructuredText(template.content),
   };
 

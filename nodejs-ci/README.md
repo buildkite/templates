@@ -1,9 +1,11 @@
 ---
 title: Node.js + npm + Jest + Cypress
 description: Set up Jest and Cypress testing on a Node web app
-tags: ["CI", "Node.js"]
 author: Buildkite
-categories: ["JavaScript", "CI"]
+languages: ["JavaScript"]
+use_cases: ["CI"]
+platforms: ["Docker"]
+tools: ["npm", "Jest", "Cypress"]
 ---
 
 # CI for Node.js with npm, Jest, and Cypress

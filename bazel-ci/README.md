@@ -1,9 +1,11 @@
 ---
 title: Bazel
 description: Starter CI pipeline for a Bazel project.
-tags: []
 author: Buildkite
-categories: ["CI"]
+use_cases: ["CI"]
+languages: ["Java"]
+platforms: []
+tools: ["Bazel"]
 ---
 
 # Building with Bazel

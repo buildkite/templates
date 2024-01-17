@@ -1,9 +1,11 @@
 ---
 title: Pulumi + AWS + Node.js + npm
 description: Preview and deploy Pulumi changes to AWS using Node.js and npm
-tags: ["IaC", "Node.js", "Pulumi", "AWS"]
 author: "Buildkite"
-categories: ["IaC", "CI"]
+use_cases: ["IaC", "CI"]
+languages: ["JavaScript"]
+platforms: ["Pulumi", "Docker", "AWS"]
+tools: []
 ---
 
 # CI/CD for Pulumi projects with AWS, Node.js, and npm
