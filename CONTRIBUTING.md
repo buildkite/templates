@@ -1,8 +1,6 @@
-# Contributing
+# How to contribute a pipeline template
 
-## Creating a new template
-
-A pipeline template should be defined using the following structure:
+You can add a new pipeline template to this repo by using the following structure:
 
 ```
 .
@@ -13,22 +11,17 @@ A pipeline template should be defined using the following structure:
         └── ...
 ```
 
-### `README.md`
-
-This file contains a detailed description of what a specific template definition is and how it works.
-
-A template `README.md` MUST include the following metadata defined as YAML frontmatter:
-
-- `name` – The name of the pipeline template.
-- `description` – The meta description for the template.
-- `tags` – The attributes the pipeline template will be grouped by. Such as NextJS, Rails, Ruby, AWS or Deploy.
-- `author` - The author of the pipeline template
-
-### `pipeline.yaml`
+## `pipeline.yaml`
 
 A Buildkite Pipeline definition [file](https://buildkite.com/docs/pipelines/defining-steps).
 
-### `example-project` (optional)
+## `README.md`
+
+Your `README.md` should contain a high-level description of your template definition and how it works.
+
+Use the [`BLANK_README.md`](https://github.com/buildkite/templates/blob/main/BLANK_README.md) file in the root directory of this repo to get started. It contains example text along with a key to required front matter, plus a content guide.
+
+## `example-project` (optional)
 
 Having an example project with relevant boilerplate makes it possible to test pipeline yaml in isolation.
 
@@ -39,9 +32,9 @@ cd my-template-ci/example;
 bk local run ../pipeline.yaml
 ```
 
-## DatoCMS
+# Publication on Buildkite.com
 
-The templates defined in this repository are ingested into DatoCMS.
+The templates defined in this repository are ingested into DatoCMS. There are two human review stages: once via PR in this repo, and another via approval in DatoCMS.
 
 ```mermaid
 
