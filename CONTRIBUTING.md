@@ -34,7 +34,7 @@ bk local run ../pipeline.yaml
 
 # Publication on Buildkite.com
 
-The templates defined in this repository are ingested into DatoCMS. There are two human review stages: once via PR in this repo, and another via approval in DatoCMS.
+The templates defined in this repository are ingested into DatoCMS on merge.
 
 ```mermaid
 
