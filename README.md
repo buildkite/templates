@@ -7,4 +7,4 @@ A collection of [Buildkite](https://buildkite.com) pipeline templates.
 
 ## Contributing
 
-See [CONTRIBUTING](./CONTRIBUTING.md) for more details on contributing fixes, issues, and PRs.
+See [CONTRIBUTING](./CONTRIBUTING.md) for more details on how to constribute additional pipeline templates.
