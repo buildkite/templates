@@ -1,39 +1,43 @@
+env:
+  AWS_ROLE_ARN: your-arn-role-here
+
 steps:
-  - label: ":terraform: :mag: validate"
+  - label: ":terraform: terraform init"
+    key: "init"
     plugins:
       - docker#v5.9.0:
           image: hashicorp/terraform:1.5
-          command: ["validate"]
-          environment:
-            - AWS_ACCESS_KEY_ID
-            - AWS_SECRET_ACCESS_KEY
-            - AWS_SESSION_TOKEN
-            - BUILDKITE_BUILD_URL
-            - BUILDKITE_BUILD_NUMBER
-            - BUILDKITE_MESSAGE_SUBJECT
-            - BUILDKITE_MESSAGE
-  - label: ":terraform: :mag: plan"
+          command: ["init", "-input=false"]
+      - artifacts#v1.9.2:
+          upload: [".terraform", ".terraform.lock.hcl"]
+          compressed: terraform.tgz
+
+  - label: ":terraform: terraform plan"
+    depends_on: "init"
+    key: "plan"
     plugins:
+      - artifacts#v1.9.2:
+          download: [".terraform", ".terraform.lock.hcl"]
+          compressed: terraform.tgz
       - aws-assume-role-with-web-identity:
-          role-arn: your-arn-role-here
+          role-arn: $AWS_ROLE_ARN
       - docker#v5.9.0:
           image: hashicorp/terraform:1.5
-          command:
-            [
-              "-c",
-              "terraform init -input=false && terraform plan -out=tfplan -input=false",
-            ]
-          environment:
-            - AWS_ACCESS_KEY_ID
-            - AWS_SECRET_ACCESS_KEY
-            - AWS_SESSION_TOKEN
-            - BUILDKITE_BUILD_URL
-            - BUILDKITE_BUILD_NUMBER
-            - BUILDKITE_MESSAGE_SUBJECT
-            - BUILDKITE_MESSAGE
-          entrypoint: "/bin/sh"
-          volumes:
-            - "./:/app"
-          workdir: /app
+          propagate-aws-auth-tokens: true
+          command: ["plan", "-out=tfplan", "-input=false"]
     artifact_paths:
       - "tfplan"
+
+  - block: "Apply?"
+
+  - label: ":terraform: terraform apply"
+    plugins:
+      - artifacts#v1.9.2:
+          download: [".terraform", ".terraform.lock.hcl", "tfplan"]
+          compressed: terraform.tgz
+      - aws-assume-role-with-web-identity:
+          role-arn: $AWS_ROLE_ARN
+      - docker#v5.9.0:
+          image: hashicorp/terraform:1.5
+          propagate-aws-auth-tokens: true
+          command: ["apply", "-input=false", "-auto-approve", "tfplan"]
