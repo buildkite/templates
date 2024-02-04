@@ -33,7 +33,9 @@ steps:
   - label: ":terraform: terraform apply"
     plugins:
       - artifacts#v1.9.2:
-          download: [".terraform", ".terraform.lock.hcl", "tfplan"]
+          download: ["tfplan"]
+      - artifacts#v1.9.2:
+          download: [".terraform", ".terraform.lock.hcl"]
           compressed: terraform.tgz
       - aws-assume-role-with-web-identity:
           role-arn: $AWS_ROLE_ARN
