@@ -1,13 +1,16 @@
 ---
-title: Terraform + Docker + AWS
-description: This pipeline validates and plans Terraform changes using Docker and AWS Assume Role.
-tags: ["CI", "Terraform", "Docker", "AWS"]
-author: Buildkite
+title: Terraform AWS Starter
+description: Deploy your AWS infrastructure with Terraform
+author: "Buildkite"
+use_cases: ["IaC", "CI"]
+languages: ["JavaScript"]
+platforms: ["Docker", "AWS", "Terraform"]
+tools: []
 ---
 
-# CI for Terraform with AWS Assume Role and Docker
+# Deploy AWS infrastructure with Terraform
 
-This template gives you a continuous integration (CI) pipeline that validates and plans Terraform changes using Docker and AWS Assume Role.
+This template gives you a continuous integration (CI) pipeline for deploying AWS infrastructure with Terraform.
 
 At a glance:
 
@@ -22,8 +25,9 @@ This template:
 1. Validates the Terraform configuration in a Docker image.
 2. Assumes an AWS role using the AWS Assume Role with Web Identity plugin.
 3. Initializes Terraform and plans changes, outputting a plan file, which is available as an [artifact](https://buildkite.com/docs/pipelines/artifacts).
+4. Blocks for input and conditionally applies the proposed Terraform plan.
 
-The pipeline runs both steps in a Docker container with the HashiCorp Terraform image, passing through a number of environment variables.
+The pipeline runs all steps in a Docker container with the HashiCorp Terraform image, passing through all the necessary AWS environment variables.
 
 ## Next steps
 
