@@ -1,4 +1,4 @@
-//go:generate bash -c "echo Generated >> generated.txt"
+//go:generate bash -c "echo Generated >| generated.txt"
 
 package main
 
