@@ -16,6 +16,7 @@
 *** languages: <Array of programming languages in format ["JavaScript", "Go"]>
 *** platforms: <Array of platforms in format ["Pulumi", "Docker", "AWS"]>
 *** tools: <Array of tools in format ["clippy", "cargo"]>
+*** primary_emojis: <Array of Buildkite emoji shortcodes for rendering in search results [":buildkite:", ":aws:"]
 ***
 ***
 *** Content Guide
@@ -57,6 +58,7 @@ use_cases: ["IaC", "CI"]
 languages: ["JavaScript"]
 platforms: ["Pulumi", "Docker", "AWS"]
 tools: []
+primary_emojis: [":pulumi:", ":aws:"]
 ---
 
 # CI/CD for Pulumi projects with AWS, Node.js, and npm
