@@ -3,11 +3,9 @@ steps:
     key: "deps"
     command: "go mod vendor"
     plugins:
-      - cache#v0.6.0:
-          manifest: go.sum
-          path: vendor
-          restore: file
-          save: file
+      - artifacts#v1.9.3:
+          upload: "vendor"
+          compressed: vendor.tgz
       - docker#v5.9.0:
           image: "golang:latest"
 
@@ -15,10 +13,9 @@ steps:
     command: "go build -mod=vendor main.go"
     depends_on: ["deps"]
     plugins:
-      - cache#v0.6.0:
-          manifest: go.sum
-          path: vendor
-          restore: file
+      - artifacts#v1.9.3:
+          download: "vendor"
+          compressed: vendor.tgz
       - docker#v5.9.0:
           image: "golang:latest"
 
@@ -26,10 +23,9 @@ steps:
     command: "go test -mod=vendor ./..."
     depends_on: ["deps"]
     plugins:
-      - cache#v0.6.0:
-          manifest: go.sum
-          path: vendor
-          restore: file
+      - artifacts#v1.9.3:
+          download: "vendor"
+          compressed: vendor.tgz
       - docker#v5.9.0:
           image: "golang:latest"
 
@@ -39,5 +35,8 @@ steps:
       - "go generate -mod=vendor ./..."
       - "git diff --exit-code || (echo 'Generated code is out of date, please run `go generate` and commit the changes' && exit 1)"
     plugins:
+      - artifacts#v1.9.3:
+          download: "vendor"
+          compressed: vendor.tgz
       - docker#v5.9.0:
           image: "golang:latest"
