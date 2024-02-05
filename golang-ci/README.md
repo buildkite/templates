@@ -1,8 +1,12 @@
 ---
-title: Golang CI pipeline
-description: A Golang pipeline to build and test a Go module
-tags: ["CI", "Golang"]
+title: CI for Golang
+description: A CI pipeline to build and test a Go application
 author: Buildkite
+languages: ["Go"]
+platforms: ["Docker"]
+use_cases: ["CI"]
+tools: []
+primary_emojis: [":golang:"]
 ---
 
 # CI for Golang
