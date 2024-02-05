@@ -6,6 +6,7 @@ use_cases: ["CI"]
 languages: ["Java"]
 platforms: []
 tools: ["Bazel"]
+primary_emojis: [":bazel:"]
 ---
 
 # Building with Bazel

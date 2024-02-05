@@ -6,6 +6,7 @@ use_cases: ["IaC", "CI"]
 languages: ["JavaScript"]
 platforms: ["Docker", "AWS", "Terraform"]
 tools: []
+primary_emojis: [":terraform:", ":aws:"]
 ---
 
 # Deploy AWS infrastructure with Terraform

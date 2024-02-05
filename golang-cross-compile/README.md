@@ -6,6 +6,7 @@ use_cases: ["CI"]
 languages: ["Go"]
 platforms: []
 tools: []
+primary_emojis: [":go:"]
 ---
 
 # Cross compiling a Golang binary

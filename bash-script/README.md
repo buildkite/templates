@@ -6,6 +6,7 @@ use_cases: ["CI"]
 languages: ["Bash"]
 platforms: []
 tools: []
+primary_emojis: [":bash:"]
 ---
 
 # Run a bash script

@@ -6,6 +6,7 @@ languages: ["Rust"]
 use_cases: ["CI"]
 platforms: ["Docker"]
 tools: ["clippy", "cargo"]
+primary_emojis: [":rust:"]
 ---
 
 # CI/CD for Rust with Linting, Testing, and Building
