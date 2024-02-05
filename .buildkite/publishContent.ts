@@ -47,6 +47,7 @@ async function upsertTemplate(template: Template) {
     platforms: JSON.stringify(template.platforms),
     tools: JSON.stringify(template.tools),
     content: await toDatoStructuredText(template.content),
+    primary_emojis: JSON.stringify(template.primary_emojis),
   };
 
   if (records.length > 1) {

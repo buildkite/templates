@@ -13,6 +13,7 @@ interface Frontmatter {
   use_cases: string[];
   platforms: string[];
   tools: string[];
+  primary_emojis: string[];
 }
 
 export type Template = Frontmatter & {
