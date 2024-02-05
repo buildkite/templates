@@ -20,3 +20,10 @@ steps:
     command: deno run --check -A --quiet .buildkite/publishContent.ts
     if: build.branch == "main"
     plugins: *deno
+
+  - trigger: "site"
+    depends_on: "publish"
+    if: build.branch == "main"
+    label: ":buildkite: Trigger site build"
+    build:
+      message: "Triggered by buildkite/templates"
