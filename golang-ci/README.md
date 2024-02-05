@@ -16,22 +16,18 @@ This template provides a continuous integration (CI) pipeline for Golang applica
 At a glance:
 - For [Golang](https://go.dev/) applications.
 - Requires [Docker](https://docs.docker.com/get-docker/)
-- Runs Go's [standard library commands](https://pkg.go.dev/cmd/go) to:
-  - Install dependencies using `go install`.
-  - Build the module using `go build`.
-  - Run tests using `go test`.
-  - Ensures generated code is up to date with `go generate` and `git diff`.
+- Runs Go's [standard library commands](https://pkg.go.dev/cmd/go) to build, test, and generate.
 
 ## How it works
 
 This template:
 
-- Installs Go dependencies.
-- Builds the module.
-- Runs tests.
-- Ensures generated code is up to date and throws an error if it isn't.
+- Downloads Go dependencies using `go mod vendor` and caches them for usage across subsequent steps.
+- Builds the module
+- Runs tests
+- Ensures generated code is up.
 
-All steps run in serial, with each depending on the previous step to complete before starting. The runtime environment uses the official [Golang Docker image](https://hub.docker.com/_/golang) with the latest version.
+The runtime environment uses the official [Golang Docker image](https://hub.docker.com/_/golang) with the latest version.
 
 ## Next steps
 
