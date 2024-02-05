@@ -6,6 +6,7 @@ languages: ["Python"]
 use_cases: ["CI"]
 platforms: ["Docker"]
 tools: ["pip", "pytest", "ruff", "junit"]
+primary_emojis: [":python:"]
 ---
 
 # CI for Python with pip, pytest and Ruff

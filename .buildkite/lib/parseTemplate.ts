@@ -46,6 +46,12 @@ export async function parseTemplate(path: string): Promise<Template> {
   };
 }
 
+const emojis = await fetch(
+  "https://raw.githubusercontent.com/buildkite/emojis/main/all_emoji_names.txt"
+)
+  .then((res) => res.text())
+  .then((text) => text.split("\n"));
+
 // deno-lint-ignore no-explicit-any
 const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
   const errors = [];
@@ -76,6 +82,18 @@ const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
 
   if (!meta.languages) {
     errors.push("missing languages");
+  }
+
+  if (!meta.primary_emojis || meta.primary_emojis.length == 0) {
+    errors.push("template must have at least one `primary_emoji`");
+  } else {
+    for (const emoji of meta.primary_emojis) {
+      if (!emojis.includes(emoji.replace(/:/g, ""))) {
+        errors.push(
+          `invalid emoji: ${emoji}, see https://github.com/buildkite/emojis for a list of valid emojis`
+        );
+      }
+    }
   }
 
   return { ...meta, errors };

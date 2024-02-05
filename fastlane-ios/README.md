@@ -6,6 +6,7 @@ use_cases: ["CI", "iOS"]
 languages: ["Ruby"]
 platforms: ["Fastlane"]
 tools: []
+primary_emojis: [":fastlane:"]
 ---
 
 # CI for iOS with Fastlane

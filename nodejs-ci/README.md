@@ -6,6 +6,7 @@ languages: ["JavaScript"]
 use_cases: ["CI"]
 platforms: ["Docker"]
 tools: ["npm", "Jest", "Cypress"]
+primary_emojis: [":nodejs:"]
 ---
 
 # CI for Node.js with npm, Jest, and Cypress

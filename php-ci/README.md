@@ -6,6 +6,7 @@ languages: ["PHP"]
 use_cases: ["CI"]
 tools: ["composer", "phpunit"]
 platforms: []
+primary_emojis: [":php:"]
 ---
 
 # CI/CD for PHP with Linting, Testing, and Building

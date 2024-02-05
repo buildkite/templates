@@ -6,6 +6,7 @@ languages: ["Ruby"]
 use_cases: ["CI"]
 platforms: ["Docker"]
 tools: ["Bundler", "RuboCop", "RSpec"]
+primary_emojis: [":ruby:"]
 ---
 
 # CI/CD for Ruby with Bundler, Rubocop, and RSpec
