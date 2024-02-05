@@ -1,3 +1,5 @@
+//go:generate bash -c "echo Generated >> generated.txt"
+
 package main
 
 import (
