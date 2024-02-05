@@ -1,30 +1,42 @@
 steps:
-  - label: ":golang: Install"
+  - label: ":golang: Install dependencies"
     key: "deps"
-    command: "go install"
+    command: "go mod vendor"
     plugins:
+      - cache#v0.6.0:
+          manifest: go.sum
+          path: vendor
+          restore: file
+          save: file
       - docker#v5.9.0:
           image: "golang:latest"
 
   - label: ":golang: Build"
-    command: "go build main.go"
+    command: "go build -mod=vendor main.go"
     depends_on: ["deps"]
     plugins:
+      - cache#v0.6.0:
+          manifest: go.sum
+          path: vendor
+          restore: file
       - docker#v5.9.0:
           image: "golang:latest"
 
   - label: ":golang: Test"
-    command: "go test ."
+    command: "go test -mod=vendor ./..."
     depends_on: ["deps"]
     plugins:
+      - cache#v0.6.0:
+          manifest: go.sum
+          path: vendor
+          restore: file
       - docker#v5.9.0:
           image: "golang:latest"
 
-  - label: ":golang: Go generate check"
-    commands:
-      - go generate ./...
-      - git diff --exit-code || (echo 'Generated code is out of date, please run `go generate` and commit the changes' && exit 1)
-    depends_on: ["deps"]
+  - label: ":golang: Generate"
+    command:
+      - "go generate -mod=vendor ./..."
+      - "git diff --exit-code || (echo 'Generated code is out of date, please run `go generate` and commit the changes' && exit 1)"
     plugins:
       - docker#v5.9.0:
           image: "golang:latest"
