@@ -1,5 +1,5 @@
 ---
-title: Terraform AWS Starter
+title: Terraform on AWS
 description: Deploy your AWS infrastructure with Terraform
 author: "Buildkite"
 use_cases: ["IaC", "CI"]
