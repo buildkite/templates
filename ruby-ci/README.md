@@ -1,6 +1,6 @@
 ---
-title: Ruby + Bundler + RuboCop + RSpec
-description: Set up a CI/CD pipeline for a Ruby application with linting and testing
+title: CI for Ruby
+description: Build, lint, and test a Ruby application using Bundler, Rubocop, and RSpec.
 author: Buildkite
 languages: ["Ruby"]
 use_cases: ["CI"]
@@ -9,7 +9,7 @@ tools: ["Bundler", "RuboCop", "RSpec"]
 primary_emojis: [":ruby:"]
 ---
 
-# CI/CD for Ruby with Bundler, Rubocop, and RSpec
+# CI for Ruby with Bundler, Rubocop, and RSpec
 
 This template gives you a continuous integration (CI) pipeline that lints and tests a Ruby application.
 

@@ -1,11 +1,11 @@
 ---
-title: Python + pip + ruff + pytest
-description: Set up a CI pipeline for a Python application with linting and testing
+title: CI for Python
+description: Build, lint, and test a Python application using pip, Ruff, and pytest.
 author: Buildkite
 languages: ["Python"]
 use_cases: ["CI"]
 platforms: ["Docker"]
-tools: ["pip", "pytest", "ruff", "junit"]
+tools: ["pip", "pytest", "Ruff", "junit"]
 primary_emojis: [":python:"]
 ---
 
@@ -15,7 +15,7 @@ This template gives you a continuous integration (CI) pipeline that lints, tests
 
 At a glance:
 
-- For [Python](https://www.python.org/) 3 applications
+- For [Python](https://www.python.org/) applications
 - Uses [pip](https://pypi.org/project/pip/)
 - Requires [Docker](https://docs.docker.com/get-docker/)
 - Lints code with [Ruff](https://docs.astral.sh/ruff/)

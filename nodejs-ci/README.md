@@ -1,11 +1,11 @@
 ---
-title: Node.js + npm + Jest + Cypress
-description: Set up Jest and Cypress testing on a Node web app
+title: CI for Node.js
+description: Build, lint, and test a Node.js web application using npm, ESLint, Jest, and Cypress.
 author: Buildkite
 languages: ["JavaScript"]
 use_cases: ["CI"]
 platforms: ["Docker"]
-tools: ["npm", "Jest", "Cypress"]
+tools: ["npm", "ESlint", "Jest", "Cypress"]
 primary_emojis: [":nodejs:"]
 ---
 
