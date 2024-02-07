@@ -1,6 +1,6 @@
 ---
-title: PHP + PHPUnit + Composer
-description: Set up a CI pipeline for a PHP application with linting and testing, using PHP's built-in linter, PHPUnit, and Composer.
+title: CI for PHP
+description: Build, lint and test a PHP application using Composer, PHP's built-in linter, and PHPUnit.
 author: Buildkite
 languages: ["PHP"]
 use_cases: ["CI"]

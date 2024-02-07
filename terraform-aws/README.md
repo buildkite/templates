@@ -1,9 +1,9 @@
 ---
 title: Deploy AWS with Terraform
-description: Plan and apply changes to AWS infrastructure using Terraform
+description: Plan and apply AWS infrastructure changes using Terraform
 author: "Buildkite"
 use_cases: ["IaC", "CI"]
-languages: ["JavaScript"]
+languages: [""]
 platforms: ["Docker", "AWS", "Terraform"]
 tools: []
 primary_emojis: [":terraform:", ":aws:"]

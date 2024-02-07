@@ -1,6 +1,6 @@
 ---
-title: CI for Golang
-description: A CI pipeline to build and test a Go application
+title: CI for Go
+description: Set up a CI pipeline for a Go application using standard library tooling.
 author: Buildkite
 languages: ["Go"]
 platforms: ["Docker"]
@@ -9,9 +9,9 @@ tools: []
 primary_emojis: [":golang:"]
 ---
 
-# CI for Golang
+# CI for Go
 
-This template provides a continuous integration (CI) pipeline for Golang applications. It builds and tests a Go module.
+This template provides a continuous integration (CI) pipeline for Go applications. It builds and tests a Go module.
 
 At a glance:
 - For [Golang](https://go.dev/) applications.

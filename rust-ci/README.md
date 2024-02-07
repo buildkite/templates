@@ -1,6 +1,6 @@
 ---
-title: Rust + Clippy + Cargo
-description: Set up a CI/CD pipeline for a Rust application with linting, testing, and building using Clippy and Cargo.
+title: CI for Rust
+description: Build, lint, and test a Rust application using Cargo and Clippy.
 author: Buildkite
 languages: ["Rust"]
 use_cases: ["CI"]
@@ -9,7 +9,7 @@ tools: ["clippy", "cargo"]
 primary_emojis: [":rust:"]
 ---
 
-# CI/CD for Rust with Linting, Testing, and Building
+# CI for Rust with Clippy and Cargo
 
 This template gives you a continuous integration (CI) pipeline that lints, tests, and builds a Rust application.
 
