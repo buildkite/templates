@@ -23,8 +23,8 @@ At a glance:
 This template:
 
 - Downloads Go dependencies using `go mod vendor` and caches them for usage across subsequent steps.
-- Builds the module
-- Runs tests
+- Builds the module.
+- Runs tests.
 - Ensures generated code is up.
 
 The runtime environment uses the official [Golang Docker image](https://hub.docker.com/_/golang) with the latest version.
