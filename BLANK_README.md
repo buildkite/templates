@@ -1,6 +1,6 @@
 <!--
 *** This is a example README that you can edit to suit your needs.
-*** After you've edited this file, delete this comment block 
+*** After you've edited this file, delete this comment block
 *** and ensure that there are no leading spaces before the front matter.
 *** Then, save this file as README.md in the directory for your template.
 *** If you have any trouble, submit a PR, and we'll get back to you.
@@ -22,7 +22,7 @@
 *** Content Guide
 ***
 *** H1: CI/CD for <technology> with <key features>
-*** Intro paragraph: This template gives you a continuous integration and 
+*** Intro paragraph: This template gives you a continuous integration and
 *** continuous deployment (CI/CD) pipeline that <high-level description of pipeline goal>.
 ***
 *** At a glance:

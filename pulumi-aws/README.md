@@ -4,8 +4,8 @@ description: Preview and deploy AWS infrastructure changes using Pulumi
 author: "Buildkite"
 use_cases: ["IaC", "CI"]
 languages: ["JavaScript"]
-platforms: ["Pulumi", "Docker", "AWS"]
-tools: []
+platforms: ["Docker", "AWS"]
+tools: ["Pulumi"]
 primary_emojis: [":pulumi:", ":aws:"]
 ---
 
