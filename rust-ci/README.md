@@ -3,7 +3,7 @@ title: CI for Rust
 description: Build, lint, and test a Rust application using Cargo and Clippy.
 author: Buildkite
 languages: ["Rust"]
-use_cases: ["CI"]
+use_cases: ["CI", "Web"]
 platforms: ["Docker"]
 tools: ["clippy", "cargo"]
 primary_emojis: [":rust:"]

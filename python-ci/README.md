@@ -3,7 +3,7 @@ title: CI for Python
 description: Build, lint, and test a Python application using pip, Ruff, and pytest.
 author: Buildkite
 languages: ["Python"]
-use_cases: ["CI"]
+use_cases: ["CI", "Web"]
 platforms: ["Docker"]
 tools: ["pip", "pytest", "Ruff", "junit"]
 primary_emojis: [":python:"]

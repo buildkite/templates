@@ -3,7 +3,7 @@ title: CI for Ruby
 description: Build, lint, and test a Ruby application using Bundler, Rubocop, and RSpec.
 author: Buildkite
 languages: ["Ruby"]
-use_cases: ["CI"]
+use_cases: ["CI", "Web"]
 platforms: ["Docker"]
 tools: ["Bundler", "RuboCop", "RSpec"]
 primary_emojis: [":ruby:"]

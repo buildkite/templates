@@ -3,7 +3,7 @@ title: CI for Node.js
 description: Build, lint, and test a Node.js web application using npm, ESLint, Jest, and Cypress.
 author: Buildkite
 languages: ["JavaScript"]
-use_cases: ["CI"]
+use_cases: ["CI", "Web"]
 platforms: ["Docker"]
 tools: ["npm", "ESlint", "Jest", "Cypress"]
 primary_emojis: [":nodejs:"]
