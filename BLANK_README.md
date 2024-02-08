@@ -83,7 +83,7 @@ This template:
 4. Asks for manual confirmation to deploy the change.
 5. Deploys the Pulumi change to AWS with `pulumi up`.
 
-The runtime environment uses a Docker image with Pulumi CLI and Node.js.
+The runtime environment uses a Docker image with the Pulumi CLI and Node.js.
 
 ## Next steps
 

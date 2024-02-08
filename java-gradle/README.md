@@ -26,7 +26,7 @@ This template:
 1. Runs tests with Gradle.
 2. Builds the application with Gradle.
 
-The runtime environment uses the official [Gradle Docker image](https://hub.docker.com/_/gradle/).
+The runtime environment uses a Docker image with the Gradle CLI and Java 8.
 
 ## Next steps
 
