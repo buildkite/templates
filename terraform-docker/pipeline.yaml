@@ -1,0 +1,40 @@
+steps:
+  - label: ":terraform: terraform init"
+    key: "init"
+    plugins:
+      - docker#v5.9.0:
+          image: hashicorp/terraform:1.5
+          command: ["init", "-input=false"]
+      - artifacts#v1.9.2:
+          upload: [".terraform", ".terraform.lock.hcl"]
+          compressed: terraform.tgz
+
+  - label: ":terraform: terraform plan"
+    depends_on: "init"
+    key: "plan"
+    plugins:
+      - artifacts#v1.9.2:
+          download: [".terraform", ".terraform.lock.hcl"]
+          compressed: terraform.tgz
+      - docker#v5.9.0:
+          image: hashicorp/terraform:1.5
+          command: ["plan", "-out=tfplan", "-input=false"]
+          volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+    artifact_paths:
+      - "tfplan"
+
+  - block: "Apply?"
+
+  - label: ":terraform: terraform apply"
+    plugins:
+      - artifacts#v1.9.2:
+          download: ["tfplan"]
+      - artifacts#v1.9.2:
+          download: [".terraform", ".terraform.lock.hcl"]
+          compressed: terraform.tgz
+      - docker#v5.9.0:
+          image: hashicorp/terraform:1.5
+          command: ["apply", "-input=false", "-auto-approve", "tfplan"]
+          volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
