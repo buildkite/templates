@@ -11,12 +11,12 @@ primary_emojis: [":java:", ":gradle:"]
 
 # CI for Java using Gradle
 
-This template gives you a continuous integration (CI) pipeline that builds and tests Java application using [Gradle](https://docs.gradle.org).
+This template gives you a continuous integration (CI) pipeline that builds and tests a Java application using Gradle.
 
 At a glance:
 
 - For [Java](https://dev.java/) applications
-- Uses Gradle for building and testing
+- Uses [Gradle](https://docs.gradle.org) for building and testing
 
 ## How it works
 
