@@ -1,17 +1,17 @@
 ---
 title: Deploy AWS with Terraform
-description: Plan and apply AWS infrastructure changes using Terraform
+description: Build, change, and destroy AWS infrastructure using Terraform.
 author: "Buildkite"
-use_cases: ["IaC", "CI"]
-languages: [""]
-platforms: ["Docker", "AWS", "Terraform"]
-tools: []
+use_cases: ["IaC", "CI", "CD"]
+languages: ["Terraform"]
+platforms: ["AWS"]
+tools: ["Terraform"]
 primary_emojis: [":terraform:", ":aws:"]
 ---
 
 # Deploy AWS infrastructure with Terraform
 
-This template gives you a continuous integration (CI) pipeline for deploying AWS infrastructure with Terraform.
+This template gives you a continuous integration (CI) pipeline for building, changing, and destroying AWS infrastructure using Terraform.
 
 At a glance:
 
@@ -26,13 +26,13 @@ This template:
 1. Validates the Terraform configuration in a Docker image.
 2. Assumes an AWS role using the AWS Assume Role with Web Identity plugin.
 3. Initializes Terraform and plans changes, outputting a plan file, which is available as an [artifact](https://buildkite.com/docs/pipelines/artifacts).
-4. Blocks for input and conditionally applies the proposed Terraform plan.
+4. Blocks for input before conditionally applying the proposed Terraform plan.
 
 The pipeline runs all steps in a Docker container with the HashiCorp Terraform image, passing through all the necessary AWS environment variables.
 
 ## Next steps
 
-After you select Use template, you’ll:
+After you select **Use template**, you’ll:
 
 1. Connect the Git repository with your Terraform configuration.
 2. Replace the placeholder AWS role ARN in the pipeline definition.
@@ -40,3 +40,5 @@ After you select Use template, you’ll:
 4. Run the pipeline.
 
 You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
+
+If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).
