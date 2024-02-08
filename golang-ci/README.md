@@ -4,7 +4,7 @@ description: Set up a CI pipeline for a Go application using standard library to
 author: Buildkite
 languages: ["Go"]
 platforms: ["Docker"]
-use_cases: ["CI"]
+use_cases: ["CI", "Web"]
 tools: []
 primary_emojis: [":golang:"]
 ---

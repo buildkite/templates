@@ -1,6 +1,6 @@
 ---
-title: Deploy Docker using Terraform
-description: Build, change, and destroy Docker infrastructure using Terraform.
+title: Deploy Docker with Terraform
+description: Build, change, and destroy Docker infrastructure with Terraform.
 author: "Buildkite"
 use_cases: ["IaC", "CI", "CD"]
 languages: ["Terraform"]
@@ -9,9 +9,9 @@ tools: ["Terraform"]
 primary_emojis: [":terraform:", ":docker:"]
 ---
 
-# Deploy Docker infrastructure using Terraform
+# Deploy Docker infrastructure with Terraform
 
-This template gives you a continuous integration (CI) pipeline for building, changing, and destroying Docker infrastructure using Terraform.
+This template gives you a continuous integration (CI) pipeline for building, changing, and destroying Docker infrastructure with Terraform.
 
 At a glance:
 
