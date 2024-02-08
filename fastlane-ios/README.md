@@ -2,10 +2,10 @@
 title: Fastlane for iOS
 description: Set up CI of iOS projects with Fastlane
 author: Buildkite
-use_cases: ["CI", "iOS"]
+use_cases: ["CI", "Mobile"]
 languages: ["Ruby"]
-platforms: ["Fastlane"]
-tools: []
+platforms: ["iOS"]
+tools: ["Fastlane"]
 primary_emojis: [":fastlane:"]
 ---
 
