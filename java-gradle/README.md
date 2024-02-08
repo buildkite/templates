@@ -1,32 +1,33 @@
 ---
-title: Java + Checkstyle + Gradle
-description: Set up a CI/CD pipeline for a Java application with linting, testing, and building using Checkstyle for linting, and Gradle for testing and building.
-tags: ["CI", "CD", "Java", "Checkstyle", "Gradle"]
+title: CI for Java using Gradle
+description: Build and test a Java application using Gradle.
 author: Buildkite
+languages: ["Java", "Kotlin"]
+use_cases: ["CI", "Web"]
+platforms: ["Docker"]
+tools: ["Gradle", "JUnit"]
+primary_emojis: [":java:", ":gradle:"]
 ---
 
-# CI/CD for Java with Linting, Testing, and Building
+# CI for Java using Gradle
 
-This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that lints, tests, and builds a Java application.
+This template gives you a continuous integration (CI) pipeline that builds and tests Java application using [Gradle](https://docs.gradle.org).
 
 At a glance:
 
-- For Java applications
-- Uses Checkstyle for linting
-- Uses Gradle for testing and building
-- Deploys to Maven Central
+- For [Java](https://dev.java/) applications
+- Uses Gradle for building and testing
 
 ## How it works
 
 This template:
 
-1. Lints the Java code with Checkstyle.
-2. Runs tests with Gradle.
-3. Builds the application with Gradle.
+1. Runs tests with Gradle.
+2. Builds the application with Gradle.
 
 ## Next steps
 
-After you select Use template, you’ll:
+After you select **Use template**, you’ll:
 
 1. Connect the Git repository with your Java application.
 2. Modify the commands if necessary.
@@ -34,3 +35,5 @@ After you select Use template, you’ll:
 4. Run the pipeline.
 
 You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
+
+If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).

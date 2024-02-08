@@ -1,7 +1,12 @@
 steps:
-  - label: ":java: Lint"
-    command: "./gradlew checkstyleMain"
-  - label: ":java: Test"
-    command: "./gradlew test"
-  - label: ":java: Build"
-    command: "./gradlew build"
+  - label: ":gradle: Test"
+    command: "gradle test"
+    plugins:
+      - docker#v3.5.0:
+          image: "gradle:8-jdk8"
+
+  - label: ":gradle: Build"
+    command: "gradle build"
+    plugins:
+      - docker#v3.5.0:
+          image: "gradle:8-jdk8"
