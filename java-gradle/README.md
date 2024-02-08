@@ -2,7 +2,7 @@
 title: CI for Java with Gradle
 description: Build and test a Java application with Gradle.
 author: Buildkite
-languages: ["Java", "Kotlin"]
+languages: ["Java"]
 use_cases: ["CI", "Web"]
 platforms: ["Docker"]
 tools: ["Gradle", "JUnit"]
