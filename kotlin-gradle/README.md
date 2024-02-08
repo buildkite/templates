@@ -1,22 +1,22 @@
 ---
-title: CI for Java using Gradle
-description: Build and test a Java application using Gradle.
+title: CI for Kotlin using Gradle
+description: Build and test a Kotlin application using Gradle.
 author: Buildkite
-languages: ["Java", "Kotlin"]
-use_cases: ["CI", "Web"]
-platforms: ["Docker"]
-tools: ["Gradle", "JUnit"]
-primary_emojis: [":java:", ":gradle:"]
+languages: ["Kotlin"]
+use_cases: ["CI", "Web", "Mobile"]
+platforms: ["Docker", "Android", "iOS"]
+tools: ["Gradle"]
+primary_emojis: [":kotlin:", ":gradle:"]
 ---
 
-# CI for Java using Gradle
+# CI for Kotlin using Gradle
 
-This template gives you a continuous integration (CI) pipeline that builds and tests a Java application using Gradle.
+This template gives you a continuous integration (CI) pipeline that builds and tests a Kotlin application using Gradle.
 
 At a glance:
 
-- For [Java](https://dev.java/) applications
-- Uses [Gradle](https://docs.gradle.org) for building and testing
+- For [Kotlin](https://kotlinlang.org/) applications
+- Uses [Gradle](https://gradle.org/) for building and testing
 
 ## How it works
 
