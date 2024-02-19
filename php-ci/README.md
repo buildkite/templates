@@ -11,7 +11,7 @@ primary_emojis: [":php:"]
 
 # CI/CD for PHP with Linting, Testing, and Building
 
-This template gives you a continuous integration pipeline that lints and tests a PHP application.
+This template gives you a continuous integration (CI) pipeline that lints and tests a PHP application.
 
 At a glance:
 
@@ -25,8 +25,8 @@ At a glance:
 This template:
 
 1. Installs PHP dependencies with Composer
-1. Lints application PHP code with PHP's built-in linter.
-2. Runs tests with PHPUnit.
+2. Lints application PHP code with PHP's built-in linter.
+3. Runs tests with PHPUnit.
 
 ## Next steps
 
@@ -38,3 +38,5 @@ After you select Use template, you’ll:
 4. Run the pipeline.
 
 You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
+
+If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).

@@ -1,10 +1,7 @@
 # Templates
 
-A collection of [Buildkite](https://buildkite.com) pipeline templates.
-
-> [!NOTE] 
-> 🚧 Under construction.
+A collection of templates to help you get started quickly with [Buildkite Pipelines](https://buildkite.com/pipelines).
 
 ## Contributing
 
-See [CONTRIBUTING](./CONTRIBUTING.md) for more details on how to constribute additional pipeline templates.
+See [CONTRIBUTING](./CONTRIBUTING.md) for more details on how to contribute additional pipeline templates.

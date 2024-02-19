@@ -21,7 +21,6 @@ At a glance:
 - Runs [RuboCop](https://rubocop.org/) for linting
 - Runs [RSpec](https://rspec.info/) for testing
 
-
 ## How it works
 
 This template:

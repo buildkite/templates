@@ -16,7 +16,7 @@ This template gives you a continuous integration (CI) pipeline for building, cha
 At a glance:
 
 - For [Terraform](https://www.terraform.io/)
-- Uses [Docker](https://github.com/buildkite-plugins/docker-buildkite-plugin) with a terraform image
+- Uses [Docker](https://github.com/buildkite-plugins/docker-buildkite-plugin) with a Terraform image
 
 ## How it works
 
