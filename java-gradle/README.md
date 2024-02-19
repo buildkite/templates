@@ -15,8 +15,8 @@ This template gives you a continuous integration (CI) pipeline that builds and t
 
 At a glance:
 
-- For [Java](https://dev.java/) applications.
-- Uses [Gradle](https://docs.gradle.org) for building and testing.
+- For [Java](https://dev.java/) applications
+- Uses [Gradle](https://docs.gradle.org) for building and testing
 - Requires [Docker](https://docs.docker.com/get-docker/)
 
 ## How it works

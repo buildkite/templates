@@ -1,6 +1,6 @@
 ---
 title: Fastlane for iOS
-description: Set up CI of iOS projects with Fastlane
+description: Set up CI for iOS projects with Fastlane
 author: Buildkite
 use_cases: ["CI", "Mobile"]
 languages: ["Ruby"]
@@ -15,41 +15,33 @@ This template gives you a continuous integration (CI) pipeline that runs an iOS 
 
 At a glance:
 
-- For [iOS] projects
-- Automate CI with [fastlane](https://fastlane.tools/)
-  - Unit testing
-  - Linting
-  - Building
-
-## Before you start
-
-To run this pipeline, you’ll need to install and set up the following on your CI server or local machine:
-
-- [fastlane](https://docs.fastlane.tools/getting-started/ios/setup/)
-- [Fastfile](./example-project/fastlane/Fastfile) with the following actions:
-  - `test` - runs unit tests with the [`run_tests`](http://docs.fastlane.tools/actions/run_tests) action
-  - `lint` - runs swift code validation using [Swiftlint](http://docs.fastlane.tools/actions/swiftlint)
-  - `build` - builds the app via [gym](http://docs.fastlane.tools/actions/gym)
+- For iOS projects
+- Uses [fastlane](https://fastlane.tools/)
 
 ## How it works
 
 This template:
 
-- Installs dependencies using [bundler](https://bundler.io/).
-- Runs fastlane lanes:
-  - Run unit testing with [scan](http://docs.fastlane.tools/actions/run_tests/#whats-scan).
-  - Performs static analysis on the codebase with Swiftlint.
-  - Builds the app with gym.
+1. Installs dependencies using [bundler](https://bundler.io/).
+2. Runs fastlane lanes:
+   - Runs unit testing with [scan](http://docs.fastlane.tools/actions/run_tests/#whats-scan).
+   - Performs static analysis on the codebase with [Swiftlint](https://github.com/realm/SwiftLint).
+   - Builds the app with [gym](https://docs.fastlane.tools/actions/gym/).
 
-The lint, test and build steps run parallel and all depends on the 'install dependencies' step to complete before starting.
+After the depedencies are installed, the lint, test, and build steps all run in parallel.
 
 ## Next steps
 
 After you select **Use template**, you’ll:
 
 1. Connect the Git repository for your iOS project.
-2. Check the commands match the lanes in your `Fastfile` (see our [example](./example-project/fastlane/Fastfile)).
+2. Check the commands match the lanes in your `Fastfile` (see the [example](./example-project/fastlane/Fastfile)).
 3. Configure the compute—run locally, on-premises, or in the cloud.
+4. Install [fastlane](https://docs.fastlane.tools/getting-started/ios/setup/) on your compute agents.
+5. Set up your [Fastfile](./example-project/fastlane/Fastfile) with the following actions:
+   - `test`: Runs unit tests with the [`run_tests`](http://docs.fastlane.tools/actions/run_tests) action.
+   - `lint`: Runs Swift code validation using [Swiftlint](http://docs.fastlane.tools/actions/swiftlint).
+   - `build`: Builds the app using [gym](http://docs.fastlane.tools/actions/gym).
 4. Run the pipeline.
 
 You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.

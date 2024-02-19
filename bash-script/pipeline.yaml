@@ -1,5 +1,5 @@
 steps:
-  - label: ":hammer: Example Script"
+  - label: ":hammer: Example script"
     command: |
       echo -e "\033[33mCongratulations!\033[0m You've successfully run your first build on Buildkite! 👍
 

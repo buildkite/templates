@@ -25,10 +25,10 @@ At a glance:
 
 This template:
 
-- Install Python dependencies with pip, caching the result.
-- Performs static analysis on the codebase with Ruff.
-- Runs pytest unit tests.
-- Automatically annotates the build based on junit test output
+1. Install Python dependencies with pip, caching the result.
+2. Performs static analysis on the codebase with Ruff.
+3. Runs pytest unit tests.
+4. Automatically annotates the build based on junit test output
 
 ## Next steps
 

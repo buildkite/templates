@@ -26,10 +26,10 @@ At a glance:
 
 This template:
 
-- Installs Node dependencies using npm, caching the result.
-- Performs static analysis on the codebase with ESLint.
-- Runs Jest unit tests.
-- Starts the web app using `npm start` on port `8000`, then runs any Cypress tests using their official [Docker image](https://github.com/cypress-io/cypress-docker-images). It uses [`wait-on`](https://www.npmjs.com/package/wait-on) to verify the app is ready for testing.
+1. Installs Node dependencies using npm, caching the result.
+2. Performs static analysis on the codebase with ESLint.
+3. Runs Jest unit tests.
+4. Starts the web app using `npm start` on port `8000`, then runs any Cypress tests using their official [Docker image](https://github.com/cypress-io/cypress-docker-images). It uses [`wait-on`](https://www.npmjs.com/package/wait-on) to verify the app is ready for testing.
 
 All steps run in serial, with each depending on the previous step to complete before starting. The runtime environment uses a Docker image with the latest version of Node.
 

@@ -12,7 +12,7 @@
 ***
 *** Front Matter Key
 ***
-*** title: <CI/CD for [technology] with [key features]>
+*** title: <Shortened version of your H1>
 *** description: <Short description of the use case>
 *** author: <Organization or person in double quotes>
 *** use_cases: <Array of use cases in format ["IaC", "CI"]>
@@ -24,6 +24,7 @@
 ***
 *** Content Guide
 ***
+*** H1: CI/CD for <technology> with <key features>
 *** Intro paragraph: This template gives you a continuous integration and
 *** continuous deployment (CI/CD) pipeline that <high-level description of pipeline goal>.
 ***

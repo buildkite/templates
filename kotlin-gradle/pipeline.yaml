@@ -5,7 +5,7 @@ steps:
       - docker#v3.5.0:
           image: "gradle:8-jdk8"
 
-  - label: ":gradle: Build"
+  - label: ":hammer_and_wrench: Build"
     command: "gradle build"
     plugins:
       - docker#v3.5.0:
