@@ -54,7 +54,7 @@
 -->
 
 ---
-title: CI/CD for Pulumi projects with AWS, Node.js, and npm
+title: Deploy AWS with Pulumi
 description: Preview and deploy Pulumi changes to AWS using Node.js and npm
 author: "Buildkite"
 use_cases: ["IaC", "CI"]
@@ -63,6 +63,8 @@ platforms: ["Pulumi", "Docker", "AWS"]
 tools: []
 primary_emojis: [":pulumi:", ":aws:"]
 ---
+
+# Deploy AWS infrastructure with Pulumi
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that previews a Pulumi change before deploying it to AWS.
 
