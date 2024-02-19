@@ -1,6 +1,6 @@
 ---
 title: "Compile Go binary"
-description: "Build and cross-compile a Go binary for Linux, Windows, and Darwin architectures.
+description: "Build and cross-compile a Go binary for Linux, Windows, and Darwin architectures."
 author: Buildkite
 use_cases: ["CI"]
 languages: ["Go"]
