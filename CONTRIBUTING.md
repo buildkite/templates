@@ -1,36 +1,36 @@
 # How to contribute a pipeline template
 
-You can add a new pipeline template to this repo by using the following structure:
+You can add a new pipeline template to this repository by using the following structure:
 
 ```
 .
-└── snowflake-data-ingestion-pipeline/
+└── your-template-name/
     ├── pipeline.yaml
-    └── README.md
+    ├── README.md
     └── example-project
         └── ...
 ```
 
 ## `pipeline.yaml`
 
-A Buildkite Pipeline definition [file](https://buildkite.com/docs/pipelines/defining-steps).
+The Buildkite [pipeline definition](https://buildkite.com/docs/pipelines/defining-steps) for the template.
 
 ## `README.md`
 
-Your `README.md` should contain a high-level description of your template definition and how it works.
+A high-level description of your template definition and how it works.
 
-Use the [`BLANK_README.md`](https://github.com/buildkite/templates/blob/main/BLANK_README.md) file in the root directory of this repo to get started. It contains example text along with a key to required front matter, plus a content guide.
+Use the [`EXAMPLE_README.md`](./EXAMPLE_README.md) file in the root directory of this repository to get started. It contains example text, a key to the required front matter, and a content guide.
 
 ## `example-project` (optional)
 
-Having an example project with relevant boilerplate makes it possible to test pipeline yaml in isolation.
+An example project with relevant boilerplate code to test the pipeline definition in isolation.
 
-It's paricularly useful when paired with the Buildkite CLI by running the following command:
-
-```sh
-cd my-template-ci/example;
-bk local run ../pipeline.yaml
-```
+> [!TIP]
+> You can use the [Buildkite CLI](https://github.com/buildkite/cli) to run the pipeline locally from the `example-project` directory with the following command:
+>
+> ```sh
+> bk local run ../pipeline.yaml
+> ```
 
 # Publication on Buildkite.com
 

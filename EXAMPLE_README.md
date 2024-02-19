@@ -1,15 +1,18 @@
 <!--
-*** This is a example README that you can edit to suit your needs.
-*** After you've edited this file, delete this comment block
-*** and ensure that there are no leading spaces before the front matter.
-*** Then, save this file as README.md in the directory for your template.
+*** This is a example README with the details to include for your template.
+***
+*** To use this example:
+*** 1. Make a copy of this file in the directory for your template.
+*** 2. Edit the copy to suit your template.
+*** 3. Delete this comment block, ensuring there are no leading spaces before the frontmatter.
+***
 *** If you have any trouble, submit a PR, and we'll get back to you.
 *** Thank you!
 ***
 ***
 *** Front Matter Key
 ***
-*** title: <List of key tech separated by ‘+’>
+*** title: <CI/CD for [technology] with [key features]>
 *** description: <Short description of the use case>
 *** author: <Organization or person in double quotes>
 *** use_cases: <Array of use cases in format ["IaC", "CI"]>
@@ -21,7 +24,6 @@
 ***
 *** Content Guide
 ***
-*** H1: CI/CD for <technology> with <key features>
 *** Intro paragraph: This template gives you a continuous integration and
 *** continuous deployment (CI/CD) pipeline that <high-level description of pipeline goal>.
 ***
@@ -51,7 +53,7 @@
 -->
 
 ---
-title: Pulumi + AWS + Node.js + npm
+title: CI/CD for Pulumi projects with AWS, Node.js, and npm
 description: Preview and deploy Pulumi changes to AWS using Node.js and npm
 author: "Buildkite"
 use_cases: ["IaC", "CI"]
@@ -60,8 +62,6 @@ platforms: ["Pulumi", "Docker", "AWS"]
 tools: []
 primary_emojis: [":pulumi:", ":aws:"]
 ---
-
-# CI/CD for Pulumi projects with AWS, Node.js, and npm
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that previews a Pulumi change before deploying it to AWS.
 
