@@ -6,6 +6,7 @@ languages: ["JavaScript"]
 use_cases: ["CD", "Web"]
 platforms: ["Vercel"]
 tools: ["Next.js"]
+primary_emojis: [":vercel:"]
 ---
 
 # Deploy to Vercel
