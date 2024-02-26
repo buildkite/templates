@@ -1,0 +1,18 @@
+steps:
+  - label: ":vercel: Build preview"
+    command:
+      - npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+      - npx vercel build --prod --token="$VERCEL_TOKEN"
+    plugins:
+      - artifacts#v1.9.2:
+          upload: ".vercel/output"
+          compressed: .vercel/output.tgz
+
+  - label: Deploy preview
+    depends_on: "build"
+    if: build.branch != "main"
+    command: npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+    plugins:
+      - artifacts#v1.9.2:
+          download: ".vercel/output"
+          compressed: .vercel/output.tgz
