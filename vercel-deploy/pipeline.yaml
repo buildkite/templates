@@ -1,5 +1,5 @@
 steps:
-  - label: ":vercel: Build preview"
+  - label: ":vercel: Build project"
     command:
       - npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
       - npx vercel build --prod --token="$VERCEL_TOKEN"
@@ -8,7 +8,7 @@ steps:
           upload: ".vercel/output"
           compressed: .vercel/output.tgz
 
-  - label: Deploy preview
+  - label: Deploy to production
     depends_on: "build"
     if: build.branch != "main"
     command: npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
