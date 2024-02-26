@@ -3,6 +3,7 @@ import { Validator } from "npm:jsonschema";
 import { globSync } from "npm:glob";
 import chalk from "npm:chalk";
 import fs from "node:fs";
+import isValidEmoji from "./lib/isValidEmoji.ts";
 
 // Fetch the current pipeline configuration schema
 const response = await fetch(
@@ -30,9 +31,13 @@ pipelines.forEach((pipeline) => {
   const keys: string[] = [];
   const keyRefs: string[] = [];
 
-  // Check for duplicate and invalid keys
+  // Check for duplicate and invalid keys, and unknown emojis
   parsed.steps.forEach(
-    (step: string | { key?: string; depends_on?: string[] | string }) => {
+    (
+      step:
+        | string
+        | { label?: string; key?: string; depends_on?: string[] | string }
+    ) => {
       if (typeof step === "string") return;
 
       if (step.key) {
@@ -52,10 +57,21 @@ pipelines.forEach((pipeline) => {
           keyRefs.push(...step.depends_on);
         }
       }
+
+      if (step.label) {
+        step.label.match(/(:[\w-]+:)/g)?.forEach((match) => {
+          if (!isValidEmoji(match.replace(/:/g, ""))) {
+            errors.push({
+              pipeline,
+              message: `Unknown emoji: ${match}`,
+            });
+          }
+        });
+      }
     }
   );
 
-  // Check for invalid depends_on references
+  // Check for usage of invalid keys
   keyRefs.forEach((ref) => {
     if (!keys.includes(ref)) {
       errors.push({
