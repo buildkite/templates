@@ -2,7 +2,7 @@
 title: Deploy to Vercel
 description: Build and deploy a web application to Vercel production environment.
 author: Buildkite
-langauges: ["Javascript"]
+languages: ["JavaScript"]
 use_cases: ["CD", "Web"]
 platforms: ["Vercel"]
 tools: ["Next.js"]
