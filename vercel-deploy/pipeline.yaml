@@ -1,5 +1,6 @@
 steps:
   - label: ":vercel: Build project"
+    key: "build"
     command:
       - npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
       - npx vercel build --prod --token="$VERCEL_TOKEN"

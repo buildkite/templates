@@ -1,5 +1,6 @@
 steps:
   - label: ":composer: Install packages"
+    key: "composer"
     command: "composer install"
     plugins:
       - docker#v5.9.0:
