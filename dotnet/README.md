@@ -1,35 +1,39 @@
 ---
-title: .NET
-description: Set up a CI pipeline for a .NET web app with restore, test and build commands
-tags: ["CI", ".NET"]
+title: CI for .NET
+description: Set up a CI pipeline for a .NET application using standard library tooling.
 author: Buildkite
+languages: ["C#"]
+platforms: [".NET", "Docker", "Windows"]
+use_cases: ["CI", "Web"]
+tools: [".NET"]
+primary_emojis: [":dotnet:"]
 ---
 
-# CI for .NET with Buildkite
+# CI for .NET
 
-This template gives you a continuous integration (CI) pipeline for .NET web apps that automates installing dependencies, build and run unit test.
+This template provides a continuous integration (CI) pipeline for .NET applications.
 
 At a glance:
 
-- For [.NET](https://dotnet.microsoft.com/) web apps
-- Uses the [.NET SDK CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/) for continuous integration:
-  - [`dotnet restore`](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-restore): restores the project's dependencies.
-  - [`dotnet build`](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build): build the project using the Release configuration and disable implicit restore
-  - `dotnet test`: .NET test driver to run unit tests using the Release configuration and normal verbosity
+- For [.NET](https://dotnet.microsoft.com/) applications
+- Requires [Docker](https://docs.docker.com/get-docker/)
+- Uses the [.NET SDK CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/)
 
 ## How it works
 
 This template:
 
-1. Installs the dependencies
-2. Builds the application
-3. Runs unit tests
+1. Restores project dependencies using [`dotnet restore`](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-restore) and caches them for use across subsequent steps.
+2. Builds the project using using [`dotnet build`](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build).
+3. Runs unit tests using [`dotnet test`](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test).
+
+The runtime environment uses the official [.NET SDK Docker image](https://hub.docker.com/_/microsoft-dotnet-sdk/) with the latest version.
 
 ## Next steps
 
-After you select Use template, you’ll:
+After you select **Use template**, you’ll:
 
-1. Connect the Git repository for your .NET web app.
+1. Connect the Git repository for your .NET application.
 2. Configure the compute—run locally, on-premises, or in the cloud.
 3. Run the pipeline.
 
