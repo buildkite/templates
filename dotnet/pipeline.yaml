@@ -1,12 +1,36 @@
 steps:
-  - label: ":package: Restore dependencies"
-    command: "dotnet restore"
+  - label: ":dotnet: Restore dependencies"
+    command: "dotnet restore --packages .nuget/packages"
     key: "deps"
+    plugins:
+      - docker:
+          image: mcr.microsoft.com/dotnet/sdk:8.0
+      - artifacts:
+          upload: .nuget/packages
+          compressed: .nuget/packages.tgz
+      - artifacts:
+          upload: obj/*
 
-  - label: ":construction_worker: Build"
+  - label: ":dotnet: Build"
     command: "dotnet build --configuration Release --no-restore --property:EnforceCodeStyleInBuild=true"
     depends_on: "deps"
+    plugins:
+      - artifacts:
+          download: .nuget/packages
+          compressed: .nuget/packages.tgz
+      - artifacts:
+          download: obj/*
+      - docker:
+          image: mcr.microsoft.com/dotnet/sdk:8.0
 
-  - label: ":white_check_mark: Run tests"
+  - label: ":dotnet: Run tests"
     command: "dotnet test --no-restore --verbosity normal"
     depends_on: "deps"
+    plugins:
+      - artifacts:
+          download: .nuget/packages
+          compressed: .nuget/packages.tgz
+      - artifacts:
+          download: obj/*
+      - docker:
+          image: mcr.microsoft.com/dotnet/sdk:8.0
