@@ -1,5 +1,6 @@
 steps:
-  - plugins:
+  - label: ":golang: Cross compile"
+    plugins:
       - golang-cross-compile#v1.4.0:
           build: main.go
           targets:
