@@ -1,6 +1,3 @@
-env:
-  NODE_VERSION: "latest"
-
 steps:
   - label: ":npm: Install dependencies"
     key: "deps"
@@ -12,7 +9,7 @@ steps:
           restore: file
           save: file
       - docker#v5.9.0:
-          image: "node:${NODE_VERSION}"
+          image: "node:latest"
 
   - label: ":eslint: Run ESLint"
     command: "npx eslint"
@@ -23,7 +20,7 @@ steps:
           path: node_modules
           restore: file
       - docker#v5.9.0:
-          image: "node:${NODE_VERSION}"
+          image: "node:latest"
 
   - label: ":jest: Run unit tests"
     depends_on: "deps"
