@@ -11,6 +11,13 @@ steps:
           upload: "$SWIFT_CACHE_PATH"
           compressed: cache.tgz
 
+  - label: ":swift: Lint"
+    command: "swiftlint"
+    plugins:
+      - docker#v5.9.0:
+          image: "ghcr.io/realm/swiftlint:latest"
+          platform: "linux/amd64"
+
   - label: ":swift: Test"
     command: "swift test --cache-path $SWIFT_CACHE_PATH"
     depends_on: ["build"]
