@@ -30,6 +30,8 @@ This template:
 3. Runs pytest unit tests.
 4. Automatically annotates the build based on junit test output
 
+The runtime environment uses the official [Python Docker image](https://hub.docker.com/_/python) with the latest version.
+
 ## Next steps
 
 After you select **Use template**, you’ll:

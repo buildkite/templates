@@ -1,0 +1,30 @@
+env:
+  SWIFT_CACHE_PATH: .cache
+
+steps:
+  - label: ":swift: Build"
+    key: "build"
+    command: "swift build --cache-path $SWIFT_CACHE_PATH"
+    plugins:
+      - docker#v5.9.0:
+          image: "swift:latest"
+      - artifacts#v1.9.3:
+          upload: "$SWIFT_CACHE_PATH"
+          compressed: cache.tgz
+
+  - label: ":swift: Lint"
+    command: "swiftlint"
+    plugins:
+      - docker#v5.9.0:
+          image: "ghcr.io/realm/swiftlint:latest"
+          platform: "linux/amd64"
+
+  - label: ":swift: Test"
+    command: "swift test --cache-path $SWIFT_CACHE_PATH"
+    depends_on: ["build"]
+    plugins:
+      - docker#v5.9.0:
+          image: "swift:latest"
+      - artifacts#v1.9.3:
+          download: "$SWIFT_CACHE_PATH"
+          compressed: cache.tgz
