@@ -3,6 +3,7 @@ env:
 
 steps:
   - label: ":swift: Build"
+    key: "build"
     command: "swift build --cache-path $SWIFT_CACHE_PATH"
     plugins:
       - docker#v5.9.0:
