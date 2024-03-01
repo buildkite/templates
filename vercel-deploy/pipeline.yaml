@@ -11,7 +11,7 @@ steps:
 
   - label: ":vercel: Deploy"
     depends_on: "build"
-    if: build.branch != "main"
+    if: build.branch == "main"
     command: npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
     plugins:
       - artifacts#v1.9.2:
