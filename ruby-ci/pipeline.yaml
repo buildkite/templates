@@ -10,11 +10,9 @@ steps:
           image: "ruby:latest"
           environment:
             - BUNDLE_PATH
-      - cache#v0.6.0:
-          manifest: Gemfile.lock
-          path: vendor/bundle
-          restore: file
-          save: file
+      - artifacts#v1.9.3:
+          upload: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
 
   - label: ":rubocop: Run rubocop"
     command: "bundle exec rubocop"
@@ -24,10 +22,9 @@ steps:
           image: "ruby:latest"
           environment:
             - BUNDLE_PATH
-      - cache#v0.6.0:
-          manifest: Gemfile.lock
-          path: vendor/bundle
-          restore: file
+      - artifacts#v1.9.3:
+          download: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
 
   - label: ":rspec: Run rspec"
     command: "bundle exec rspec"
@@ -37,7 +34,6 @@ steps:
           image: "ruby:latest"
           environment:
             - BUNDLE_PATH
-      - cache#v0.6.0:
-          manifest: Gemfile.lock
-          path: vendor/bundle
-          restore: file
+      - artifacts#v1.9.3:
+          download: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
