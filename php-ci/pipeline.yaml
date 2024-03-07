@@ -5,11 +5,9 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "composer:latest"
-      - cache#v0.6.0:
-          manifest: composer.lock
-          path: vendor
-          restore: file
-          save: file
+      - artifacts#v1.9.3:
+          upload: "vendor"
+          compressed: vendor.tgz
 
   - label: ":php: Lint"
     depends_on: "composer"
@@ -17,10 +15,9 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "php:latest"
-      - cache#v0.6.0:
-          manifest: composer.lock
-          path: vendor
-          restore: file
+      - artifacts#v1.9.3:
+          download: "vendor"
+          compressed: vendor.tgz
 
   - label: ":phpunit: Run phpunit"
     depends_on: "composer"
@@ -28,7 +25,6 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "php:latest"
-      - cache#v0.6.0:
-          manifest: composer.lock
-          path: vendor
-          restore: file
+      - artifacts#v1.9.3:
+          download: "vendor"
+          compressed: vendor.tgz
