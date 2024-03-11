@@ -24,6 +24,7 @@ export async function fetchCategories() {
 
 async function insertCategory(
   category: string,
+  searchFacet: string,
   existingCategories: Map<string, string>
 ) {
   const slug = category.toLowerCase().replace(/ /g, "-");
@@ -38,6 +39,7 @@ async function insertCategory(
       },
       name: category,
       slug: category.toLowerCase().replace(/ /g, "-"),
+      facet: searchFacet,
     });
   } else {
     // Do nothing.
@@ -51,10 +53,10 @@ const parsedCategories = await pipelines.reduce(async (asyncAcc, path) => {
   const template = await parseTemplate(join(folder, "README.md"));
 
   const acc = await asyncAcc;
-  template.languages.forEach((category) => acc.add(category));
-  template.use_cases.forEach((category) => acc.add(category));
-  template.platforms.forEach((category) => acc.add(category));
-  template.tools.forEach((category) => acc.add(category));
+  template.languages.forEach((category) => acc.add([category, "language"]));
+  template.use_cases.forEach((category) => acc.add([category, "useCase"]));
+  template.platforms.forEach((category) => acc.add([category, "platform"]));
+  template.tools.forEach((category) => acc.add([category, "tool"]));
 
   return acc;
 }, new Set());
@@ -63,6 +65,6 @@ console.log("Bulk fetching categories...");
 const datoCategories = await fetchCategories();
 
 console.log("Inserting categories...");
-for (const category of parsedCategories) {
-  await insertCategory(category, datoCategories);
+for (const [category, searchFacet] of parsedCategories) {
+  await insertCategory(category, searchFacet, datoCategories);
 }
