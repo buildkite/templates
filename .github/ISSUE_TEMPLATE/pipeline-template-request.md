@@ -1,8 +1,8 @@
 ---
 name: Pipeline template request
 about: Suggest a new Buildkite Pipeline template
-title: 'Add CI template for Go '
-labels: ''
+title: ''
+labels: template request
 assignees: ''
 
 ---
