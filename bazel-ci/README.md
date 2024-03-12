@@ -38,4 +38,4 @@ You can then play around with the pipeline settings. For example, run the pipeli
 
 For more information about advanced Bazel usage, see [How Bazel built its CI system on top of Buildkite](https://buildkite.com/blog/how-bazel-built-its-ci-system-on-top-of-buildkite).
 
-If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).
+If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues/new?template=pipeline-template-request.md), or [reach out to support](https://buildkite.com/support).
