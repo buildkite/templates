@@ -17,7 +17,8 @@ export async function fetchCategories() {
       type: CATEGORY_ID,
     },
   })) {
-    categories.set(record.slug, record.id);
+    // Trust me, this exists and it's a string.
+    categories.set(record.slug as string, record.id);
   }
   return categories;
 }
@@ -42,24 +43,23 @@ async function insertCategory(
       facet: searchFacet,
     });
   } else {
-    // Do nothing.
+    console.log(`Skipped category: ${category}`);
   }
 }
 
 const pipelines = globSync("*/pipeline.yaml");
 
-const parsedCategories = await pipelines.reduce(async (asyncAcc, path) => {
-  const folder = dirname(path);
-  const template = await parseTemplate(join(folder, "README.md"));
+const templates = await Promise.all(
+  pipelines.map((path) => parseTemplate(join(dirname(path), "README.md")))
+);
 
-  const acc = await asyncAcc;
+const parsedCategories = templates.reduce((acc, template) => {
   template.languages.forEach((category) => acc.add([category, "language"]));
   template.use_cases.forEach((category) => acc.add([category, "useCase"]));
   template.platforms.forEach((category) => acc.add([category, "platform"]));
   template.tools.forEach((category) => acc.add([category, "tool"]));
-
   return acc;
-}, new Set());
+}, new Set<[string, string]>());
 
 console.log("Bulk fetching categories...");
 const datoCategories = await fetchCategories();
