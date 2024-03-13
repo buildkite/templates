@@ -1,10 +1,8 @@
 steps:
-  - name: "Snyk testing"
+  - name: ":snyk: Test"
+    command: "snyk test"
     plugins:
-      - seek-oss/snyk#v1.0.0:
-          block: true
-          language: node
-          path: package.json
-          severity: low
-          npmToken: NPM_TOKEN
-          org: test-team
+      - docker:
+          image: "snyk/snyk:node"
+          environment:
+            - SNYK_TOKEN
