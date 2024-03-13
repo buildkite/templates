@@ -1,6 +1,6 @@
 ---
 title: Security scanning for Node.js
-description: Audit your Node.js project for security vulnerabilities using Snyk
+description: Audit your Node.js project for security vulnerabilities using Snyk.
 author: Buildkite
 use_cases: ["Security", "CI", "Schedule"]
 platforms: ["Docker"]
