@@ -1,0 +1,8 @@
+steps:
+  - name: ":snyk: Test"
+    command: "snyk test"
+    plugins:
+      - docker:
+          image: "snyk/snyk:node"
+          environment:
+            - SNYK_TOKEN
