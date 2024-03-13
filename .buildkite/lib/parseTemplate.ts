@@ -72,8 +72,8 @@ const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
     errors.push("missing platforms");
   }
 
-  if (!meta.use_cases) {
-    errors.push("missing use_cases");
+  if (!meta.use_cases || meta.use_cases.length == 0) {
+    errors.push("must have at least one `use_cases`");
   }
 
   if (!meta.languages) {
@@ -81,7 +81,7 @@ const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
   }
 
   if (!meta.primary_emojis || meta.primary_emojis.length == 0) {
-    errors.push("template must have at least one `primary_emoji`");
+    errors.push("must have at least one `primary_emoji`");
   } else {
     for (const emoji of meta.primary_emojis) {
       if (!isValidEmoji(emoji.replace(/:/g, ""))) {
