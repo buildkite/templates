@@ -6,7 +6,7 @@ use_cases: ["Security", "CI", "Schedule"]
 platforms: ["Docker"]
 languages: ["JavaScript"]
 tools: ["Snyk"]
-
+primary_emojis: [":snyk:", ":nodejs:"]
 ---
 
 # Security scanning for Node.js using Snyk
