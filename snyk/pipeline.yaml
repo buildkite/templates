@@ -1,8 +1,8 @@
 steps:
-  - name: ":snyk: Test"
+  - label: ":snyk: Test Node.js"
     command: "snyk test"
     plugins:
-      - docker:
+      - docker#v5.9.0:
           image: "snyk/snyk:node"
           environment:
             - SNYK_TOKEN
