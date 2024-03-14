@@ -1,0 +1,5 @@
+steps:
+  - label: ":fly-io: fly deploy"
+    plugins:
+      - dannymidnight/setup-flyctl
+    command: "flyctl deploy"
