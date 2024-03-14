@@ -1,5 +1,5 @@
 ---
-title: Security scanning for Node.js
+title: Scan Node.js with Snyk
 description: Audit your Node.js project for security vulnerabilities using Snyk.
 author: Buildkite
 use_cases: ["Security", "CI", "Schedule"]
@@ -9,7 +9,7 @@ tools: ["Snyk"]
 primary_emojis: [":snyk:", ":nodejs:"]
 ---
 
-# Security scanning for Node.js using Snyk
+# Scan Node.js for vulnerabilities with Snyk
 
 This template gives you a continuous integration (CI) pipeline that scans a Node.js project for security vulnerabilities using Snyk.
 
