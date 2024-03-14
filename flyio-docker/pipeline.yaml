@@ -1,5 +1,19 @@
+env:
+  APP_NAME: "example-project"
+  PLATFORM: "linux/amd64"
+
 steps:
-  - label: ":fly-io: fly deploy"
+  - label: ":docker: docker build and push"
+    key: "build"
     plugins:
       - dannymidnight/setup-flyctl
-    command: "flyctl deploy"
+    commands: |
+      fly auth docker
+      docker build -t registry.fly.io/${APP_NAME}:${BUILDKITE_COMMIT} --platform ${PLATFORM} .
+      docker push registry.fly.io/${APP_NAME}:${BUILDKITE_COMMIT}
+
+  - label: ":fly-io: fly deploy"
+    depends_on: "build"
+    plugins:
+      - dannymidnight/setup-flyctl
+    command: "flyctl deploy -i registry.fly.io/${APP_NAME}:${BUILDKITE_COMMIT}"
