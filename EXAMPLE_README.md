@@ -47,10 +47,6 @@
 *** 2. <Any modifications to the template like commands, environment variables, secrets>
 *** 3. Configure the compute—run locally, on-premises, or in the cloud.
 *** 4. Run the pipeline.
-***
-*** Footer:
-*** <You can then play around...>
-*** <If you need help,...>
 -->
 
 ---
@@ -99,7 +95,3 @@ After you select **Use template**, you’ll:
 5. Store `PULUMI_ACCESS_TOKEN` in your pipeline secrets.
 6. Configure the compute—run locally, on-premises, or in the cloud.
 7. Run the pipeline.
-
-You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
-
-If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).

@@ -33,10 +33,6 @@ The runtime environment uses the official [Golang Docker image](https://hub.dock
 
 After you select **Use template**, you’ll:
 
-1. Connect the Git repository with your Golang module.
+1. Connect the Git repository with your Go module.
 2. Configure the compute—run locally, on-premises, or in the cloud.
 3. Run the pipeline.
-
-You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
-
-If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).

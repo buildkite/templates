@@ -30,12 +30,10 @@ The runtime environment uses the official [Synk Docker image](httpshttps://githu
 
 ## Next steps
 
-After you select Use template, you’ll:
+After you select **Use template**, you’ll:
 
 1. Connect your git repository.
 2. Modify the template commands, environment variables, secrets as needed for your project.
 3. [Retrieve](https://docs.snyk.io/getting-started/how-to-obtain-and-authenticate-with-your-snyk-api-token) and store `SNYK_TOKEN` in your pipeline secrets.
 4. Configure the compute—run locally, on-premises, or in the cloud.
 5. Run the pipeline.
-
-You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.

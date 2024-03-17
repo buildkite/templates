@@ -36,7 +36,3 @@ After you select **Use template**, you’ll:
 2. Configure Buildkite with the following secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
 3. Configure the compute—run locally, on-premises, or in the cloud.
 4. Run the pipeline.
-
-You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
-
-If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).
