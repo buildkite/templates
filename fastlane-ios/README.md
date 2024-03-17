@@ -43,7 +43,3 @@ After you select **Use template**, you’ll:
    - `lint`: Runs Swift code validation using [Swiftlint](http://docs.fastlane.tools/actions/swiftlint).
    - `build`: Builds the app using [gym](http://docs.fastlane.tools/actions/gym).
 4. Run the pipeline.
-
-You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
-
-If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).

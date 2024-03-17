@@ -37,5 +37,3 @@ After you select Use template, you’ll:
 3. [Retrieve](https://docs.snyk.io/getting-started/how-to-obtain-and-authenticate-with-your-snyk-api-token) and store `SNYK_TOKEN` in your pipeline secrets.
 4. Configure the compute—run locally, on-premises, or in the cloud.
 5. Run the pipeline.
-
-You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
