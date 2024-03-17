@@ -30,7 +30,7 @@ The runtime environment uses the official [Synk Docker image](httpshttps://githu
 
 ## Next steps
 
-After you select Use template, you’ll:
+After you select **Use template**, you’ll:
 
 1. Connect your git repository.
 2. Modify the template commands, environment variables, secrets as needed for your project.

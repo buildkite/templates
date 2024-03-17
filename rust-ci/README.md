@@ -30,7 +30,7 @@ This template:
 
 ## Next steps
 
-After you select Use template, you’ll:
+After you select **Use template**, you’ll:
 
 1. Connect the Git repository with your Rust application.
 2. Modify the commands if necessary.

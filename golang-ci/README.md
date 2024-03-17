@@ -33,6 +33,6 @@ The runtime environment uses the official [Golang Docker image](https://hub.dock
 
 After you select **Use template**, you’ll:
 
-1. Connect the Git repository with your Golang module.
+1. Connect the Git repository with your Go module.
 2. Configure the compute—run locally, on-premises, or in the cloud.
 3. Run the pipeline.
