@@ -1,5 +1,5 @@
 ---
-title: Deploy AWS with Terraform
+title: Deploy AWS using Terraform
 description: Build, change, and destroy AWS infrastructure using Terraform.
 author: "Buildkite"
 use_cases: ["IaC", "CI", "CD"]
@@ -9,7 +9,7 @@ tools: ["Terraform"]
 primary_emojis: [":terraform:", ":aws:"]
 ---
 
-# Deploy AWS infrastructure with Terraform
+# Deploy AWS infrastructure using Terraform
 
 This template gives you a continuous integration (CI) pipeline for building, changing, and destroying AWS infrastructure using Terraform.
 
