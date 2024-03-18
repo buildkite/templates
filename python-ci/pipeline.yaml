@@ -4,7 +4,7 @@ steps:
     command: pip install -r requirements.txt
     plugins:
       - docker#v5.9.0:
-          image: "python:latest"
+          image: "python:3.13"
 
   - label: Lint with Ruff
     depends_on: ["pip"]
@@ -13,7 +13,7 @@ steps:
       ruff check .
     plugins:
       - docker#v5.9.0:
-          image: "python:latest"
+          image: "python:3.13"
 
   - label: ":pytest: Run pytest"
     key: "pytest"
@@ -25,7 +25,7 @@ steps:
       - junit/test-results.xml
     plugins:
       - docker#v5.9.0:
-          image: "python:latest"
+          image: "python:3.13"
 
   - label: ":junit: Annotate"
     depends_on: ["pytest"]
