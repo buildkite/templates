@@ -1,10 +1,9 @@
 # Buildkite Pipeline Templates
 
 ![](template.png)
-*[Swift CI template](https://buildkite.com/pipelines/templates/ci/swift)*
+_[Swift CI template](https://buildkite.com/pipelines/templates/ci/swift)_
 
 A collection of templates to help you get started quickly with [Buildkite Pipelines](https://buildkite.com/pipelines), available to view in the [Buildkite template gallery](https://buildkite.com/pipelines/templates).
-
 
 ## What are they?
 
