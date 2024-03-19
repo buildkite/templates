@@ -1,4 +1,4 @@
-# Buildkite Pipeline Templates
+# Buildkite Pipeline templates
 
 ![](template.png)
 _[Swift CI template](https://buildkite.com/pipelines/templates/ci/swift)_
