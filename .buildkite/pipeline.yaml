@@ -1,36 +1,39 @@
 steps:
-  - group: "Validate"
-    key: "validate"
-    steps:
-      - label: ":buildkite: Validate pipelines"
-        command: deno run --check -A --quiet .buildkite/validatePipeline.ts
-        plugins: &deno
-          - docker#v5.9.0:
-              image: "denoland/deno:1.38.0"
-              environment:
-                - DATO_API_TOKEN
+  - command: cd nodejs-ci/example-project; bk local run ../pipeline.yaml
+    plugins: [dannymidnight/setup-bkcli]
 
-      - label: ":markdown: Validate content"
-        command: deno run -A --quiet .buildkite/validateContent.ts
-        plugins: *deno
+  # - group: "Validate"
+  #   key: "validate"
+  #   steps:
+  #     - label: ":buildkite: Validate pipelines"
+  #       command: deno run --check -A --quiet .buildkite/validatePipeline.ts
+  #       plugins: &deno
+  #         - docker#v5.9.0:
+  #             image: "denoland/deno:1.38.0"
+  #             environment:
+  #               - DATO_API_TOKEN
 
-  - group: "Publish"
-    key: "publish"
-    depends_on: "validate"
-    steps:
-      - label: ":datocms: Publish templates"
-        command: deno run --check -A --quiet .buildkite/publishContent.ts
-        if: build.branch == "main"
-        plugins: *deno
+  #     - label: ":markdown: Validate content"
+  #       command: deno run -A --quiet .buildkite/validateContent.ts
+  #       plugins: *deno
+  #
+  # - group: "Publish"
+  #   key: "publish"
+  #   depends_on: "validate"
+  #   steps:
+  #     - label: ":datocms: Publish templates"
+  #       command: deno run --check -A --quiet .buildkite/publishContent.ts
+  #       if: build.branch == "main"
+  #       plugins: *deno
 
-      - label: ":datocms: Publish categories"
-        command: deno run --check -A --quiet .buildkite/publishCategories.ts
-        if: build.branch == "main"
-        plugins: *deno
+  #     - label: ":datocms: Publish categories"
+  #       command: deno run --check -A --quiet .buildkite/publishCategories.ts
+  #       if: build.branch == "main"
+  #       plugins: *deno
 
-  - trigger: "site"
-    depends_on: "publish"
-    if: build.branch == "main"
-    label: ":buildkite: Trigger site build"
-    build:
-      message: "Triggered by buildkite/templates"
+  # - trigger: "site"
+  #   depends_on: "publish"
+  #   if: build.branch == "main"
+  #   label: ":buildkite: Trigger site build"
+  #   build:
+  #     message: "Triggered by buildkite/templates"
