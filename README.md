@@ -1,7 +1,7 @@
 # Buildkite Pipeline templates
 
-![](template.png)
-_[Swift CI template](https://buildkite.com/pipelines/templates/ci/swift)_
+![](docker-pipeline.png)
+_[Docker pipeline template](https://buildkite.com/pipelines/templates/iac/terraform-docker)_
 
 A collection of templates to help you get started quickly with [Buildkite Pipelines](https://buildkite.com/pipelines), available to view in the [Buildkite template gallery](https://buildkite.com/pipelines/templates).
 
