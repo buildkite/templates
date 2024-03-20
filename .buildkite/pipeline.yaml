@@ -1,5 +1,5 @@
 steps:
-  - command: cd nodejs-ci/example-project; bk local run ../pipeline.yaml
+  - command: cd nodejs-ci/example-project; bk local run -E BUILDKITE_PIPELINE_NAME=local -E BUILDKITE_STEP_KEY=1 ../pipeline.yaml
     plugins: [dannymidnight/setup-bkcli]
 
   # - group: "Validate"
