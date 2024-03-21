@@ -7,7 +7,7 @@ steps:
           upload: "vendor"
           compressed: vendor.tgz
       - docker#v5.9.0:
-          image: "golang:latest"
+          image: "golang:1.22"
 
   - label: ":golang: Build"
     command: "go build -mod=vendor main.go"
@@ -17,7 +17,7 @@ steps:
           download: "vendor"
           compressed: vendor.tgz
       - docker#v5.9.0:
-          image: "golang:latest"
+          image: "golang:1.22"
 
   - label: ":golang: Test"
     command: "go test -mod=vendor ./..."
@@ -27,7 +27,7 @@ steps:
           download: "vendor"
           compressed: vendor.tgz
       - docker#v5.9.0:
-          image: "golang:latest"
+          image: "golang:1.22"
 
   - label: ":golang: Generate"
     depends_on: ["deps"]
@@ -39,4 +39,4 @@ steps:
           download: "vendor"
           compressed: vendor.tgz
       - docker#v5.9.0:
-          image: "golang:latest"
+          image: "golang:1.22"

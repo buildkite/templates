@@ -7,7 +7,7 @@ steps:
           upload: "node_modules"
           compressed: node_modules.tgz
       - docker#v5.9.0:
-          image: "node:latest"
+          image: "node:20.11"
 
   - label: ":eslint: Run ESLint"
     command: "npx eslint"
@@ -17,7 +17,7 @@ steps:
           download: "node_modules"
           compressed: node_modules.tgz
       - docker#v5.9.0:
-          image: "node:latest"
+          image: "node:20.11"
 
   - label: ":jest: Run unit tests"
     depends_on: "deps"
@@ -27,7 +27,7 @@ steps:
           download: "node_modules"
           compressed: node_modules.tgz
       - docker#v5.9.0:
-          image: "node:latest"
+          image: "node:20.11"
 
   - label: ":cypress: Run cypress tests"
     depends_on: "deps"

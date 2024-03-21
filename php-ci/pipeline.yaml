@@ -14,7 +14,7 @@ steps:
     command: 'find -name "*.php" -not -path "./vendor/*" | xargs php -l'
     plugins:
       - docker#v5.9.0:
-          image: "php:latest"
+          image: "php:8.3"
       - artifacts#v1.9.3:
           download: "vendor"
           compressed: vendor.tgz
@@ -24,7 +24,7 @@ steps:
     command: "vendor/bin/phpunit --configuration phpunit.xml"
     plugins:
       - docker#v5.9.0:
-          image: "php:latest"
+          image: "php:8.3"
       - artifacts#v1.9.3:
           download: "vendor"
           compressed: vendor.tgz
