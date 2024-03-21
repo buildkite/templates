@@ -1,0 +1,22 @@
+steps:
+  - name: ":typescript:"
+    command: yarn tsc
+
+  - name: ":jest:"
+    command: yarn unit-test
+
+  - name: fossa
+    command: "curl https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash && fossa"
+
+  - name: "Deploy to package manager"
+    command: "node scripts/publish-npm.js"
+    if: build.branch == "main" && build.message =~ /^Release v[0-9]+\.[0-9]+\.[0-9]+/
+
+  - name: "Create release"
+    command: "./scripts/github-release.js"
+    if: build.branch == "main" && build.message =~ /^Release v[0-9]+\.[0-9]+\.[0-9]+/
+
+  - name: "End-to-end tests"
+    command: yarn e2e:test
+    artifact_paths:
+      - "test-results/**/*"
