@@ -7,10 +7,33 @@ assignees: ''
 
 ---
 
-**What use-case(s) is this template for? (e.g. CI, CD, Mobile, ML, Monorepos, etc.)**
+### Pipeline template request
 
-**What platform(s) (if applicable) should this template target?  (e.g. Docker, Kubernetes, Linux, iOS, etc.)**
+<!-- We're always looking to expand our collection of pipeline templates! If you have a specific use-case, platform, or tooling in mind that isn't currently covered by our templates, please fill out the details below. The more information you can provide, the better we can assess and potentially fulfill your request. -->
 
-**What language(s) (if applicable) should this template use?  (e.g. Go, Ruby, Terraform, etc.)**
+#### Use case(s)
 
-**Are there any specific tools this template should use? (e.g. `pip`, `Cypress`, `rails`, etc.)**
+- **What use-case(s) is this template for?**  
+  (Examples: CI, CD, Mobile Development, Machine Learning, Monorepos, etc.)
+
+#### Platform(s) <!-- if applicable -->
+
+- **What platform(s) should this template target?**  
+  (Examples: Docker, Kubernetes, Linux, iOS, Windows, etc.)
+
+#### Language(s) <!-- if applicable -->
+
+- **What language(s) should this template use?**  
+  (Examples: Go, Ruby, Python, Terraform, JavaScript, etc.)
+
+#### Tooling Requirements
+
+- **Are there specific tools this template should integrate with?**  
+  (Examples: `pip`, `Cypress`, `rails`, Docker, GitHub Actions, etc.)
+
+#### Additional Context <!-- if applicable -->
+
+- **Is there any other context or helpful information regarding this template request?**  
+  (Consider including potential challenges, why this template would be beneficial, any examples or references you could link to such as a repo, blog post etc.)
+
+<!-- Thank you for contributing to our project! -->
