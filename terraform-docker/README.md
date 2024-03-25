@@ -26,7 +26,7 @@ This template:
 2. Initializes Terraform and plans changes, outputting a plan file, which is available as an [artifact](https://buildkite.com/docs/pipelines/artifacts).
 3. Blocks for input before conditionally applying the proposed Terraform plan.
 
-The pipeline runs all steps in a Docker container with the [HashiCorp Terraform image]([url](https://hub.docker.com/r/hashicorp/terraform)).
+The pipeline runs all steps in a Docker container with the [HashiCorp Terraform image](https://hub.docker.com/r/hashicorp/terraform).
 
 ## Next steps
 
