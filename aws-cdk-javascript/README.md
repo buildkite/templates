@@ -1,15 +1,15 @@
 ---
-title: Deploy AWS using CDK
+title: CI/CD for AWS using AWS CDK
 description: Sythesize and deploy CloudFormation using AWS CDK
 author: "Buildkite"
-use_cases: ["IaC", "CI"]
+use_cases: ["IaC", "CI", "CD"]
 languages: ["JavaScript"]
 platforms: ["AWS"]
 tools: ["CDK"]
 primary_emojis: [":aws:"]
 ---
 
-# Deploy AWS infrastructure using CDK
+# CI/CD for AWS infrastructure using AWS CDK
 
 This template gives you a continuous integration (CI) pipeline for testing, deploying, modifying, and destroying AWS infrastructure using AWS CDK.
 

@@ -1,15 +1,15 @@
 ---
-title: Deploy AWS with Pulumi
+title: CI/CD for AWS using Pulumi
 description: Preview and deploy AWS infrastructure changes using Pulumi
 author: "Buildkite"
-use_cases: ["IaC", "CI"]
+use_cases: ["IaC", "CI", "CD"]
 languages: ["JavaScript"]
 platforms: ["Docker", "AWS"]
 tools: ["Pulumi"]
 primary_emojis: [":pulumi:", ":aws:"]
 ---
 
-# Deploy AWS infrastructure with Pulumi
+# CI/CD for AWS infrastructure using Pulumi
 
 This template gives you a continuous integration and continuous deployment (CI/CD) pipeline that previews a Pulumi change before deploying it to AWS.
 
