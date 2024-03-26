@@ -16,8 +16,8 @@ This template gives you a continuous integration and continuous deployment (CI/C
 At a glance:
 
 - For [Pulumi projects](https://www.pulumi.com/)
-- Uses [Node.js](https://www.pulumi.com/) and [npm](https://www.npmjs.com/)
-- Requires [Docker](https://www.npmjs.com/)
+- Uses [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
+- Requires [Docker](https://www.docker.com/)
 - Prompts for confirmation before deploying
 - Deploys to [AWS](https://aws.amazon.com/)
 
