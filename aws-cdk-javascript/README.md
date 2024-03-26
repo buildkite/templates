@@ -1,15 +1,15 @@
 ---
-title: Deploy AWS using CDK
+title: CI/CD for AWS using AWS CDK
 description: Sythesize and deploy CloudFormation using AWS CDK
 author: "Buildkite"
-use_cases: ["IaC", "CI"]
+use_cases: ["IaC", "CI", "CD"]
 languages: ["JavaScript"]
 platforms: ["AWS"]
 tools: ["CDK"]
 primary_emojis: [":aws:"]
 ---
 
-# Deploy AWS infrastructure using CDK
+# CI/CD for AWS infrastructure using AWS CDK
 
 This template gives you a continuous integration (CI) pipeline for testing, deploying, modifying, and destroying AWS infrastructure using AWS CDK.
 
@@ -38,7 +38,3 @@ After you select **Use template**, you’ll:
 2. Replace the placeholder AWS role ARN in the pipeline definition.
 3. Configure the compute—run locally, on-premises, or in the cloud.
 4. Run the pipeline.
-
-You can then play around with the pipeline settings. For example, run the pipeline locally while you iterate on the definition or set a schedule to trigger a nightly build.
-
-If you need help, please [check our documentation](https://buildkite.com/docs/pipelines/configuration-overview), [raise an issue](https://github.com/buildkite/templates/issues), or [reach out to support](https://buildkite.com/support).
