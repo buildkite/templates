@@ -7,8 +7,17 @@ steps:
           upload: "node_modules"
           compressed: node_modules.tgz
 
-  - label: ":aws: cdk synth"
+  - label: ":jest: run tests"
+    command: "npm test"
     depends_on: "deps"
+    key: "test"
+    plugins:
+      - artifacts#v1.9.3:
+          upload: "node_modules"
+          compressed: node_modules.tgz
+
+  - label: ":aws: cdk synth"
+    depends_on: "test"
     commands:
       - "npx cdk synth"
     plugins:
