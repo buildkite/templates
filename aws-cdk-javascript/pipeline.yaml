@@ -1,0 +1,44 @@
+steps:
+  - label: ":npm: install deps"
+    command: "npm install"
+    key: "deps"
+    plugins:
+      - artifacts#v1.9.3:
+          upload: "node_modules"
+          compressed: node_modules.tgz
+
+  - label: ":jest: run tests"
+    command: "npm test"
+    depends_on: "deps"
+    key: "test"
+    plugins:
+      - artifacts#v1.9.3:
+          upload: "node_modules"
+          compressed: node_modules.tgz
+
+  - label: ":aws: cdk synth"
+    depends_on: "test"
+    commands:
+      - "npx cdk synth"
+    plugins:
+      - artifacts#v1.9.3:
+          download: "node_modules"
+          compressed: node_modules.tgz
+      - aws-assume-role-with-web-identity:
+          role-arn: arn:aws:iam::AWS-ACCOUNT-ID:role/SOME-ROLE
+      - docker:
+          image: node:latest
+
+  - block: Deploy?
+
+  - label: ":aws: cdk deploy"
+    commands:
+      - "npx cdk deploy"
+    plugins:
+      - artifacts#v1.9.3:
+          download: "node_modules"
+          compressed: node_modules.tgz
+      - aws-assume-role-with-web-identity:
+          role-arn: arn:aws:iam::AWS-ACCOUNT-ID:role/SOME-ROLE
+      - docker:
+          image: node:latest
