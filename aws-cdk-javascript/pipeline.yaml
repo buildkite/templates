@@ -29,7 +29,7 @@ steps:
       - docker:
           image: node:latest
 
-  - block
+  - block: Deploy?
 
   - label: ":aws: cdk deploy"
     commands:
