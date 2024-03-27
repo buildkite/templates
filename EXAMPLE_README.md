@@ -19,7 +19,7 @@
 *** languages: <Array of programming languages in format ["JavaScript", "Go"]>
 *** platforms: <Array of platforms in format ["Pulumi", "Docker", "AWS"]>
 *** tools: <Array of tools in format ["clippy", "cargo"]>
-*** primary_emojis: <Array of Buildkite emoji shortcodes for rendering in search results [":buildkite:", ":aws:"]
+*** primary_emojis: <Array of Buildkite emoji shortcodes for rendering in search results [":buildkite:", ":aws-logo:"]
 ***
 ***
 *** Content Guide
@@ -57,7 +57,7 @@ use_cases: ["IaC", "CI"]
 languages: ["JavaScript"]
 platforms: ["Pulumi", "Docker", "AWS"]
 tools: []
-primary_emojis: [":pulumi:", ":aws:"]
+primary_emojis: [":pulumi:", ":aws-logo:"]
 ---
 
 # Deploy AWS infrastructure with Pulumi

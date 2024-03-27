@@ -6,7 +6,7 @@ use_cases: ["IaC", "CI", "CD"]
 languages: ["JavaScript"]
 platforms: ["Docker", "AWS"]
 tools: ["Pulumi"]
-primary_emojis: [":pulumi:", ":aws:"]
+primary_emojis: [":pulumi:", ":aws-logo:"]
 ---
 
 # CI/CD for AWS infrastructure using Pulumi

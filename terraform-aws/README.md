@@ -6,7 +6,7 @@ use_cases: ["IaC", "CI", "CD"]
 languages: ["Terraform"]
 platforms: ["AWS"]
 tools: ["Terraform"]
-primary_emojis: [":terraform:", ":aws:"]
+primary_emojis: [":terraform:", ":aws-logo:"]
 ---
 
 # CI/CD for AWS infrastructure using Terraform
