@@ -16,7 +16,7 @@ steps:
           upload: "node_modules"
           compressed: node_modules.tgz
 
-  - label: ":aws: cdk synth"
+  - label: ":aws-logo: cdk synth"
     depends_on: "test"
     commands:
       - "npx cdk synth"
@@ -31,7 +31,7 @@ steps:
 
   - block: Deploy?
 
-  - label: ":aws: cdk deploy"
+  - label: ":aws-logo: cdk deploy"
     commands:
       - "npx cdk deploy"
     plugins:

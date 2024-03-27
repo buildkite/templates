@@ -6,7 +6,7 @@ use_cases: ["IaC", "CI", "CD"]
 languages: ["JavaScript"]
 platforms: ["AWS"]
 tools: ["CDK"]
-primary_emojis: [":aws:"]
+primary_emojis: [":aws-logo:"]
 ---
 
 # CI/CD for AWS infrastructure using AWS CDK
