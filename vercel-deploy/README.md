@@ -1,5 +1,5 @@
 ---
-title: Deploy to Vercel
+title: CI/CD for Vercel
 description: Build and deploy a web application to Vercel production environment.
 author: Buildkite
 languages: ["JavaScript"]
@@ -9,7 +9,7 @@ tools: ["Next.js"]
 primary_emojis: [":vercel:"]
 ---
 
-# Deploy to Vercel
+# CI/CD for Vercel
 
 This templates gives you a continuous deployment (CD) pipeline that builds and deploys a web application to Vercel.
 
