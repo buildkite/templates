@@ -1,0 +1,9 @@
+steps:
+  - plugins:
+      plugins:
+        - ecr#v2.7.0:
+            login: true
+        - seek-oss/create-ecr#v1.1.2:
+            name: my-repo
+        - seek-oss/docker-ecr-publish#v2.3.0:
+            ecr-name: my-repo
