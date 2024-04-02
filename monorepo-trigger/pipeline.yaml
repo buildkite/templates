@@ -2,10 +2,10 @@ steps:
   - label: "Check changed files"
     plugins:
       - monorepo-diff#v1.0.1:
-        watch:
-          - path: foo-service/
-            config:
-              command: "echo Foo Service changed"
-          - path: bar-service/
-            config:
-              trigger: deploy-bar-service
+          watch:
+            - path: foo-service/
+              config:
+                command: "echo Foo Service changed"
+            - path: bar-service/
+              config:
+                trigger: deploy-bar-service
