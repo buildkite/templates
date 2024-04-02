@@ -13,6 +13,7 @@ steps:
           image: "node:20.11"
 
   - label: ":npm: publish"
+    depends_on: package
     commands:
       - npm set "//buildkitepackages.com/${BUILDKITE_ORGANIZATION_SLUG}/${PACKAGE_NAME}/npm/:_authToken" ${AUTH_TOKEN}
       - npm set registry "https://buildkitepackages.com/${BUILDKITE_ORGANIZATION_SLUG}/${PACKAGE_NAME}/npm/"
