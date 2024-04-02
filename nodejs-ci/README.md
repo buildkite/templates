@@ -26,7 +26,7 @@ At a glance:
 
 This template:
 
-1. Installs Node dependencies using npm, caching the result.
+1. Installs Node.js dependencies using npm, caching the result.
 2. Performs static analysis on the codebase with ESLint.
 3. Runs Jest unit tests.
 4. Starts the web app using `npm start` on port `8000`, then runs any Cypress tests using their official [Docker image](https://github.com/cypress-io/cypress-docker-images). It uses [`wait-on`](https://www.npmjs.com/package/wait-on) to verify the app is ready for testing.
@@ -37,7 +37,7 @@ All steps run in serial, with each depending on the previous step to complete be
 
 After you select **Use template**, you’ll:
 
-1. Connect the Git repository for your Node app.
+1. Connect the Git repository for your Node.js app.
 2. Check the commands match your scripts in `package.json`.
 3. Configure the compute—run locally, on-premises, or in the cloud.
 4. Run the pipeline.
