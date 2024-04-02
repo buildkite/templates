@@ -1,0 +1,24 @@
+env:
+  PACKAGE_NAME: "example-package"
+  AUTH_TOKEN: "package-auth-token"
+
+steps:
+  - label: ":npm: package"
+    key: package
+    command: npm pack
+    artifact_paths:
+      - "example-project-*.tgz"
+    plugins:
+      - docker#v5.9.0:
+          image: "node:20.11"
+
+  - label: ":npm: publish"
+    commands:
+      - npm set "//buildkitepackages.com/${BUILDKITE_ORGANIZATION_SLUG}/${PACKAGE_NAME}/npm/:_authToken" ${AUTH_TOKEN}
+      - npm set registry "https://buildkitepackages.com/${BUILDKITE_ORGANIZATION_SLUG}/${PACKAGE_NAME}/npm/"
+      - npm publish
+    plugins:
+      - docker#v5.9.0:
+          image: "node:20.11"
+      - artifacts#v1.9.3:
+          download: "example-project-*.tgz"
