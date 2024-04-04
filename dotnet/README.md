@@ -1,6 +1,6 @@
 ---
 title: CI for .NET
-description: Set up a CI pipeline for a .NET application using standard library tooling.
+description: Build and test a .NET application using standard library tooling.
 author: Buildkite
 languages: ["C#"]
 platforms: [".NET", "Docker", "Windows"]
@@ -11,7 +11,7 @@ primary_emojis: [":dotnet:"]
 
 # CI for .NET
 
-This template provides a continuous integration (CI) pipeline for .NET applications.
+This template provides a continuous integration (CI) pipeline that builds and tests a .NET application.
 
 At a glance:
 

@@ -9,9 +9,9 @@ tools: ["pip", "pytest", "Ruff", "junit"]
 primary_emojis: [":python:"]
 ---
 
-# CI for Python with pip, pytest and Ruff
+# CI for Python
 
-This template gives you a continuous integration (CI) pipeline that lints, tests, and builds a Python application.
+This template gives you a continuous integration (CI) pipeline that builds, lints, and tests a Python application.
 
 At a glance:
 

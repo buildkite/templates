@@ -9,9 +9,9 @@ tools: ["npm", "ESlint", "Jest", "Cypress"]
 primary_emojis: [":nodejs:"]
 ---
 
-# CI for Node.js with npm, Jest, and Cypress
+# CI for Node.js
 
-This template gives you a continuous integration (CI) pipeline that runs a Node.js web app with Jest unit tests and Cypress end-to-end testing.
+This template gives you a continuous integration (CI) pipeline that builds, lints, and end-to-end tests a Node.js application.
 
 At a glance:
 
@@ -20,7 +20,7 @@ At a glance:
 - Requires [Docker](https://docs.docker.com/get-docker/)
 - Lints code with [ESLint](https://eslint.org/)
 - Runs [Jest](https://jestjs.io/) unit tests
-- Runs [Cypress](https://www.cypress.io/) tests
+- Runs [Cypress](https://www.cypress.io/) integration tests
 
 ## How it works
 

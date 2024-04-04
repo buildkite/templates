@@ -9,16 +9,16 @@ platforms: []
 primary_emojis: [":php:"]
 ---
 
-# CI/CD for PHP with Linting, Testing, and Building
+# CI for PHP
 
-This template gives you a continuous integration (CI) pipeline that lints and tests a PHP application.
+This template gives you a continuous integration (CI) pipeline that builds, lints, and tests a PHP application.
 
 At a glance:
 
 - For [PHP](https://www.php.net/) applications
-- Uses [Composer](https://getcomposer.org/) for installing packages
+- Uses [Composer](https://getcomposer.org/)
 - Uses PHP's built-in linter
-- Uses [PHPUnit](https://phpunit.de/) for testing
+- Uses [PHPUnit](https://phpunit.de/)
 
 ## How it works
 
