@@ -15,7 +15,7 @@ steps:
         plugins: *deno
 
   - label: ":puppeteer: Capture screenshots"
-    if: build.branch == "main"
+    # if: build.branch == "main"
     depends_on: "validate"
     key: "screenshots"
     commands:
