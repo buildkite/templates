@@ -4,15 +4,15 @@ steps:
     steps:
       - label: ":buildkite: Validate pipelines"
         command: npm run validatePipeline
-        plugins: &deno
+        plugins: &node
           - docker#v5.9.0:
-              image: "denoland/deno:1.38.0"
+              image: "node:21-alpine"
               environment:
                 - DATO_API_TOKEN
 
       - label: ":markdown: Validate content"
         command: npm run validateContent
-        plugins: *deno
+        plugins: *node
 
   - group: "Publish"
     key: "publish"
@@ -21,12 +21,12 @@ steps:
       - label: ":datocms: Publish templates"
         command: npm run publishTemplates
         if: build.branch == "main"
-        plugins: *deno
+        plugins: *node
 
       - label: ":datocms: Publish categories"
         command: npm run publishCategories
         if: build.branch == "main"
-        plugins: *deno
+        plugins: *node
 
   - trigger: "site"
     depends_on: "publish"
