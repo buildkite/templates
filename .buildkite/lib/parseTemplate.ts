@@ -1,9 +1,7 @@
-import { dirname } from "https://deno.land/std@0.205.0/path/mod.ts";
-import { basename } from "https://deno.land/std@0.205.0/path/basename.ts";
-import { matter } from "npm:vfile-matter";
-import { read } from "npm:to-vfile";
-import fs from "node:fs";
-import { join } from "https://deno.land/std@0.205.0/path/join.ts";
+import { dirname, basename, join } from "path";
+import { matter } from "vfile-matter";
+import { read } from "to-vfile";
+import fs from "fs";
 import isValidEmoji from "./isValidEmoji.ts";
 
 interface Frontmatter {

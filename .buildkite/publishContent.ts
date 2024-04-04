@@ -1,21 +1,19 @@
-import { load } from "https://deno.land/std@0.205.0/dotenv/mod.ts";
-import { buildClient } from "npm:@datocms/cma-client-node";
-import { globSync } from "npm:glob";
+import "dotenv/config";
+import { buildClient } from "@datocms/cma-client-node";
+import { globSync } from "glob";
 import { parseTemplate, Template } from "./lib/parseTemplate.ts";
-import chalk from "npm:chalk";
-import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
-import { join } from "https://deno.land/std@0.205.0/path/join.ts";
-import { fromMarkdown } from "https://esm.sh/mdast-util-from-markdown@2.0.0";
-import { toHast } from "https://esm.sh/mdast-util-to-hast@13.0.2";
+import chalk from "chalk";
+import { join, dirname } from "path";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import { toHast } from "mdast-util-to-hast";
 import {
   HastRootNode,
   hastToStructuredText,
-} from "npm:datocms-html-to-structured-text";
+} from "datocms-html-to-structured-text";
 
 const TEMPLATE_ID = "MQloN7VRQQujFdHe_xCcUA";
 
-await load({ export: true });
-const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
+const client = buildClient({ apiToken: process.env.DATO_API_TOKEN ?? "" });
 
 // Markdown -> MDAST -> HAST -> DAST (DatoCMS Structured Text)
 function toDatoStructuredText(content: string) {
@@ -91,6 +89,6 @@ pipelines.forEach(async (path) => {
     await upsertTemplate(template);
   } catch (error) {
     console.error(`${path}: ${error.message}`);
-    Deno.exit(1);
+    process.exit(1);
   }
 });

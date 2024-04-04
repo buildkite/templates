@@ -1,8 +1,7 @@
-import chalk from "npm:chalk";
-import { globSync } from "npm:glob";
+import chalk from "chalk";
+import { globSync } from "glob";
 import { parseTemplate } from "./lib/parseTemplate.ts";
-import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
-import { join } from "https://deno.land/std@0.205.0/path/join.ts";
+import { dirname, join } from "path";
 
 const pipelines = globSync("*/pipeline.yaml");
 
@@ -32,7 +31,7 @@ if (errors.length > 0) {
   errors.forEach((error) => {
     console.error(`${chalk.red(error.message)}`);
   });
-  Deno.exit(1);
+  process.exit(1);
 } else {
   console.log(`Found ${pipelines.length} valid READMEs.`);
 }
