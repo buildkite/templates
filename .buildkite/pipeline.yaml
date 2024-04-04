@@ -1,14 +1,26 @@
 steps:
+  - label: ":npm: Install dependencies"
+    key: "deps"
+    command: npm ci
+    plugins:
+      - artifacts#v1.9.3:
+          upload: "node_modules"
+          compressed: node_modules.tgz
+      - docker#v5.9.0:
+          image: "node:21-alpine"
+
   - group: "Validate"
     key: "validate"
+    depends_on: "deps"
     steps:
       - label: ":buildkite: Validate pipelines"
         command: npm run validatePipeline
         plugins: &node
+          - artifacts#v1.9.3:
+              download: "node_modules"
+              compressed: node_modules.tgz
           - docker#v5.9.0:
               image: "node:21-alpine"
-              environment:
-                - DATO_API_TOKEN
 
       - label: ":markdown: Validate content"
         command: npm run validateContent
