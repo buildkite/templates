@@ -14,9 +14,18 @@ steps:
         command: deno run -A --quiet .buildkite/validateContent.ts
         plugins: *deno
 
+  - label: ":puppeteer: Capture screenshots"
+    if: build.branch == "main"
+    depends_on: "validate"
+    key: "screenshots"
+    commands:
+      - PUPPETEER_PRODUCT=chrome deno run -A --unstable https://deno.land/x/puppeteer@16.2.0/install.ts
+      - deno run --check -A --quiet .buildkite/captureScreenshots.ts
+    plugins: *deno
+
   - group: "Publish"
     key: "publish"
-    depends_on: "validate"
+    depends_on: ["validate", "screenshots"]
     steps:
       - label: ":datocms: Publish templates"
         command: deno run --check -A --quiet .buildkite/publishContent.ts
