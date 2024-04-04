@@ -28,9 +28,20 @@ steps:
         command: npm run validateContent
         plugins: *node
 
+  - label: ":puppeteer: Capture screenshots"
+    key: "screenshots"
+    command: npm run captureScreenshots
+    artifact_paths: "screenshots/*.png"
+    plugins:
+      - docker#v5.9.0:
+          image: "ghcr.io/puppeteer/puppeteer:22.6.2"
+      - artifacts#v1.9.3:
+          download: "node_modules"
+          compressed: node_modules.tgz
+
   - group: "Publish"
     key: "publish"
-    depends_on: "validate"
+    depends_on: ["validate", "screenshots"]
     steps:
       - label: ":datocms: Publish templates"
         command: npm run publishContent
