@@ -18,11 +18,12 @@ steps:
     # if: build.branch == "main"
     depends_on: "validate"
     key: "screenshots"
-    commands:
-      - PUPPETEER_PRODUCT=chrome deno run -A --unstable https://deno.land/x/puppeteer@16.2.0/install.ts
-      - deno run --check -A --quiet .buildkite/captureScreenshots.ts
-    plugins: *deno
+    command: deno run --check -A --quiet .buildkite/captureScreenshots.ts
     artifact_paths: "screenshots/*.png"
+    plugins:
+      - docker-compose#v5.2.0:
+          config: ".buildkite/docker-compose.yml"
+          run: "deno-puppeteer"
 
   - group: "Publish"
     key: "publish"
