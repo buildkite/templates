@@ -1,3 +1,6 @@
 services:
   deno-puppeteer:
     build: deno-puppeteer
+    working_dir: /workdir
+    volumes:
+      - ..:/workdir
