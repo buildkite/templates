@@ -16,7 +16,6 @@ steps:
 
   - label: ":puppeteer: Capture screenshots"
     # if: build.branch == "main"
-    depends_on: "validate"
     key: "screenshots"
     command: deno run --check -A --quiet .buildkite/captureScreenshots.ts
     artifact_paths: "screenshots/*.png"
