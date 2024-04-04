@@ -20,6 +20,15 @@ for (const pipeline of globSync("*/pipeline.yaml")) {
     `https://buildkite.com/pipelines/playground/embed?tid=${templateID}`
   );
   await page.waitForSelector(".react-flow__node");
+
+  // Remove the zoom controls from the bottom right corner
+  //
+  // FIXME: add better selector to target.
+  await page.waitForSelector(".absolute.bottom-4.right-4.flex.gap-2.z-10");
+  await page.$eval(".absolute.bottom-4.right-4.flex.gap-2.z-10", (el) =>
+    el.remove()
+  );
+
   await page.screenshot({
     path: `screenshots/${templateID}.png`,
     omitBackground: true,
