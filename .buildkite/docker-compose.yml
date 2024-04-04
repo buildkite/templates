@@ -1,0 +1,3 @@
+services:
+  deno-puppeteer:
+    build: deno-puppeteer
