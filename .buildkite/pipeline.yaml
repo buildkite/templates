@@ -42,15 +42,14 @@ steps:
   - group: "Publish"
     key: "publish"
     depends_on: ["validate", "screenshots"]
+    if: build.branch == "main"
     steps:
       - label: ":datocms: Publish templates"
         command: npm run publishContent
-        if: build.branch == "main"
         plugins: *node
 
       - label: ":datocms: Publish categories"
         command: npm run publishCategories
-        if: build.branch == "main"
         plugins: *node
 
   - trigger: "site"
