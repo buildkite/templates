@@ -18,6 +18,7 @@
     "validatePipeline": "tsx .buildkite/validatePipeline.ts",
     "validateContent": "tsx .buildkite/validateContent.ts",
     "publishContent": "tsx .buildkite/publishContent.ts",
-    "publishCategories": "tsx .buildkite/publishCategories.ts"
+    "publishCategories": "tsx .buildkite/publishCategories.ts",
+    "captureScreenshots": "tsx .buildkite/captureScreenshots.ts"
   }
 }
