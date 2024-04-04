@@ -11,7 +11,7 @@ primary_emojis: [":swift:"]
 
 # CI for Swift
 
-This template gives you a continuous integration (CI) pipeline that lints, tests, and builds a Swift project.
+This template gives you a continuous integration (CI) pipeline that builds, lints, and tests a Swift project.
 
 At a glance:
 

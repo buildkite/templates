@@ -9,16 +9,16 @@ tools: ["clippy", "cargo"]
 primary_emojis: [":rust:"]
 ---
 
-# CI for Rust with Clippy and Cargo
+# CI for Rust
 
-This template gives you a continuous integration (CI) pipeline that lints, tests, and builds a Rust application.
+This template gives you a continuous integration (CI) pipeline that builds, lints, and tests a Rust application.
 
 At a glance:
 
 - For [Rust](https://www.rust-lang.org/) applications
 - Requires [Docker](https://docs.docker.com/get-docker/)
-- Uses [Clippy](https://github.com/rust-lang/rust-clippy) for linting
-- Uses Cargo for building and testing
+- Lints code with [Clippy](https://github.com/rust-lang/rust-clippy)
+- Builds and tests code using Cargo
 
 ## How it works
 
