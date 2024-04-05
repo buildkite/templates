@@ -16,7 +16,7 @@ const browser = await puppeteer.launch({
   ],
 });
 const page = await browser.newPage();
-await page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 2 });
+await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 2 });
 
 console.log("Fetching screenshots...");
 for (const pipeline of globSync("*/pipeline.yaml")) {
