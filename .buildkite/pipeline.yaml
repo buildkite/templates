@@ -31,12 +31,12 @@ steps:
   - label: ":puppeteer: Capture screenshots"
     key: "screenshots"
     artifact_paths: "screenshots/*.png"
+    command: |
+      npm install
+      npm run captureScreenshots
     plugins:
       - docker-compose:
-          run: "screenshots"
-      - artifacts#v1.9.3:
-          download: "node_modules"
-          compressed: node_modules.tgz
+          run: "puppeteer"
 
   - group: "Publish"
     key: "publish"

@@ -1,7 +1,6 @@
 services:
-  screenshots:
+  puppeteer:
     build: .
-    command: npm run captureScreenshots
-    working_dir: /workdir
+    working_dir: /home/pptruser/templates
     volumes:
-      - .:/workdir
+      - .:/home/pptruser/templates
