@@ -1,14 +1,12 @@
-import { load } from "https://deno.land/std@0.205.0/dotenv/mod.ts";
-import { buildClient } from "npm:@datocms/cma-client-node";
-import { globSync } from "npm:glob";
+import "dotenv/config";
+import { buildClient } from "@datocms/cma-client-node";
+import { globSync } from "glob";
 import { parseTemplate } from "./lib/parseTemplate.ts";
-import { dirname } from "https://deno.land/std@0.205.0/path/dirname.ts";
-import { join } from "https://deno.land/std@0.205.0/path/join.ts";
+import { join, dirname } from "path";
 
 const CATEGORY_ID = "AiaelmlCSOq7OCAgLOopUw";
 
-await load({ export: true });
-const client = buildClient({ apiToken: Deno.env.get("DATO_API_TOKEN") ?? "" });
+const client = buildClient({ apiToken: process.env.DATO_API_TOKEN ?? "" });
 
 export async function fetchCategories() {
   const categories = new Map<string, string>();
