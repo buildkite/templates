@@ -1,32 +1,44 @@
 steps:
+  - label: ":npm: Install dependencies"
+    key: "deps"
+    command: npm ci
+    plugins:
+      - artifacts#v1.9.3:
+          upload: "node_modules"
+          compressed: node_modules.tgz
+      - docker#v5.9.0:
+          image: "node:21-alpine"
+
   - group: "Validate"
     key: "validate"
+    depends_on: "deps"
     steps:
       - label: ":buildkite: Validate pipelines"
-        command: deno run --check -A --quiet .buildkite/validatePipeline.ts
-        plugins: &deno
+        command: npm run validatePipeline
+        plugins: &node
+          - artifacts#v1.9.3:
+              download: "node_modules"
+              compressed: node_modules.tgz
           - docker#v5.9.0:
-              image: "denoland/deno:1.38.0"
-              environment:
-                - DATO_API_TOKEN
+              image: "node:21-alpine"
 
       - label: ":markdown: Validate content"
-        command: deno run -A --quiet .buildkite/validateContent.ts
-        plugins: *deno
+        command: npm run validateContent
+        plugins: *node
 
   - group: "Publish"
     key: "publish"
     depends_on: "validate"
     steps:
       - label: ":datocms: Publish templates"
-        command: deno run --check -A --quiet .buildkite/publishContent.ts
+        command: npm run publishTemplates
         if: build.branch == "main"
-        plugins: *deno
+        plugins: *node
 
       - label: ":datocms: Publish categories"
-        command: deno run --check -A --quiet .buildkite/publishCategories.ts
+        command: npm run publishCategories
         if: build.branch == "main"
-        plugins: *deno
+        plugins: *node
 
   - trigger: "site"
     depends_on: "publish"

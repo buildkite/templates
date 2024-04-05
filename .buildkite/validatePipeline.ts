@@ -1,8 +1,8 @@
-import { parse, stringify } from "npm:yaml";
-import { Validator } from "npm:jsonschema";
-import { globSync } from "npm:glob";
-import chalk from "npm:chalk";
-import fs from "node:fs";
+import { parse, stringify } from "yaml";
+import { Validator } from "jsonschema";
+import { globSync } from "glob";
+import chalk from "chalk";
+import fs from "fs";
 import isValidEmoji from "./lib/isValidEmoji.ts";
 
 // Fetch the current pipeline configuration schema
