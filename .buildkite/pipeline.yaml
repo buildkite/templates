@@ -30,6 +30,7 @@ steps:
 
   - label: ":puppeteer: Capture screenshots"
     key: "screenshots"
+    if: build.branch == "main"
     artifact_paths: "screenshots/*.png"
     command: |
       npm install
@@ -37,6 +38,7 @@ steps:
     plugins:
       - docker-compose:
           run: "puppeteer"
+          mount-checkout: true
 
   - group: "Publish"
     key: "publish"
