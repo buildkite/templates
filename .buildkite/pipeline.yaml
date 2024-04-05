@@ -30,11 +30,10 @@ steps:
 
   - label: ":puppeteer: Capture screenshots"
     key: "screenshots"
-    command: npm run captureScreenshots
     artifact_paths: "screenshots/*.png"
     plugins:
-      - docker#v5.9.0:
-          image: "ghcr.io/puppeteer/puppeteer:22.6.2"
+      - docker-compose:
+          run: "screenshots"
       - artifacts#v1.9.3:
           download: "node_modules"
           compressed: node_modules.tgz

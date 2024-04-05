@@ -1,0 +1,7 @@
+services:
+  screenshots:
+    build: .
+    command: npm run captureScreenshots
+    working_dir: /workdir
+    volumes:
+      - .:/workdir
