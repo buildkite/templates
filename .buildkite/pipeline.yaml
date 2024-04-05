@@ -31,7 +31,7 @@ steps:
     depends_on: "validate"
     steps:
       - label: ":datocms: Publish templates"
-        command: npm run publishTemplates
+        command: npm run publishContent
         if: build.branch == "main"
         plugins: *node
 
