@@ -42,6 +42,7 @@ steps:
 
   - trigger: "site"
     depends_on: "publish"
+    soft_fail: true
     if: build.branch == "main"
     label: ":buildkite: Trigger site build"
     build:
