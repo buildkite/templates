@@ -21,6 +21,8 @@ steps:
               compressed: node_modules.tgz
           - docker#v5.9.0:
               image: "node:21-alpine"
+              environment:
+                - DATO_API_TOKEN
 
       - label: ":markdown: Validate content"
         command: npm run validateContent
