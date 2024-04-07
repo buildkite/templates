@@ -1,0 +1,28 @@
+env:
+  ROLE_ARN: arn:aws:iam::$AWS_ACCOUNT_ID:role/my-role
+  IMAGE_NAME: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-repo
+  CLUSTER: my-cluster
+  SERVICE: my-service
+  AWS_PAGER: "" # Disable AWS CLI pagination in CI
+
+steps:
+  - name: ":ecr: Push image"
+    key: "push-image"
+    command: |
+      docker build --platform=linux/amd64 -t $IMAGE_NAME:latest .
+      docker push $IMAGE_NAME:latest
+    plugins:
+      - aws-assume-role-with-web-identity#v1.0.0:
+          role_arn: $ROLE_ARN
+      - ecr#v2.8.0:
+          login: true
+
+  - name: ":ecs: Deploy service"
+    depends_on: "push-image"
+    timeout_in_minutes: 5
+    command: |
+      aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment
+      aws ecs wait services-stable --cluster $CLUSTER --service $SERVICE
+    plugins:
+      - aws-assume-role-with-web-identity#v1.0.0:
+          role_arn: $ROLE_ARN
