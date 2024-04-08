@@ -36,7 +36,7 @@ This template:
 After you select **Use template**, you’ll:
 
 1. Connect the Git repository with your project.
-2. Replace the placeholder AWS `ROLE_ARN` in the pipeline definition with a role an IAM role that has permission to manage ECS and ECR.
+2. Using an AWS IAM role with the appropriate ECR and ECS policies, replace the placeholder `ROLE_ARN` in the pipeline definition.
 3. Replace the placeholder `IMAGE_NAME`, `SERVICE` and `CLUSTER` in the pipeline definition to match your project.
 4. Configure the compute—run locally, on-premises, or in the cloud.
 5. Run the pipeline.

@@ -1,0 +1,23 @@
+env:
+  ROLE_ARN: arn:aws:iam::$AWS_ACCOUNT_ID:role/my-role
+  IMAGE_NAME: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-repo
+
+steps:
+  - label: ":ecr: Push image"
+    key: "push"
+    command: |
+      docker build --platform=linux/amd64 -t $IMAGE_NAME:$BUILDKITE_BUILD_NUMBER .
+      docker push $IMAGE_NAME:$BUILDKITE_BUILD_NUMBER
+    plugins:
+      - aws-assume-role-with-web-identity#v1.0.0:
+          role_arn: $ROLE_ARN
+      - ecr#v2.8.0:
+          login: true
+
+  - label: ":ecr: Scan image"
+    depends_on: "push"
+    plugins:
+      - aws-assume-role-with-web-identity#v1.0.0:
+          role-arn: $ROLE_ARN
+      - cultureamp/ecr-scan-results#v1.5.0:
+          image-name: $IMAGE_NAME:$BUILDKITE_BUILD_NUMBER
