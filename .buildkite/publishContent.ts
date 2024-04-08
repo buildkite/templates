@@ -54,6 +54,10 @@ async function upsertTemplate(template: Template) {
     );
   }
 
+  const upload = await client.uploads.createFromLocalFile({
+    localPath: `./screenshots/${template.slug}.png`,
+  });
+
   if (records.length) {
     console.log(
       `${chalk.cyanBright(
@@ -61,7 +65,19 @@ async function upsertTemplate(template: Template) {
       )} ${chalk.whiteBright("→")} ${chalk.cyan(template.title)}`
     );
 
-    return client.items.update(records[0].id, payload);
+    const item = await client.items.update(records[0].id, {
+      ...payload,
+      preview: {
+        upload_id: upload.id,
+      },
+    });
+
+    // Hose the old preview image now that it's no longer being referenced.
+    if (records[0].preview) {
+      await client.uploads.destroy(records[0].preview.upload_id);
+    }
+
+    return item;
   } else {
     console.log(
       `${chalk.greenBright(
@@ -75,6 +91,9 @@ async function upsertTemplate(template: Template) {
         id: TEMPLATE_ID,
       },
       ...payload,
+      preview: {
+        upload_id: upload.id,
+      },
     });
   }
 }

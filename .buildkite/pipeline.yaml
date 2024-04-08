@@ -28,18 +28,38 @@ steps:
         command: npm run validateContent
         plugins: *node
 
+  - label: ":puppeteer: Capture screenshots"
+    key: "screenshots"
+    if: build.branch == "main"
+    artifact_paths: "screenshots/*.png"
+    command: |
+      npm install
+      npm run captureScreenshots
+    plugins:
+      - docker-compose:
+          run: "puppeteer"
+          mount-checkout: true
+
   - group: "Publish"
     key: "publish"
-    depends_on: "validate"
+    depends_on: ["validate", "screenshots"]
+    if: build.branch == "main"
     steps:
       - label: ":datocms: Publish templates"
         command: npm run publishContent
-        if: build.branch == "main"
-        plugins: *node
+        plugins:
+          - docker#v5.9.0:
+              image: "node:21-alpine"
+              environment:
+                - DATO_API_TOKEN
+          - artifacts#v1.9.3:
+              download: "node_modules"
+              compressed: node_modules.tgz
+          - artifacts#v1.9.3:
+              download: "screenshots/*.png"
 
       - label: ":datocms: Publish categories"
         command: npm run publishCategories
-        if: build.branch == "main"
         plugins: *node
 
   - trigger: "site"
