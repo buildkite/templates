@@ -49,3 +49,5 @@ steps:
     label: ":buildkite: Trigger site build"
     build:
       message: "Triggered by buildkite/templates"
+      env:
+        DOCKER_NO_CACHE: true
