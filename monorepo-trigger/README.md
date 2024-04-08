@@ -16,6 +16,7 @@ This template gives you a continuous integration (CI) pipeline for a monorepo th
 At a glance:
 
 - For [monorepos](https://en.wikipedia.org/wiki/Monorepo)
+- Uses the [Monorepo Diff Plugin](https://github.com/buildkite-plugins/monorepo-diff-buildkite-plugin) for triggering pipelines
 
 ## How it works
 
