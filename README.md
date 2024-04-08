@@ -15,7 +15,7 @@ Each template is stored as a root level folder, containing a pipeline YAML file 
 
 ## Requesting templates
 
-Request a new template by [opening an issue](https://github.com/buildkite/templates/issues/new?template=pipeline-template-request.md). Please let us know what types of use cases and technologies you wnat to see covered.
+Request a new template by [opening an issue](https://github.com/buildkite/templates/issues/new?template=pipeline-template-request.md). Please let us know what types of use cases and technologies you want to see covered.
 
 ## Contributing
 
