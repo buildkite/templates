@@ -6,7 +6,7 @@ env:
   AWS_PAGER: "" # Disable AWS CLI pagination in CI
 
 steps:
-  - name: ":ecr: Push image"
+  - label: ":ecr: Push image"
     key: "push-image"
     command: |
       docker build --platform=linux/amd64 -t $IMAGE_NAME:latest .
@@ -17,7 +17,7 @@ steps:
       - ecr#v2.8.0:
           login: true
 
-  - name: ":ecs: Deploy service"
+  - label: ":ecs: Deploy service"
     depends_on: "push-image"
     timeout_in_minutes: 5
     command: |
