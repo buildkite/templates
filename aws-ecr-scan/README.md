@@ -15,10 +15,10 @@ This templates gives you a continuous deployment (CI) pipeline that builds and p
 
 At a glance:
 
-- For [Docker](https://www.docker.com/) projects
-- Requires [AWS CLI](https://aws.amazon.com/cli/)
+- For [Docker](https://www.docker.com/) images
+- Requires the [AWS CLI](https://aws.amazon.com/cli/)
 - Uses the [AWS Assume Role](https://github.com/buildkite-plugins/aws-assume-role-with-web-identity-buildkite-plugin) plugin to access AWS credentials
-- Uses [ECR](https://aws.amazon.com/ecr) for image security scanning.
+- Uses the [ECR Scan Results](https://github.com/cultureamp/ecr-scan-results-buildkite-plugin) plugin for configuring [ECR](https://aws.amazon.com/ecr) image scanning
 
 ## How it works
 
