@@ -1,5 +1,5 @@
 steps:
-  - label: "Check changed files"
+  - label: ":git: Check changed files"
     plugins:
       - monorepo-diff#v1.0.1:
           watch:
