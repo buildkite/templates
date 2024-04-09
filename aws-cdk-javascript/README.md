@@ -1,6 +1,6 @@
 ---
 title: CI/CD for AWS using AWS CDK
-description: Sythesize and deploy CloudFormation using AWS CDK
+description: Sythesize and deploy CloudFormation using AWS CDK.
 author: "Buildkite"
 use_cases: ["IaC", "CI", "CD"]
 languages: ["JavaScript"]
