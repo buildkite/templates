@@ -55,7 +55,7 @@ async function upsertTemplate(template: Template) {
   }
 
   const upload = await client.uploads.createFromLocalFile({
-    localPath: `./screenshots/${template.slug}.png`,
+    localPath: `./generated/${template.slug}.png`,
   });
 
   if (records.length) {

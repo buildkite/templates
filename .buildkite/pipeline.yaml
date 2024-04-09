@@ -70,7 +70,7 @@ steps:
               download: "node_modules"
               compressed: node_modules.tgz
           - artifacts#v1.9.3:
-              download: "screenshots/*.png"
+              download: "generated/*.png"
 
       - label: ":datocms: Publish categories"
         command: npm run publishCategories
