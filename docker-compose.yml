@@ -1,3 +1,6 @@
 services:
   puppeteer:
     build: .
+
+  imagemagick:
+    image: dpokidov/imagemagick
