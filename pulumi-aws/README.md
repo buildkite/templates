@@ -1,6 +1,6 @@
 ---
 title: CI/CD for AWS using Pulumi
-description: Preview and deploy AWS infrastructure changes using Pulumi
+description: Preview and deploy AWS infrastructure changes using Pulumi.
 author: "Buildkite"
 use_cases: ["IaC", "CI", "CD"]
 languages: ["JavaScript"]
