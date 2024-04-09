@@ -1,6 +1,6 @@
 ---
-title: Fastlane for iOS
-description: Set up CI for iOS projects with Fastlane
+title: CI for iOS with Fastlane
+description: Build, lint, and test a Fastlane iOS application.
 author: Buildkite
 use_cases: ["CI", "Mobile"]
 languages: ["Ruby"]
