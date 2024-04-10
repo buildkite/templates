@@ -28,21 +28,35 @@ steps:
         command: npm run validateContent
         plugins: *node
 
-  - label: ":puppeteer: Capture screenshots"
-    key: "screenshots"
+  - group: "Generate images"
+    key: "generate_images"
     if: build.branch == "main"
-    artifact_paths: "screenshots/*.png"
-    command: |
-      npm install
-      npm run captureScreenshots
-    plugins:
-      - docker-compose:
-          run: "puppeteer"
-          mount-checkout: true
+    steps:
+      - label: ":puppeteer: Capture screenshots"
+        key: "screenshots"
+        artifact_paths: "screenshots/*.png"
+        command: |
+          npm install
+          npm run captureScreenshots
+        plugins:
+          - docker-compose:
+              run: "puppeteer"
+              mount-checkout: true
+
+      - label: ":magic_wand: Generate images"
+        depends_on: "screenshots"
+        artifact_paths: "generated/*.png"
+        command: .buildkite/generateImages
+        plugins:
+          - artifacts#v1.9.3:
+              download: "screenshots/*.png"
+          - docker#v5.9.0:
+              image: dpokidov/imagemagick
+              entrypoint: ""
 
   - group: "Publish"
     key: "publish"
-    depends_on: ["validate", "screenshots"]
+    depends_on: ["validate", "generate_images"]
     if: build.branch == "main"
     steps:
       - label: ":datocms: Publish templates"
@@ -56,7 +70,7 @@ steps:
               download: "node_modules"
               compressed: node_modules.tgz
           - artifacts#v1.9.3:
-              download: "screenshots/*.png"
+              download: "generated/*.png"
 
       - label: ":datocms: Publish categories"
         command: npm run publishCategories

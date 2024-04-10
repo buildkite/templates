@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mkdir -p generated
+
+for path in screenshots/*.png; do
+  echo "Generating image for $path"
+
+  magick assets/background.jpg \
+    $path -composite \
+    assets/logo.png -geometry +60+60 -composite \
+    generated/${path##*/}
+done
