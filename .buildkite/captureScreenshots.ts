@@ -37,6 +37,11 @@ for (const pipeline of globSync("*/pipeline.yaml")) {
     el.remove()
   );
 
+  // Remove the background dots.
+  await page.$eval(".react-flow__background", (el) => {
+    el.remove();
+  });
+
   await page.screenshot({
     path: `screenshots/${templateID}.png`,
     omitBackground: true,
