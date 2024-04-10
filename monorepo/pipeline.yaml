@@ -1,0 +1,11 @@
+steps:
+  - label: ":git: Trigger pipelines"
+    plugins:
+      - monorepo-diff#v1.0.1:
+          watch:
+            - path: foo-service/
+              config:
+                trigger: deploy-foo-service
+            - path: bar-service/
+              config:
+                trigger: deploy-bar-service
