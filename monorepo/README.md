@@ -1,12 +1,12 @@
 ---
 title: CI for monorepo
-description: Conditionally trigger pipelines within a monorepo based on changes to file paths.
+description: Conditionally trigger pipelines for a monorepo based on changes to file paths.
 author: Buildkite
 languages: []
 use_cases: ["Monorepo", "CI"]
 platforms: []
 tools: []
-primary_emojis: [":buildkite:"]
+primary_emojis: [":git:"]
 ---
 
 # CI for monorepo
