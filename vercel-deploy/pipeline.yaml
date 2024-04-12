@@ -11,8 +11,17 @@ steps:
           upload: ".vercel/output"
           compressed: .vercel/output.tgz
 
+  - label: ":jest: Test"
+    key: "test"
+    commands:
+      - npm install
+      - npm test
+    plugins:
+      - docker#v5.9.0:
+          image: "node:20.11"
+
   - label: ":vercel: Deploy"
-    depends_on: "build"
+    depends_on: ["build", "test"]
     if: build.branch == "main"
     command: npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
     plugins:

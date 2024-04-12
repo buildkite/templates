@@ -1,6 +1,6 @@
 ---
 title: CI/CD for Vercel
-description: Build and deploy a web application to Vercel production environment.
+description: Build, test, and deploy a Next.js application to a Vercel production environment.
 author: Buildkite
 languages: ["JavaScript"]
 use_cases: ["CD", "Web"]
@@ -11,13 +11,15 @@ primary_emojis: [":vercel:"]
 
 # CI/CD for Vercel
 
-This templates gives you a continuous deployment (CD) pipeline that builds and deploys a web application to Vercel.
+This templates gives you a continuous deployment (CD) pipeline that builds, tests, and deploys a Next.js application to Vercel.
 
 At a glance:
 
 - For [Vercel](https://vercel.com/) web applications
 - Uses [npm](https://www.npmjs.com/)
+- Requires [Docker](https://docs.docker.com/get-docker/)
 - Uses [Vercel CLI](https://vercel.com/docs/cli)
+- Runs [Jest](https://jestjs.io/) unit tests
 
 ## How it works
 
@@ -26,7 +28,8 @@ This template:
 1. Installs the Vercel CLI using npm.
 2. Pulls production Vercel environment information.
 3. Builds an application for production, outputting a `.vercel/output` folder, which is available as an [artifact](https://buildkite.com/docs/pipelines/artifacts).
-4. Deploys the prebuilt application to Vercel production environment.
+4. Runs Jest unit tests.
+5. Deploys the prebuilt application to Vercel production environment.
 
 ## Next steps
 
