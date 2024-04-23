@@ -27,7 +27,7 @@ This template:
    - Runs unit testing with [scan](http://docs.fastlane.tools/actions/run_tests/#whats-scan).
    - Performs static analysis on the codebase with [Swiftlint](https://github.com/realm/SwiftLint).
    - Builds the app with [gym](https://docs.fastlane.tools/actions/gym/).
-3. Adds any test failures as annotations using [junit-annotate-buildkite-plugin](https://buildkite.com/docs/agent/v3/cli-annotate#using-annotations-to-report-test-results).
+3. Adds any test failures as annotations using [junit-annotate-buildkite-plugin](https://github.com/buildkite-plugins/junit-annotate-buildkite-plugin).
 
 The lint, test, and build steps all run in parallel. The `beta` step runs on `beta` and `beta/*` branches, after the build step has completed.
 
