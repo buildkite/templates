@@ -17,6 +17,7 @@ default_platform(:ios)
 
 platform :ios do
   
+  source_folder = "myProject"
   project_path = "myProject/myProject.xcodeproj"
 
   desc "Run iOS tests"
@@ -28,7 +29,10 @@ platform :ios do
 
   desc "Run SwiftLint"
   lane :lint do
-    swiftlint(mode: :lint)
+    swiftlint(
+      mode: :lint,
+      path: source_folder
+    )
   end
 
   desc "Run build"
@@ -42,5 +46,12 @@ platform :ios do
       project: project_path,
       clean: true
     )
+  end
+
+  desc "Submit beta"
+  lane :beta do
+    # Here's where you would submit the build to your
+    # beta provider (TestFlight, Hockeyapp, etc)
+    puts "Empty lane"
   end
 end

@@ -27,8 +27,11 @@ This template:
    - Runs unit testing with [scan](http://docs.fastlane.tools/actions/run_tests/#whats-scan).
    - Performs static analysis on the codebase with [Swiftlint](https://github.com/realm/SwiftLint).
    - Builds the app with [gym](https://docs.fastlane.tools/actions/gym/).
+3. Adds any test failures as annotations using [junit-annotate-buildkite-plugin](https://github.com/buildkite-plugins/junit-annotate-buildkite-plugin).
 
-After the depedencies are installed, the lint, test, and build steps all run in parallel.
+After the depedencies are installed, the lint, test, and build steps all run in parallel. After the build step has completed, the `beta` step runs on `beta` and `beta/*` branches.
+
+Note, depending on your version of Xcode you may need to install `xcbeautify`, which is the [recommended `xcodebuild` formatter](https://docs.fastlane.tools/best-practices/xcodebuild-formatters/).
 
 ## Next steps
 
@@ -42,4 +45,5 @@ After you select **Use template**, you’ll:
    - `test`: Runs unit tests with the [`run_tests`](http://docs.fastlane.tools/actions/run_tests) action.
    - `lint`: Runs Swift code validation using [Swiftlint](http://docs.fastlane.tools/actions/swiftlint).
    - `build`: Builds the app using [gym](http://docs.fastlane.tools/actions/gym).
-4. Run the pipeline.
+   - `beta`: Submits your build to your beta provider.
+6. Run the pipeline.
