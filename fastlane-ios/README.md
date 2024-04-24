@@ -29,7 +29,7 @@ This template:
    - Builds the app with [gym](https://docs.fastlane.tools/actions/gym/).
 3. Adds any test failures as annotations using [junit-annotate-buildkite-plugin](https://github.com/buildkite-plugins/junit-annotate-buildkite-plugin).
 
-The lint, test, and build steps all run in parallel. The `beta` step runs on `beta` and `beta/*` branches, after the build step has completed.
+After the depedencies are installed, the lint, test, and build steps all run in parallel. After the build step has completed, the `beta` step runs on `beta` and `beta/*` branches.
 
 Note, depending on your version of Xcode you may need to install `xcbeautify`, which is the [recommended `xcodebuild` formatter](https://docs.fastlane.tools/best-practices/xcodebuild-formatters/).
 

@@ -1,40 +1,67 @@
+env:
+  BUNDLE_PATH: vendor/bundle
+
 steps:
+  - label: ":bundler: Install dependencies"
+    key: deps
+    command: "bundle install --path $BUNDLE_PATH"
+    plugins:
+      - artifacts#v1.9.3:
+          upload: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
+
   - label: ":fastlane: Test"
     key: test
-    commands:
-      - "bundle install --path vendor/bundle"
-      - "bundle exec fastlane ios test"
+    depends_on: deps
+    command: "bundle exec fastlane ios test"
     env:
       LC_ALL: "en_US.UTF-8"
     artifact_paths:
       - "fastlane/test_output/**/*"
+    plugins:
+      - artifacts#v1.9.3:
+          download: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
 
   - label: ":buildkite: Annotate"
-    depends_on: "test"
+    depends_on:
+      - deps
+      - test
     allow_dependency_failure: true
     plugins:
       - junit-annotate#v2.4.1:
           artifacts: fastlane/test_output/*.junit
 
   - label: ":fastlane: Lint"
-    commands:
-      - "bundle exec fastlane ios lint"
+    depends_on: deps
+    command: "bundle exec fastlane ios lint"
     env:
       LC_ALL: "en_US.UTF-8"
+    plugins:
+      - artifacts#v1.9.3:
+          download: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
 
   - label: ":fastlane: Build"
     key: build
-    commands:
-      - "bundle install --path vendor/bundle"
-      - "bundle exec fastlane ios build"
+    depends_on: deps
+    command: "bundle exec fastlane ios build"
     env:
       LC_ALL: "en_US.UTF-8"
+    plugins:
+      - artifacts#v1.9.3:
+          download: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
 
   - label: ":ios: Submit beta"
-    depends_on: build
+    depends_on:
+      - deps
+      - build
     branches: "beta beta/*"
-    commands:
-      - "bundle install --path vendor/bundle"
-      - "bundle exec fastlane ios beta"
+    command: "bundle exec fastlane ios beta"
     env:
       LC_ALL: "en_US.UTF-8"
+    plugins:
+      - artifacts#v1.9.3:
+          download: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
