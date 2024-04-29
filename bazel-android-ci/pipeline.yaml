@@ -1,0 +1,28 @@
+steps:
+  - label: "Internal links"
+    commands:
+      - buildkite-agent annotate --style "info" "Build for commit <a href="https://www.github.com/org/repo/commit">#f48ac4f</a>. Build for <a href="https://buildkite.com/ORG/PIPELINE/builds?meta_data[job-name]=android-queue">android-queue</a>.
+      - buildkite-agent meta-data set "job-name" "android-queue"
+
+  - label: "Install deps"
+    key: "deps"
+    command: "bazel fetch //src/main:app"
+    plugins:
+      - docker#v5.9.0:
+          image: "cimg/android:2024.01"
+
+  - label: ":bazel: Build"
+    command: "bazel build //src/main:app"
+    dependends_on: "deps"
+    plugins:
+      - docker#v5.9.0:
+          image: "cimg/android:2024.01"
+
+  - label: ":bazel: Test"
+    command: "bazel test --build_tests_only //src/main:app"
+    dependends_on: "deps"
+    artifact_paths:
+      - "logs/**/*"
+      - "coverage/**/*"
+    plugins:
+      - docker#v5.9.0:
