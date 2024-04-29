@@ -5,15 +5,28 @@ steps:
       - npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
       - npx vercel build --prod --token="$VERCEL_TOKEN"
     plugins:
+      - docker#v5.9.0:
+          image: "node:20.11"
       - artifacts#v1.9.2:
           upload: ".vercel/output"
           compressed: .vercel/output.tgz
 
+  - label: ":jest: Test"
+    key: "test"
+    commands:
+      - npm install
+      - npm test
+    plugins:
+      - docker#v5.9.0:
+          image: "node:20.11"
+
   - label: ":vercel: Deploy"
-    depends_on: "build"
+    depends_on: ["build", "test"]
     if: build.branch == "main"
     command: npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
     plugins:
+      - docker#v5.9.0:
+          image: "node:20.11"
       - artifacts#v1.9.2:
           download: ".vercel/output"
           compressed: .vercel/output.tgz
