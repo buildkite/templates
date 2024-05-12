@@ -1,0 +1,64 @@
+# Use caching on hosted agents
+cache:
+  paths:
+    - "vendor/bundle" # Cache this directory
+
+env:
+  BUNDLE_PATH: vendor/bundle # Tell bundler where gems are
+
+steps:
+  - label: ":ruby: Install gems"
+    command: "bundle install --deployment" # Install gems to vendor/bundle
+    key: "gems" # All other steps depend on this one
+    plugins:
+      - docker#v5.9.0:
+          image: "ruby:3.2.2"
+          environment:
+            - BUNDLE_PATH # Pass this env var to docker
+          volumes:
+            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+
+  - label: ":rubocop: Run rubocop"
+    command: "( bundle check || bundle install --deployment ) && bundle exec rubocop"
+    depends_on: "gems"
+    plugins:
+      - docker#v5.9.0:
+          image: "ruby:3.2.2"
+          environment:
+            - BUNDLE_PATH # Pass this env var to docker
+          volumes:
+            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+
+
+  - label: ":brakeman: Run brakeman"
+    command: "( bundle check || bundle install --deployment ) && bundle exec brakeman --debug"
+    depends_on: "gems"
+    plugins:
+      - docker#v5.9.0:
+          image: "ruby:3.2.2"
+          environment:
+            - BUNDLE_PATH # Pass this env var to docker
+          volumes:
+            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+
+  - label: ":fsociety: Run bundler-audit"
+    command: "( bundle check || bundle install --deployment ) && bundle exec bundle-audit check --update"
+    depends_on: "gems"
+    plugins:
+      - docker#v5.9.0:
+          image: "ruby:3.2.2"
+          environment:
+            - BUNDLE_PATH # Pass this env var to docker
+          volumes:
+            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+
+  - label: ":rspec: Run rspec"
+    command: "( bundle check || bundle install --deployment ) && bundle exec rspec"
+    depends_on: "gems"
+    plugins:
+      - docker#v5.9.0:
+          image: "ruby:3.2.2"
+          environment:
+            - BUNDLE_PATH # Pass this env var to docker
+          volumes:
+            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
