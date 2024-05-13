@@ -6,7 +6,7 @@ use_cases: ["CI", "Web"]
 languages: ["Ruby"]
 platforms: ["Docker", "Hosted Agents"]
 tools: ["Bundler", "RuboCop", "Bundler-audit", "Brakeman", "RSpec"]
-primary_emojis: [":ruby:", ":rails"]
+primary_emojis: [":ruby:", ":rails:"]
 ---
 
 # CI for Ruby on Rails on Hosted Agents
