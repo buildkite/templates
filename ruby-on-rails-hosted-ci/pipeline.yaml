@@ -3,9 +3,6 @@ cache:
   paths:
     - "vendor/bundle" # Cache this directory
 
-env:
-  BUNDLE_PATH: vendor/bundle # Tell bundler where gems are
-
 steps:
   - label: ":ruby: Install gems"
     command: "bundle install --deployment" # Install gems to vendor/bundle
@@ -13,8 +10,6 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "ruby:3.2.2"
-          environment:
-            - BUNDLE_PATH # Pass this env var to docker
           volumes:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
@@ -24,11 +19,8 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "ruby:3.2.2"
-          environment:
-            - BUNDLE_PATH # Pass this env var to docker
           volumes:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
-
 
   - label: ":brakeman: Run brakeman"
     command: "( bundle check || bundle install --deployment ) && bundle exec brakeman --debug"
@@ -36,8 +28,6 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "ruby:3.2.2"
-          environment:
-            - BUNDLE_PATH # Pass this env var to docker
           volumes:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
@@ -47,8 +37,6 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "ruby:3.2.2"
-          environment:
-            - BUNDLE_PATH # Pass this env var to docker
           volumes:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
@@ -58,7 +46,5 @@ steps:
     plugins:
       - docker#v5.9.0:
           image: "ruby:3.2.2"
-          environment:
-            - BUNDLE_PATH # Pass this env var to docker
           volumes:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
