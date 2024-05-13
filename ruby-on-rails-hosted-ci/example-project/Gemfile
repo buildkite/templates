@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rubocop'
-gem 'bundler-audit'
 gem 'brakeman'
+gem 'bundler-audit'
 gem 'rspec'
+gem 'rubocop'
