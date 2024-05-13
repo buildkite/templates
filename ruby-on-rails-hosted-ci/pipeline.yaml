@@ -16,7 +16,7 @@ steps:
           environment:
             - BUNDLE_PATH # Pass this env var to docker
           volumes:
-            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+            - "./vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
   - label: ":rubocop: Run rubocop"
     commands:
@@ -29,7 +29,7 @@ steps:
           environment:
             - BUNDLE_PATH # Pass this env var to docker
           volumes:
-            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+            - "./vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
 
   - label: ":brakeman: Run brakeman"
@@ -43,7 +43,7 @@ steps:
           environment:
             - BUNDLE_PATH # Pass this env var to docker
           volumes:
-            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+            - "./vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
   - label: ":fsociety: Run bundler-audit"
     commands:
@@ -56,7 +56,7 @@ steps:
           environment:
             - BUNDLE_PATH # Pass this env var to docker
           volumes:
-            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+            - "./vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
   - label: ":rspec: Run rspec"
     commands:
@@ -69,4 +69,4 @@ steps:
           environment:
             - BUNDLE_PATH # Pass this env var to docker
           volumes:
-            - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
+            - "./vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
