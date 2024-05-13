@@ -53,7 +53,7 @@ export async function parseTemplate(path: string): Promise<Template> {
 
 // deno-lint-ignore no-explicit-any
 const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
-  const errors = [];
+  const errors: string[] = [];
 
   if (!meta.title) {
     errors.push("missing title");
