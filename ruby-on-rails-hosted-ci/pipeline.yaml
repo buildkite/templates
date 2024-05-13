@@ -14,7 +14,9 @@ steps:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
   - label: ":rubocop: Run rubocop"
-    command: "( bundle check || bundle install --deployment ) && bundle exec rubocop"
+    commands:
+      - bundle check || bundle install --deployment
+      - bundle exec rubocop"
     depends_on: "gems"
     plugins:
       - docker#v5.9.0:
@@ -23,7 +25,9 @@ steps:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
   - label: ":brakeman: Run brakeman"
-    command: "( bundle check || bundle install --deployment ) && bundle exec brakeman --force"
+    commands:
+      - bundle check || bundle install --deployment
+      - bundle exec brakeman --force"
     depends_on: "gems"
     plugins:
       - docker#v5.9.0:
@@ -32,7 +36,9 @@ steps:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
   - label: ":fsociety: Run bundler-audit"
-    command: "( bundle check || bundle install --deployment ) && bundle exec bundle-audit check --update"
+    commands:
+      - bundle check || bundle install --deployment
+      - bundle exec bundle-audit check --update
     depends_on: "gems"
     plugins:
       - docker#v5.9.0:
@@ -41,7 +47,9 @@ steps:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
   - label: ":rspec: Run rspec"
-    command: "( bundle check || bundle install --deployment ) && bundle exec rspec"
+    commands:
+      - bundle check || bundle install --deployment
+      - bundle exec rspec
     depends_on: "gems"
     plugins:
       - docker#v5.9.0:
