@@ -23,7 +23,7 @@ steps:
             - "/cache/bkcache/vendor/bundle:/workdir/vendor/bundle" # Mount the cached gems in docker
 
   - label: ":brakeman: Run brakeman"
-    command: "( bundle check || bundle install --deployment ) && bundle exec brakeman --debug"
+    command: "( bundle check || bundle install --deployment ) && bundle exec brakeman --force"
     depends_on: "gems"
     plugins:
       - docker#v5.9.0:
