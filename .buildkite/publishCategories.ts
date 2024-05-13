@@ -3,6 +3,7 @@ import { buildClient } from "@datocms/cma-client-node";
 import { globSync } from "glob";
 import { parseTemplate } from "./lib/parseTemplate.ts";
 import { join, dirname } from "path";
+import { slugify } from "./lib/slugify.ts";
 
 const CATEGORY_ID = "AiaelmlCSOq7OCAgLOopUw";
 
@@ -26,7 +27,7 @@ async function insertCategory(
   searchFacet: string,
   existingCategories: Map<string, string>
 ) {
-  const slug = category.toLowerCase().replace(/ /g, "-");
+  const slug = slugify(category);
 
   if (!existingCategories.has(slug)) {
     console.log(`Creating category: ${category}`);
