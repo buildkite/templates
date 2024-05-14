@@ -1,0 +1,5 @@
+steps:
+  - label: ":lacework: Analysis"
+    plugins:
+      - lacework#v0.1.0:
+          account-name: "mycompany" # update this to your company account name
