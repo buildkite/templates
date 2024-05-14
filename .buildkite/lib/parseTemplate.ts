@@ -3,6 +3,7 @@ import { matter } from "vfile-matter";
 import { read } from "to-vfile";
 import fs from "fs";
 import isValidEmoji from "./isValidEmoji.ts";
+import { slugify } from "./slugify.ts";
 
 interface Frontmatter {
   title: string;
@@ -43,12 +44,16 @@ export async function parseTemplate(path: string): Promise<Template> {
     slug,
     content: String(file),
     pipeline,
+    use_cases: meta.use_cases.map(slugify),
+    platforms: meta.platforms.map(slugify),
+    tools: meta.tools.map(slugify),
+    languages: meta.languages.map(slugify),
   };
 }
 
 // deno-lint-ignore no-explicit-any
 const validateFrontmatter = (meta: any): Frontmatter & { errors: string[] } => {
-  const errors = [];
+  const errors: string[] = [];
 
   if (!meta.title) {
     errors.push("missing title");
