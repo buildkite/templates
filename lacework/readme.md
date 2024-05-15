@@ -27,7 +27,7 @@ This template:
 After you select **Use template**, you’ll:
 
 1. Connect your git repository.
-2. Modify the template commands, environment variables, secrets as needed for your project.
+2. Modify the template commands, environment variables, secrets as needed for your project. This plugin requires that `LW_API_KEY` and `LW_API_SECRET` are set in your agent environment.
 3. [Create](https://docs.lacework.net/console/api-access-keys) and store your Lacework API token securely on your agents.
 4. Configure the compute—run locally, on-premises, or in the cloud.
 5. Run the pipeline.
