@@ -1,6 +1,6 @@
 ---
-title: Vulnerability scanning with Lacework
-description: Audit your project for security vulnerabilities using Lacework.
+title: Software Composition Analysis with Lacework
+description: Perform a Software Composition Analysis in your pipeline using Lacework.
 author: Buildkite
 use_cases: ["Security", "CI", "Schedule"]
 tools: ["Lacework"]
@@ -9,19 +9,18 @@ primary_emojis: [:lacework:]
 
 # Scan using Lacework
 
-This template gives you a continuous integration (CI) pipeline that scans a a sample project for security vulnerabilities using Lacework.
+This template gives you a continuous integration (CI) pipeline that uses Lacework to perform a Software Composition Analysis using the Lacework CLI.
 
 At a glance:
 
-- Uses [Lacework](https://www.lacework.com/) and requires an account and API key for security scanning
-- Requires [Docker](https://docs.docker.com/get-docker/)
+- Uses a Buildkite [plugin]() to run [Lacework](https://www.lacework.com/) and requires an account and API key for security scanning
 
 ## How it works
 
 This template:
 
 1. Sets up the environment with Lacework
-2. Runs Lacework over your project for security vulnerabilities.
+2. Runs Lacework over your project to perform a Software Composition Analysis with the Lacework CLI
 
 ## Next steps
 
@@ -32,3 +31,4 @@ After you select **Use template**, you’ll:
 3. [Create](https://docs.lacework.net/console/api-access-keys) and store your Lacework API token securely on your agents.
 4. Configure the compute—run locally, on-premises, or in the cloud.
 5. Run the pipeline.
+6. Check out the [Buildkite Lacework Plugin](https://github.com/buildkite-plugins/lacework-buildkite-plugin) to see the other capabilities offered!
