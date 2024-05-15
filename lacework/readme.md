@@ -21,7 +21,7 @@ At a glance:
 This template:
 
 1. Sets up the environment with Lacework
-2. Runs Lacework over yourproject for security vulnerabilities.
+2. Runs Lacework over your project for security vulnerabilities.
 
 ## Next steps
 
