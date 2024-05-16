@@ -1,5 +1,5 @@
 ---
-title: Software Composition Analysis with Lacework
+title: Software composition analysis using Lacework
 description: Perform a Software Composition Analysis in your pipeline using Lacework.
 author: Buildkite
 use_cases: ["Security", "CI", "Schedule"]
