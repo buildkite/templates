@@ -20,7 +20,7 @@ At a glance:
 This template:
 
 1. Sets up the environment with Lacework
-2. Runs Lacework over your project to perform a Software Composition Analysis with the Lacework CLI
+2. Runs Lacework over your project to perform a software composition analysis using the Lacework CLI
 
 ## Next steps
 
