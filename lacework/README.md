@@ -13,7 +13,8 @@ This template gives you a continuous integration (CI) pipeline that uses Lacewor
 
 At a glance:
 
-- Uses a Buildkite [plugin]() to run [Lacework](https://www.lacework.com/) and requires an account and API key for security scanning
+- Runs [Lacework](https://www.lacework.com/) using a [Buildkite plugin](https://github.com/buildkite-plugins/lacework-buildkite-plugin)
+- Requires an existing Lacework account
 
 ## How it works
 
