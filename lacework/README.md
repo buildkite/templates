@@ -5,6 +5,8 @@ author: Buildkite
 use_cases: ["Security", "CI", "Schedule"]
 tools: ["Lacework"]
 primary_emojis: [:lacework:]
+plaforms: []
+languages: []
 ---
 
 # Scan using Lacework
