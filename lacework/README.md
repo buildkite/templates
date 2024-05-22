@@ -9,7 +9,7 @@ plaforms: []
 languages: []
 ---
 
-# Scan using Lacework
+# Software Composition analysis using Lacework
 
 This template gives you a continuous integration (CI) pipeline that uses Lacework to perform a Software Composition Analysis using the Lacework CLI.
 
