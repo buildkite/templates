@@ -1,0 +1,6 @@
+steps:
+  - label: ":lacework: Software Composition Analysis"
+    plugins:
+      - lacework#v1.0.0:
+          account-name: "mycompany" # update this to your company account name
+          scan-type: sca 
