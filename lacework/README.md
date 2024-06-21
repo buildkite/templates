@@ -4,7 +4,7 @@ description: Perform a Software Composition Analysis in your pipeline using Lace
 author: Buildkite
 use_cases: ["Security", "CI", "Schedule"]
 tools: ["Lacework"]
-primary_emojis: [:lacework:]
+primary_emojis: [":lacework:"]
 platforms: []
 languages: []
 ---
