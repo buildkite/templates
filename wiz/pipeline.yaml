@@ -1,0 +1,10 @@
+steps:
+  - label: "Scan different Directory"
+    command: <command here>
+    env:
+    - WIZ_API_ID: "<your-id-goes-here>"
+    plugins:
+      - wiz#v1.4.0:
+          scan-type: 'dir'
+          path: 'my-dir'
+   
