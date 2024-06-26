@@ -4,7 +4,7 @@ description: Utilize the Wiz Buildkite Plugin for scanning in your Buildkite pip
 author: Buildkite
 use_cases: ["Security", "CI"]
 tools: ["Wiz"]
-primary_emojis: [":security:", ":buildkite:"]
+primary_emojis: [":wiz:", ":buildkite:"]
 platforms: []
 languages: []
 ---
