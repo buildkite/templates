@@ -1,6 +1,6 @@
 ---
-title: Wiz Buildkite Plugin Template
-description: Utilize the Wiz Buildkite Plugin for scanning in your Buildkite pipelines.
+title: Scan for vulnerabilities using Wiz
+description: Scan your infrastructure-as-code CloudFormation stacks or Docker images for security vulnerabilities using Wiz.
 author: Buildkite
 use_cases: ["Security", "CI"]
 tools: ["Wiz"]
@@ -9,27 +9,18 @@ platforms: []
 languages: []
 ---
 
-# Wiz Buildkite Plugin Template
+# Scan for vulnerabilities using Wiz Template
 
-This template provides a continuous integration (CI) pipeline that leverages the wiz-buildkite-plugin to perform security scans.
+This template provides a continuous integration (CI) pipeline that scans a project for security vulnerabilities using [Wiz](https://www.wiz.io/).
 
 
 ## How it works
 
 This template:
 
-1. Configures the Wiz plugin.
-2. Executes the specified type of scan.
+1. Configures and runs Wiz using a [Buildkite plugin](https://github.com/buildkite-plugins/wiz-buildkite-plugin)
+2. Requires a Wiz account
 
-## Usage
-
-To use this plugin, add it to your pipeline.yml:
-
-steps:
-  - label: "Example step using wiz plugin"
-    plugins:
-      - buildkite-plugins/wiz#v1.4.0:
-          scan-type: "dir"
 
 ## Configuration
 
@@ -59,7 +50,7 @@ steps:
   - label: "Scan Terraform File"
     command: <your-command>
     env:
-    - WIZ_API_ID: "<your-id-goes-here>"
+      WIZ_API_ID: "<your-id-goes-here>"
     plugins:
       - wiz#v1.4.0:
           scan-type: 'iac'
