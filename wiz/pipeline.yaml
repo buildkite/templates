@@ -1,6 +1,5 @@
 steps:
-  - label: "Scan different Directory"
-    command: <command here>
+  - label: ":wiz: Scan project"
     env:
       WIZ_API_ID: "<your-id-goes-here>"
     plugins:
