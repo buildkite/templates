@@ -1,0 +1,9 @@
+steps:
+  - label: ":wiz: Scan project"
+    env:
+      WIZ_API_ID: "<your-id-goes-here>"
+    plugins:
+      - wiz#v1.4.0:
+          scan-type: 'dir'
+          path: 'my-dir'
+   
