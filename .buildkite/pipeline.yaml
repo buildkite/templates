@@ -16,6 +16,11 @@ steps:
       - label: ":buildkite: Validate pipelines"
         command: npm run validatePipeline
         plugins: &node
+          - aws-assume-role-with-web-identity#v1.1.0:
+              role-arn: arn:aws:iam::445615400570:role/pipeline-buildkite-templates
+          - aws-ssm#v1.0.0:
+              parameters:
+                DATO_API_TOKEN: /pipelines/buildkite/templates/dato-api-token
           - artifacts#v1.9.3:
               download: "node_modules"
               compressed: node_modules.tgz
@@ -62,6 +67,11 @@ steps:
       - label: ":datocms: Publish templates"
         command: npm run publishContent
         plugins:
+          - aws-assume-role-with-web-identity#v1.1.0:
+              role-arn: arn:aws:iam::445615400570:role/pipeline-buildkite-templates
+          - aws-ssm#v1.0.0:
+              parameters:
+                DATO_API_TOKEN: /pipelines/buildkite/templates/dato-api-token
           - docker#v5.9.0:
               image: "node:21-alpine"
               environment:
