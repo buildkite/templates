@@ -86,11 +86,11 @@ steps:
         command: npm run publishCategories
         plugins: *node
 
-  - trigger: "site"
+  - trigger: "marketing-website"
     depends_on: "publish"
     soft_fail: true
     if: build.branch == "main"
-    label: ":buildkite: Trigger site build"
+    label: ":buildkite: Trigger marketing site build"
     build:
       message: "Triggered by buildkite/templates"
       env:
