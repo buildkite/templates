@@ -1,0 +1,58 @@
+env:
+  - PYTHON_VERSION=latest
+
+steps:
+  - label: ":package: Install dependencies"
+    commands:
+      - echo "+++ :package: Installing dependencies"
+      - pip install -r requirements.txt
+      - dbt deps
+    key: "deps"
+    plugins: &plugins
+      - docker#v5.9.0:
+          image: "python3-slim-$PYTHON_VERSION"
+
+  - label: ":dbt: sql lint"
+    depends_on: "deps"
+    key: "dbt-sql-lint"
+    commands:
+      - echo "+++ :dbt: Running dbt sql lint"
+      - pip install sqlfluff sqlfluff-templater-dbt
+      - sqlfluff lint --templater dbt
+    plugins:
+      <<: *plugins
+
+  - label: ":dbt: dbt source freshness tests"
+    depends_on: "deps"
+    command: |
+      echo "+++ :dbt: Running dbt source freshness"
+      dbt source freshness --target prod
+    plugins:
+      <<: *plugins
+
+  - label: ":dbt: dbt seed"
+    depends_on: "deps"
+    command: |
+      echo "+++ :dbt: Running dbt seed"
+      dbt seed --target prod
+    plugins:
+      <<: *plugins
+
+  - wait
+
+  - label: ":dbt: dbt run against production db"
+    command: |
+      echo "+++ :dbt: Running dbt job"
+      dbt run --target prod
+    plugins:
+      <<: *plugins
+
+  - wait
+
+  - label: ":dbt: dbt model tests"
+    depends_on: "deps"
+    command: |
+      echo "+++ :dbt: Running dbt model tests"
+      dbt test --target prod
+    plugins:
+      <<: *plugins
