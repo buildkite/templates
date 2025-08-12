@@ -1,0 +1,24 @@
+steps:
+  - name: ":expo: Setup dependencies"
+    key: "deps"
+    command:
+      - "npm ci"
+    plugins:
+      - docker#v5.9.0:
+          image: "node:alpine"
+      - artifacts#v1.9.3:
+          upload: "./npm"
+          compressed: npm.tgz
+
+  - name: ":expo: Build app"
+    key: "build"
+    branches: "main"
+    command:
+      - "apk add --no-cache bash"
+      - "npx eas-cli build --platform all --non-interactive --no-wait"
+    plugins:
+      - docker#v5.9.0:
+          image: "node:alpine"
+      - artifacts#v1.9.3:
+          download: "./npm"
+          compressed: npm.tgz
